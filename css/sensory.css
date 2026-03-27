@@ -1,0 +1,979 @@
+/* ========================================================
+   GLITCH / CORRUPTED — DIGITAL ARTIFACT AESTHETIC
+   "A corrupted file trying to load"
+   Pure CSS glitch, scanlines, RGB splitting, data decay.
+   ======================================================== */
+
+/* === KEYFRAMES === */
+
+@keyframes glitch-horizontal {
+    0%   { transform: translate(0, 0); }
+    2%   { transform: translate(-5px, 0); }
+    4%   { transform: translate(3px, 0); }
+    6%   { transform: translate(-2px, 0); }
+    8%   { transform: translate(0, 0); }
+    40%  { transform: translate(0, 0); }
+    42%  { transform: translate(8px, 0); }
+    44%  { transform: translate(-6px, 0); }
+    46%  { transform: translate(2px, 0); }
+    48%  { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch-vertical {
+    0%   { transform: translate(0, 0); }
+    15%  { transform: translate(0, 0); }
+    16%  { transform: translate(0, -3px); }
+    17%  { transform: translate(0, 5px); }
+    18%  { transform: translate(0, 0); }
+    68%  { transform: translate(0, 0); }
+    69%  { transform: translate(0, 4px); }
+    70%  { transform: translate(0, -2px); }
+    71%  { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch-skew {
+    0%   { transform: skewX(0deg); }
+    20%  { transform: skewX(0deg); }
+    21%  { transform: skewX(-3deg); }
+    22%  { transform: skewX(2deg); }
+    23%  { transform: skewX(0deg); }
+    70%  { transform: skewX(0deg); }
+    71%  { transform: skewX(5deg); }
+    72%  { transform: skewX(-2deg); }
+    73%  { transform: skewX(0deg); }
+    100% { transform: skewX(0deg); }
+}
+
+@keyframes flicker {
+    0%    { opacity: 1; }
+    3%    { opacity: 0.4; }
+    6%    { opacity: 1; }
+    7%    { opacity: 0.7; }
+    9%    { opacity: 1; }
+    50%   { opacity: 1; }
+    52%   { opacity: 0.2; }
+    53%   { opacity: 1; }
+    54%   { opacity: 0.6; }
+    55%   { opacity: 1; }
+    100%  { opacity: 1; }
+}
+
+@keyframes flicker-fast {
+    0%    { opacity: 1; }
+    5%    { opacity: 0; }
+    10%   { opacity: 1; }
+    15%   { opacity: 0.3; }
+    20%   { opacity: 1; }
+    45%   { opacity: 1; }
+    50%   { opacity: 0; }
+    55%   { opacity: 1; }
+    80%   { opacity: 1; }
+    85%   { opacity: 0.5; }
+    90%   { opacity: 1; }
+    100%  { opacity: 1; }
+}
+
+@keyframes rgb-shift-before {
+    0%   { clip-path: inset(0 0 95% 0); transform: translate(-4px, -2px); }
+    10%  { clip-path: inset(15% 0 70% 0); transform: translate(3px, 1px); }
+    20%  { clip-path: inset(40% 0 40% 0); transform: translate(-5px, 0); }
+    30%  { clip-path: inset(60% 0 20% 0); transform: translate(2px, -1px); }
+    40%  { clip-path: inset(80% 0 5% 0); transform: translate(-3px, 2px); }
+    50%  { clip-path: inset(5% 0 85% 0); transform: translate(5px, 0); }
+    60%  { clip-path: inset(25% 0 55% 0); transform: translate(-2px, -2px); }
+    70%  { clip-path: inset(50% 0 30% 0); transform: translate(4px, 1px); }
+    80%  { clip-path: inset(70% 0 15% 0); transform: translate(-6px, 0); }
+    90%  { clip-path: inset(90% 0 0% 0); transform: translate(3px, -1px); }
+    100% { clip-path: inset(0 0 95% 0); transform: translate(-4px, -2px); }
+}
+
+@keyframes rgb-shift-after {
+    0%   { clip-path: inset(85% 0 0% 0); transform: translate(4px, 2px); }
+    10%  { clip-path: inset(65% 0 20% 0); transform: translate(-3px, -1px); }
+    20%  { clip-path: inset(30% 0 50% 0); transform: translate(5px, 0); }
+    30%  { clip-path: inset(10% 0 75% 0); transform: translate(-2px, 1px); }
+    40%  { clip-path: inset(0% 0 90% 0); transform: translate(3px, -2px); }
+    50%  { clip-path: inset(75% 0 10% 0); transform: translate(-5px, 0); }
+    60%  { clip-path: inset(45% 0 35% 0); transform: translate(2px, 2px); }
+    70%  { clip-path: inset(20% 0 65% 0); transform: translate(-4px, -1px); }
+    80%  { clip-path: inset(5% 0 80% 0); transform: translate(6px, 0); }
+    90%  { clip-path: inset(55% 0 35% 0); transform: translate(-3px, 1px); }
+    100% { clip-path: inset(85% 0 0% 0); transform: translate(4px, 2px); }
+}
+
+@keyframes tear-slide {
+    0%   { clip-path: inset(0 0 100% 0); }
+    30%  { clip-path: inset(0 0 100% 0); }
+    35%  { clip-path: inset(30% 0 60% 0); }
+    40%  { clip-path: inset(0 0 100% 0); }
+    70%  { clip-path: inset(0 0 100% 0); }
+    75%  { clip-path: inset(60% 0 25% 0); }
+    80%  { clip-path: inset(0 0 100% 0); }
+    100% { clip-path: inset(0 0 100% 0); }
+}
+
+@keyframes jitter {
+    0%, 100% { transform: translateX(0); }
+    10%      { transform: translateX(-2px); }
+    20%      { transform: translateX(3px); }
+    30%      { transform: translateX(-1px); }
+    40%      { transform: translateX(2px); }
+    50%      { transform: translateX(-3px); }
+    60%      { transform: translateX(1px); }
+    70%      { transform: translateX(-2px); }
+    80%      { transform: translateX(3px); }
+    90%      { transform: translateX(-1px); }
+}
+
+@keyframes noise-anim {
+    0%   { background-position: 0 0; }
+    20%  { background-position: -20% 40%; }
+    40%  { background-position: 60% -30%; }
+    60%  { background-position: -40% 70%; }
+    80%  { background-position: 80% -60%; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes text-shadow-glitch {
+    0%   { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; }
+    25%  { text-shadow: -2px 1px #ff0040, 2px -1px #00ffff; }
+    50%  { text-shadow: 3px -1px #ff0040, -3px 1px #00ffff; }
+    75%  { text-shadow: -1px 2px #ff0040, 1px -2px #00ffff; }
+    100% { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; }
+}
+
+@keyframes card-glitch-border {
+    0%   { border-color: #00ffff; box-shadow: 0 0 8px rgba(0, 255, 255, 0.3), inset 0 0 8px rgba(0, 255, 255, 0.05); }
+    25%  { border-color: #ff00ff; box-shadow: 0 0 8px rgba(255, 0, 255, 0.3), inset 0 0 8px rgba(255, 0, 255, 0.05); }
+    50%  { border-color: #ffffff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.05); }
+    75%  { border-color: #ff0040; box-shadow: 0 0 8px rgba(255, 0, 64, 0.3), inset 0 0 8px rgba(255, 0, 64, 0.05); }
+    100% { border-color: #00ffff; box-shadow: 0 0 8px rgba(0, 255, 255, 0.3), inset 0 0 8px rgba(0, 255, 255, 0.05); }
+}
+
+@keyframes blink-cursor {
+    0%, 49%  { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@keyframes data-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes displacement {
+    0%   { transform: translate(0, 0) skewX(0deg); }
+    15%  { transform: translate(0, 0) skewX(0deg); }
+    16%  { transform: translate(10px, -2px) skewX(-2deg); }
+    17%  { transform: translate(-8px, 1px) skewX(1deg); }
+    18%  { transform: translate(0, 0) skewX(0deg); }
+    55%  { transform: translate(0, 0) skewX(0deg); }
+    56%  { transform: translate(-12px, 3px) skewX(3deg); }
+    57%  { transform: translate(6px, -1px) skewX(-1deg); }
+    58%  { transform: translate(0, 0) skewX(0deg); }
+    100% { transform: translate(0, 0) skewX(0deg); }
+}
+
+
+/* === BASE RESET & BODY === */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #c0c0c0;
+    font-family: 'Share Tech Mono', 'Fira Code', 'Courier New', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+/* === SCANLINE OVERLAY === */
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 4px
+    );
+}
+
+
+/* === NOISE OVERLAY === */
+
+.noise {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.03;
+    background-image:
+        radial-gradient(circle at 20% 80%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 60% 60%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 10% 30%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 90% 70%, #fff 1px, transparent 1px);
+    background-size: 7px 7px, 11px 11px, 13px 13px, 9px 9px, 5px 5px, 15px 15px;
+    animation: noise-anim 0.5s steps(8) infinite;
+}
+
+
+/* === MOTION WARNING === */
+
+.motion-warning {
+    background: #1a0000;
+    border: 1px solid #ff0040;
+    color: #ff6680;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.motion-warning a {
+    color: #00ffff;
+    text-decoration: underline;
+}
+
+.motion-warning a:hover {
+    color: #ffffff;
+}
+
+
+/* === BACK LINK === */
+
+.back-link {
+    display: inline-block;
+    margin: 20px 30px;
+    padding: 8px 16px;
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-family: 'Share Tech Mono', monospace;
+    border: 1px solid #00ffff33;
+    background: #0a0a0a;
+    transition: all 0.1s;
+    position: relative;
+    z-index: 10;
+}
+
+.back-link:hover {
+    background: #00ffff;
+    color: #0a0a0a;
+    text-shadow: none;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+
+/* === CORRUPTION BAR === */
+
+.corruption-bar {
+    background: #0d0d0d;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 0.7rem;
+    color: #333;
+    font-family: 'Share Tech Mono', monospace;
+    position: relative;
+    z-index: 10;
+}
+
+.corruption-bar span {
+    display: inline-block;
+    animation: data-scroll 20s linear infinite;
+    padding-left: 100%;
+}
+
+.corruption-bar-bottom span {
+    animation-duration: 25s;
+    animation-direction: reverse;
+}
+
+
+/* === HEADER === */
+
+.glitch-header {
+    padding: 80px 30px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.glitch-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.02) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(255, 0, 64, 0.01) 100%);
+    pointer-events: none;
+}
+
+.header-corruption {
+    font-size: 0.6rem;
+    color: #1a1a1a;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    font-family: 'Share Tech Mono', monospace;
+    animation: flicker 4s steps(2) infinite;
+    word-spacing: 8px;
+}
+
+
+/* === GLITCH TITLE === */
+
+.title-container {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-title {
+    position: relative;
+    font-family: 'VT323', 'Share Tech Mono', monospace;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: #ffffff;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.title-main {
+    position: relative;
+    z-index: 2;
+    display: block;
+    animation: glitch-horizontal 3s steps(4) infinite, flicker 5s steps(2) infinite;
+    text-shadow:
+        2px 0 #ff0040,
+        -2px 0 #00ffff,
+        0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.title-before,
+.title-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.title-before {
+    color: #ff0040;
+    z-index: 1;
+    animation: rgb-shift-before 4s steps(3) infinite;
+    opacity: 0.8;
+}
+
+.title-after {
+    color: #00ffff;
+    z-index: 1;
+    animation: rgb-shift-after 4s steps(3) infinite;
+    opacity: 0.8;
+}
+
+
+/* === SUBTITLE === */
+
+.subtitle-glitch {
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.flicker-text {
+    font-size: 0.9rem;
+    color: #555;
+    letter-spacing: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    animation: flicker 3s steps(2) infinite;
+}
+
+
+/* === ERROR BLOCK === */
+
+.error-block {
+    margin-top: 30px;
+    text-align: left;
+    display: inline-block;
+    padding: 15px 25px;
+    border: 1px solid #1a1a1a;
+    background: #0d0d0d;
+    position: relative;
+    z-index: 2;
+}
+
+.err-line {
+    display: block;
+    font-size: 0.7rem;
+    color: #ff0040;
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+.err-line.blink-err {
+    color: #00ff00;
+    animation: blink-cursor 1s steps(1) infinite;
+}
+
+
+/* === HEX SCATTER === */
+
+.hex-scatter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hex {
+    position: absolute;
+    font-size: 0.55rem;
+    color: #161616;
+    font-family: 'Share Tech Mono', monospace;
+    animation: flicker-fast 6s steps(2) infinite;
+}
+
+.hex-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.hex-2 { top: 25%; right: 8%; animation-delay: 0.5s; }
+.hex-3 { top: 60%; left: 12%; animation-delay: 1s; }
+.hex-4 { top: 75%; right: 15%; animation-delay: 1.5s; }
+.hex-5 { top: 40%; left: 3%; animation-delay: 2s; }
+.hex-6 { top: 85%; right: 5%; animation-delay: 2.5s; }
+
+
+/* === CORRUPT DIVIDER === */
+
+.corrupt-divider {
+    background: #0d0d0d;
+    padding: 6px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 0.65rem;
+    color: #222;
+    text-align: center;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+    animation: flicker 7s steps(2) infinite;
+    letter-spacing: 2px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+
+/* === DESTINATIONS GRID === */
+
+.destinations {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+
+/* === DESTINATION CARDS === */
+
+.dest-card {
+    position: relative;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    padding: 30px 25px 25px;
+    overflow: hidden;
+    animation: card-glitch-border 8s steps(4) infinite;
+}
+
+.dest-card:nth-child(odd) {
+    animation-delay: -2s;
+}
+
+.dest-card:nth-child(3n) {
+    animation-delay: -5s;
+}
+
+/* Card tear effect — displaced slice */
+.card-tear {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 255, 0.03);
+    pointer-events: none;
+    animation: tear-slide 8s steps(2) infinite;
+    z-index: 1;
+}
+
+.dest-card:nth-child(2) .card-tear { animation-delay: -1s; animation-duration: 6s; }
+.dest-card:nth-child(3) .card-tear { animation-delay: -3s; animation-duration: 10s; }
+.dest-card:nth-child(4) .card-tear { animation-delay: -5s; animation-duration: 7s; }
+.dest-card:nth-child(5) .card-tear { animation-delay: -2s; animation-duration: 9s; }
+.dest-card:nth-child(6) .card-tear { animation-delay: -4s; animation-duration: 11s; }
+
+
+/* === CARD STATUS === */
+
+.card-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.status-tag {
+    padding: 2px 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+}
+
+.status-tag.recovered {
+    background: #002200;
+    color: #00ff00;
+    border: 1px solid #004400;
+}
+
+.status-tag.corrupted {
+    background: #220022;
+    color: #ff00ff;
+    border: 1px solid #440044;
+    animation: flicker-fast 4s steps(2) infinite;
+}
+
+.status-tag.lost {
+    background: #220000;
+    color: #ff0040;
+    border: 1px solid #440000;
+    animation: blink-cursor 1.5s steps(1) infinite;
+}
+
+.sector-id {
+    color: #333;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+
+/* === CARD GARBLE === */
+
+.card-garble {
+    font-size: 0.55rem;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    animation: jitter 2s steps(6) infinite;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* === CARD NUMBER === */
+
+.card-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #0f0f0f;
+    font-family: 'VT323', monospace;
+    line-height: 1;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 2;
+    text-shadow:
+        1px 0 #ff004020,
+        -1px 0 #00ffff20;
+}
+
+
+/* === CARD NAME (GLITCH TEXT) === */
+
+.card-name {
+    font-family: 'VT323', 'Share Tech Mono', monospace;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+    animation: text-shadow-glitch 3s steps(4) infinite, displacement 6s steps(3) infinite;
+}
+
+.card-name span {
+    position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.glitch-text::before {
+    color: #ff0040;
+    animation: rgb-shift-before 3s steps(3) infinite;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.glitch-text::after {
+    color: #00ffff;
+    animation: rgb-shift-after 3s steps(3) infinite;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.dest-card:nth-child(1) .card-name { animation-delay: 0s; }
+.dest-card:nth-child(2) .card-name { animation-delay: -0.5s; }
+.dest-card:nth-child(3) .card-name { animation-delay: -1s; }
+.dest-card:nth-child(4) .card-name { animation-delay: -1.5s; }
+.dest-card:nth-child(5) .card-name { animation-delay: -2s; }
+.dest-card:nth-child(6) .card-name { animation-delay: -2.5s; }
+
+
+/* === CARD COUNTRY === */
+
+.card-country {
+    font-size: 0.75rem;
+    color: #00ffff;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    position: relative;
+    z-index: 2;
+    opacity: 0.7;
+}
+
+
+/* === CARD DESCRIPTION === */
+
+.card-desc {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-family: 'Fira Code', 'Share Tech Mono', monospace;
+    position: relative;
+    z-index: 2;
+    border-left: 2px solid #1a1a1a;
+    padding-left: 12px;
+}
+
+
+/* === CARD TAGS === */
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.tag {
+    font-size: 0.6rem;
+    padding: 3px 10px;
+    border: 1px solid #222;
+    color: #555;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #0a0a0a;
+}
+
+.tag:hover {
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+
+/* === CARD ERROR === */
+
+.card-error {
+    font-size: 0.55rem;
+    color: #331111;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    animation: flicker 5s steps(2) infinite;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* === CARD HOVER STATES === */
+
+.dest-card:hover {
+    border-color: #00ffff;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.15), inset 0 0 30px rgba(0, 255, 255, 0.02);
+}
+
+.dest-card:hover .card-number {
+    text-shadow:
+        2px 0 #ff004040,
+        -2px 0 #00ffff40;
+}
+
+.dest-card:hover .card-garble {
+    color: #333;
+}
+
+.dest-card:hover .card-error {
+    color: #663333;
+}
+
+.dest-card:hover .card-desc {
+    border-left-color: #00ffff33;
+    color: #aaa;
+}
+
+
+/* === CARD VARIANTS — different glitch flavors === */
+
+/* Card 2 (Santorini) — magenta tint */
+.dest-card:nth-child(2) {
+    border-color: #1a001a;
+}
+
+.dest-card:nth-child(2):hover {
+    border-color: #ff00ff;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.15), inset 0 0 30px rgba(255, 0, 255, 0.02);
+}
+
+.dest-card:nth-child(2) .card-country {
+    color: #ff00ff;
+}
+
+.dest-card:nth-child(2) .card-desc {
+    border-left-color: #1a001a;
+}
+
+.dest-card:nth-child(2):hover .card-desc {
+    border-left-color: #ff00ff33;
+}
+
+/* Card 4 (Marrakech) — red warning tint */
+.dest-card:nth-child(4) {
+    border-color: #1a0000;
+}
+
+.dest-card:nth-child(4):hover {
+    border-color: #ff0040;
+    box-shadow: 0 0 30px rgba(255, 0, 64, 0.15), inset 0 0 30px rgba(255, 0, 64, 0.02);
+}
+
+.dest-card:nth-child(4) .card-country {
+    color: #ff0040;
+}
+
+.dest-card:nth-child(4) .card-desc {
+    border-left-color: #1a0000;
+}
+
+.dest-card:nth-child(4):hover .card-desc {
+    border-left-color: #ff004033;
+}
+
+/* Card 5 (Reykjavik) — green matrix tint */
+.dest-card:nth-child(5) .card-country {
+    color: #00ff88;
+}
+
+.dest-card:nth-child(5):hover {
+    border-color: #00ff88;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.15), inset 0 0 30px rgba(0, 255, 136, 0.02);
+}
+
+
+/* === FOOTER === */
+
+.glitch-footer {
+    text-align: center;
+    padding: 50px 30px;
+    border-top: 1px solid #111;
+    position: relative;
+    z-index: 5;
+    background: #0a0a0a;
+}
+
+.footer-static {
+    font-size: 0.5rem;
+    color: #111;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    animation: flicker 3s steps(2) infinite;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    color: #333;
+    letter-spacing: 2px;
+    font-family: 'Share Tech Mono', monospace;
+    margin-bottom: 15px;
+}
+
+.footer-link {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Share Tech Mono', monospace;
+    border: 1px solid #00ffff33;
+    margin-bottom: 15px;
+    transition: all 0.1s;
+}
+
+.footer-link:hover {
+    background: #00ffff;
+    color: #0a0a0a;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.footer-warn {
+    font-size: 0.65rem;
+    color: #ff0040;
+    letter-spacing: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    animation: blink-cursor 2s steps(1) infinite;
+    margin-bottom: 15px;
+}
+
+.footer-hex {
+    font-size: 0.5rem;
+    color: #111;
+    letter-spacing: 6px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+
+/* === RESPONSIVE === */
+
+@media (max-width: 768px) {
+    .glitch-header {
+        padding: 50px 20px 40px;
+    }
+
+    .glitch-title {
+        font-size: clamp(1.8rem, 10vw, 3.5rem);
+        letter-spacing: 4px;
+    }
+
+    .destinations {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+        gap: 25px;
+    }
+
+    .dest-card {
+        padding: 20px 15px;
+    }
+
+    .card-name {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+    }
+
+    .error-block {
+        padding: 10px 15px;
+    }
+
+    .hex-scatter {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .glitch-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .card-number {
+        font-size: 2.5rem;
+    }
+
+    .corruption-bar {
+        font-size: 0.55rem;
+    }
+}
+
+
+/* === REDUCED MOTION === */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    .title-before,
+    .title-after,
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
+
+    .noise {
+        display: none;
+    }
+
+    .title-main {
+        text-shadow: none;
+    }
+}

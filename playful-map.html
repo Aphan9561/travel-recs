@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Places to Travel — Bright &amp; Playful Interactive Map</title>
+  <link rel="stylesheet" href="css/playful-map.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="back-nav">
+    <a href="gallery.html" class="back-link">
+      <span class="back-arrow">&#8592;</span> Back to Gallery
+    </a>
+  </nav>
+
+  <!-- Sparkle Decorations -->
+  <div class="sparkles" aria-hidden="true">
+    <span class="sparkle sparkle-1">&#10022;</span>
+    <span class="sparkle sparkle-2">&#10022;</span>
+    <span class="sparkle sparkle-3">&#10022;</span>
+    <span class="sparkle sparkle-4">&#10022;</span>
+    <span class="sparkle sparkle-5">&#10022;</span>
+    <span class="sparkle sparkle-6">&#10022;</span>
+    <span class="sparkle sparkle-7">&#10022;</span>
+    <span class="sparkle sparkle-8">&#10022;</span>
+  </div>
+
+  <!-- Playful Header -->
+  <header class="playful-header">
+    <div class="header-inner">
+      <p class="header-tagline">Your Adventure Starts Here!</p>
+      <h1 class="header-title">
+        <span class="wavy-text">
+          <span class="wave-char" style="--i:0">E</span><span class="wave-char" style="--i:1">x</span><span class="wave-char" style="--i:2">p</span><span class="wave-char" style="--i:3">l</span><span class="wave-char" style="--i:4">o</span><span class="wave-char" style="--i:5">r</span><span class="wave-char" style="--i:6">e</span><span class="wave-char" style="--i:7">&nbsp;</span><span class="wave-char" style="--i:8">t</span><span class="wave-char" style="--i:9">h</span><span class="wave-char" style="--i:10">e</span><span class="wave-char" style="--i:11">&nbsp;</span><span class="wave-char" style="--i:12">W</span><span class="wave-char" style="--i:13">o</span><span class="wave-char" style="--i:14">r</span><span class="wave-char" style="--i:15">l</span><span class="wave-char" style="--i:16">d</span><span class="wave-char" style="--i:17">!</span>
+        </span>
+      </h1>
+      <p class="header-subtitle">Click a pin to discover amazing places &#127758;</p>
+    </div>
+  </header>
+
+  <!-- Map Controls -->
+  <div class="map-controls">
+    <button class="control-btn" id="zoom-in" title="Zoom In">+</button>
+    <button class="control-btn" id="zoom-out" title="Zoom Out">&minus;</button>
+    <button class="control-btn" id="zoom-reset" title="Reset View">&#8962;</button>
+    <button class="control-btn" id="toggle-routes" title="Toggle Routes">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3">
+        <path d="M2 14 Q9 2 16 10"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Interactive Map Container -->
+  <section class="map-container" id="map-container">
+    <div class="map-viewport" id="map-viewport">
+      <svg class="world-map" id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Ocean background -->
+        <rect x="0" y="0" width="1000" height="500" fill="#dff0fb" rx="0"/>
+
+        <!-- Grid lines -->
+        <g class="map-grid" opacity="0.12">
+          <line x1="0" y1="250" x2="1000" y2="250" stroke="#90c4e0" stroke-width="0.8" stroke-dasharray="6,4"/>
+          <line x1="0" y1="125" x2="1000" y2="125" stroke="#90c4e0" stroke-width="0.5" stroke-dasharray="3,6"/>
+          <line x1="0" y1="375" x2="1000" y2="375" stroke="#90c4e0" stroke-width="0.5" stroke-dasharray="3,6"/>
+          <line x1="500" y1="0" x2="500" y2="500" stroke="#90c4e0" stroke-width="0.8" stroke-dasharray="6,4"/>
+          <line x1="250" y1="0" x2="250" y2="500" stroke="#90c4e0" stroke-width="0.5" stroke-dasharray="3,6"/>
+          <line x1="750" y1="0" x2="750" y2="500" stroke="#90c4e0" stroke-width="0.5" stroke-dasharray="3,6"/>
+          <line x1="125" y1="0" x2="125" y2="500" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="375" y1="0" x2="375" y2="500" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="625" y1="0" x2="625" y2="500" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="875" y1="0" x2="875" y2="500" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="0" y1="62.5" x2="1000" y2="62.5" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="0" y1="187.5" x2="1000" y2="187.5" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="0" y1="312.5" x2="1000" y2="312.5" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+          <line x1="0" y1="437.5" x2="1000" y2="437.5" stroke="#90c4e0" stroke-width="0.3" stroke-dasharray="2,8"/>
+        </g>
+
+        <!-- Simplified colorful continent shapes -->
+        <g class="continents">
+          <!-- North America - soft green -->
+          <path d="M120,80 L145,75 L170,80 L195,90 L210,85 L230,95 L240,110 L250,130 L245,145 L250,160 L255,175 L250,190 L240,200 L230,205 L225,215 L215,230 L200,235 L185,225 L175,215 L160,225 L150,240 L145,250 L140,245 L135,235 L128,225 L120,220 L110,210 L105,195 L95,185 L85,170 L90,155 L100,140 L105,125 L100,110 L105,95 L115,85 Z"
+                fill="#a8e6a3" stroke="#7dcc76" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- South America - warm yellow -->
+          <path d="M215,270 L225,265 L240,270 L255,280 L265,295 L270,315 L275,335 L270,355 L265,375 L255,390 L245,400 L235,410 L225,405 L220,390 L215,375 L210,355 L215,335 L220,315 L215,295 L210,280 Z"
+                fill="#fde68a" stroke="#f5c842" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Europe - lavender -->
+          <path d="M450,90 L460,85 L475,80 L490,85 L505,80 L520,85 L530,95 L525,110 L520,120 L510,130 L500,135 L490,140 L480,145 L470,140 L460,135 L455,125 L450,115 L445,100 Z"
+                fill="#d8b4fe" stroke="#b88ae6" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Africa - peachy pink -->
+          <path d="M460,175 L475,170 L495,175 L510,180 L525,190 L535,205 L540,225 L535,245 L530,265 L520,285 L510,300 L500,310 L490,315 L480,310 L470,300 L462,285 L458,265 L455,245 L452,225 L455,205 L458,190 Z"
+                fill="#fbb7a0" stroke="#f5926e" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Asia - soft blue -->
+          <path d="M540,65 L570,60 L600,55 L640,60 L680,65 L720,70 L755,80 L770,95 L780,110 L785,130 L780,150 L770,165 L755,175 L740,180 L720,185 L700,180 L680,175 L660,180 L640,190 L620,195 L600,190 L580,180 L560,170 L545,155 L535,140 L530,120 L535,100 L540,80 Z"
+                fill="#93c5fd" stroke="#60a5fa" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- India -->
+          <path d="M640,190 L655,195 L665,210 L670,230 L665,250 L655,260 L645,255 L635,245 L630,230 L632,215 L635,200 Z"
+                fill="#a7d8f0" stroke="#60a5fa" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Southeast Asia / Indonesia -->
+          <path d="M700,210 L720,205 L740,210 L755,220 L740,225 L720,230 L705,225 Z"
+                fill="#a7d8f0" stroke="#60a5fa" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M730,235 L750,230 L770,235 L760,245 L745,248 L730,242 Z"
+                fill="#a7d8f0" stroke="#60a5fa" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- Australia - soft coral -->
+          <path d="M760,310 L790,300 L820,305 L845,315 L855,335 L850,355 L835,370 L815,375 L795,370 L775,360 L762,345 L755,330 Z"
+                fill="#f9a8d4" stroke="#ec6bad" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Japan -->
+          <path d="M790,110 L795,100 L800,105 L798,115 L793,120 Z"
+                fill="#93c5fd" stroke="#60a5fa" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- Greenland - mint -->
+          <path d="M310,40 L340,35 L355,45 L350,60 L335,65 L315,60 Z"
+                fill="#a8e6cf" stroke="#6dd5a4" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- Iceland - light purple -->
+          <path d="M410,55 L425,50 L435,55 L430,63 L418,65 Z"
+                fill="#c4b5fd" stroke="#a78bfa" stroke-width="1.2" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Confetti / sparkle decorations on the map -->
+        <g class="map-confetti" opacity="0.5">
+          <circle cx="80" cy="300" r="2.5" fill="#fbbf24"/>
+          <circle cx="320" cy="160" r="2" fill="#f472b6"/>
+          <circle cx="610" cy="310" r="2.5" fill="#a78bfa"/>
+          <circle cx="900" cy="240" r="2" fill="#34d399"/>
+          <circle cx="150" cy="420" r="2" fill="#60a5fa"/>
+          <circle cx="700" cy="400" r="2.5" fill="#fb923c"/>
+          <circle cx="400" cy="430" r="2" fill="#f87171"/>
+          <circle cx="850" cy="80" r="2" fill="#fbbf24"/>
+          <polygon points="340,380 343,386 350,386 344,390 346,397 340,393 334,397 336,390 330,386 337,386" fill="#fbbf24" opacity="0.6"/>
+          <polygon points="680,50 682,55 688,55 683,58 685,63 680,60 675,63 677,58 672,55 678,55" fill="#f472b6" opacity="0.6"/>
+          <polygon points="150,100 152,105 158,105 153,108 155,113 150,110 145,113 147,108 142,105 148,105" fill="#34d399" opacity="0.6"/>
+          <polygon points="930,370 932,375 938,375 933,378 935,383 930,380 925,383 927,378 922,375 928,375" fill="#a78bfa" opacity="0.6"/>
+        </g>
+
+        <!-- Route paths (colorful dashed curves) -->
+        <g class="route-paths" id="route-paths">
+          <!-- Kyoto to Santorini - teal -->
+          <path class="route-line" d="M877,152 C800,120 680,100 570,143" fill="none" stroke="#14b8a6" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Santorini to Marrakech - pink -->
+          <path class="route-line" d="M570,143 C540,155 510,170 488,186" fill="none" stroke="#ec4899" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Marrakech to Amalfi - orange -->
+          <path class="route-line" d="M488,186 C500,170 520,150 539,136" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Amalfi to Reykjavik - purple -->
+          <path class="route-line" d="M539,136 C510,100 470,75 440,72" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Reykjavik to Patagonia - blue -->
+          <path class="route-line" d="M440,72 C380,140 300,260 240,380" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Patagonia to Kyoto - warm yellow -->
+          <path class="route-line" d="M240,380 C400,420 700,300 877,152" fill="none" stroke="#eab308" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+        </g>
+
+        <!-- Destination Pins -->
+        <g class="destination-pins" id="destination-pins">
+
+          <!-- Kyoto: 35N, 135.7E => x=877, y=152 -->
+          <g class="pin" data-dest="kyoto" transform="translate(877, 152)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#ff6b9d" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#ff6b9d" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#ff6b9d" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#127825;</text>
+          </g>
+
+          <!-- Santorini: 36.4N, 25.5E => x=570, y=143 -->
+          <g class="pin" data-dest="santorini" transform="translate(570, 143)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#60a5fa" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#60a5fa" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#127965;</text>
+          </g>
+
+          <!-- Patagonia: 41.8S, 68.9W => x=240, y=380 -->
+          <g class="pin" data-dest="patagonia" transform="translate(240, 380)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#34d399" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#34d399" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#34d399" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#9968;</text>
+          </g>
+
+          <!-- Marrakech: 31.6N, 8W => x=488, y=186 -->
+          <g class="pin" data-dest="marrakech" transform="translate(488, 186)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#f59e0b" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#9733;</text>
+          </g>
+
+          <!-- Reykjavik: 64.1N, 21.9W => x=440, y=72 -->
+          <g class="pin" data-dest="reykjavik" transform="translate(440, 72)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#a78bfa" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#a78bfa" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#10052;</text>
+          </g>
+
+          <!-- Amalfi Coast: 40.6N, 14.6E => x=539, y=136 -->
+          <g class="pin" data-dest="amalfi" transform="translate(539, 136)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#fb923c" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#fb923c" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#fb923c" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#127819;</text>
+          </g>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- Info Card (appears on pin click) -->
+    <div class="info-card" id="info-card">
+      <button class="info-close" id="info-close">&times;</button>
+      <div class="info-icon" id="info-icon"></div>
+      <h2 class="info-name" id="info-name"></h2>
+      <p class="info-country" id="info-country"></p>
+      <p class="info-desc" id="info-desc"></p>
+      <div class="info-details">
+        <div class="info-detail-item">
+          <span class="detail-label">Fun Fact</span>
+          <span class="detail-value" id="info-fact"></span>
+        </div>
+        <div class="info-detail-item">
+          <span class="detail-label">Best Season</span>
+          <span class="detail-value" id="info-season"></span>
+        </div>
+      </div>
+      <div class="info-tags" id="info-tags"></div>
+    </div>
+  </section>
+
+  <!-- Destination Pills -->
+  <section class="dest-pills">
+    <h2 class="pills-title">Pick a Destination!</h2>
+    <div class="pills-row" id="pills-row">
+      <button class="pill" data-dest="kyoto" style="--pill-color: #ff6b9d;">
+        <span class="pill-emoji">&#127825;</span> Kyoto
+      </button>
+      <button class="pill" data-dest="santorini" style="--pill-color: #60a5fa;">
+        <span class="pill-emoji">&#127965;</span> Santorini
+      </button>
+      <button class="pill" data-dest="patagonia" style="--pill-color: #34d399;">
+        <span class="pill-emoji">&#9968;</span> Patagonia
+      </button>
+      <button class="pill" data-dest="marrakech" style="--pill-color: #f59e0b;">
+        <span class="pill-emoji">&#9733;</span> Marrakech
+      </button>
+      <button class="pill" data-dest="reykjavik" style="--pill-color: #a78bfa;">
+        <span class="pill-emoji">&#10052;</span> Reykjavik
+      </button>
+      <button class="pill" data-dest="amalfi" style="--pill-color: #fb923c;">
+        <span class="pill-emoji">&#127819;</span> Amalfi Coast
+      </button>
+    </div>
+  </section>
+
+  <!-- Fun Footer -->
+  <footer class="playful-footer">
+    <div class="footer-inner">
+      <p class="footer-text">
+        Made with <span class="footer-heart">&#10084;</span> for adventurers everywhere
+      </p>
+      <p class="footer-sub">
+        &#127758; 6 dream destinations &bull; &#9992; infinite possibilities &bull; &#127775; one amazing world
+      </p>
+      <p class="footer-copy">&copy; 2026 &mdash; Happy Travels!</p>
+    </div>
+  </footer>
+
+  <script src="playful-map.js"></script>
+</body>
+</html>
