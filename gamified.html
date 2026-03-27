@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Places to Travel | Quest Board</title>
+    <link rel="stylesheet" href="gamified.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Back to Gallery -->
+    <a href="gallery.html" class="back-link">&laquo; Back to Gallery</a>
+
+    <!-- HUD Header -->
+    <header class="hud-header">
+        <div class="hud-inner">
+            <div class="hud-left">
+                <div class="player-avatar">
+                    <div class="avatar-frame">
+                        <span class="avatar-icon">&#9733;</span>
+                    </div>
+                    <div class="player-info">
+                        <span class="player-name">TravelNomad_42</span>
+                        <span class="player-title">World Explorer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hud-center">
+                <div class="site-title-block">
+                    <h1 class="site-title">QUEST BOARD</h1>
+                    <p class="site-subtitle">Best Places to Travel</p>
+                </div>
+            </div>
+            <div class="hud-right">
+                <div class="hud-stats">
+                    <div class="hud-stat">
+                        <span class="stat-icon">&#9878;</span>
+                        <div class="stat-detail">
+                            <span class="stat-label">Quests</span>
+                            <span class="stat-value">24</span>
+                        </div>
+                    </div>
+                    <div class="hud-stat">
+                        <span class="stat-icon">&#9816;</span>
+                        <div class="stat-detail">
+                            <span class="stat-label">Regions</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                    </div>
+                    <div class="hud-stat">
+                        <span class="stat-icon">&#9830;</span>
+                        <div class="stat-detail">
+                            <span class="stat-label">Gold</span>
+                            <span class="stat-value">8,750</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- XP Bar -->
+        <div class="xp-bar-container">
+            <div class="xp-level-badge">LVL 27</div>
+            <div class="xp-bar-track">
+                <div class="xp-bar-fill" style="width: 68%;"></div>
+                <span class="xp-bar-text">6,800 / 10,000 XP</span>
+            </div>
+            <div class="xp-next-badge">LVL 28</div>
+        </div>
+    </header>
+
+    <!-- Active Buffs Bar -->
+    <section class="buffs-bar">
+        <div class="buff">
+            <span class="buff-icon">&#9889;</span>
+            <span class="buff-label">2x XP Boost</span>
+        </div>
+        <div class="buff">
+            <span class="buff-icon">&#10084;</span>
+            <span class="buff-label">Budget Shield</span>
+        </div>
+        <div class="buff">
+            <span class="buff-icon">&#9775;</span>
+            <span class="buff-label">Culture Aura</span>
+        </div>
+        <div class="buff">
+            <span class="buff-icon">&#9731;</span>
+            <span class="buff-label">Weather Resist</span>
+        </div>
+    </section>
+
+    <!-- Quest Cards Section -->
+    <main class="quest-board">
+        <div class="section-header">
+            <div class="section-header-line"></div>
+            <h2 class="section-title">Available Quests</h2>
+            <div class="section-header-line"></div>
+        </div>
+        <p class="section-desc">Select a destination to begin your adventure. Each quest grants XP, gold, and unique achievements.</p>
+
+        <div class="quest-grid">
+
+            <!-- Quest Card 1: Kyoto -->
+            <article class="quest-card" data-rarity="legendary">
+                <div class="card-rarity-banner">Legendary</div>
+                <div class="card-header">
+                    <span class="card-region">Asia</span>
+                    <span class="card-xp">+850 XP</span>
+                </div>
+                <div class="card-image-area card-image-kyoto">
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badge">
+                        <span class="badge-icon">&#127985;</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Kyoto, Japan</h3>
+                    <p class="card-desc">Walk through ancient torii gates, master the art of tea ceremony, and unlock the secrets of a thousand temples.</p>
+                    <div class="card-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Difficulty</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill difficulty" style="width: 40%;"></div>
+                            </div>
+                            <span class="stat-num">4/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Cost</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill cost" style="width: 65%;"></div>
+                            </div>
+                            <span class="stat-num">6.5/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Adventure</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill adventure" style="width: 70%;"></div>
+                            </div>
+                            <span class="stat-num">7/10</span>
+                        </div>
+                    </div>
+                    <div class="card-achievement">
+                        <span class="achievement-icon">&#127942;</span>
+                        <span class="achievement-text">Unlocks: Zen Master</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-btn">Accept Quest</span>
+                </div>
+            </article>
+
+            <!-- Quest Card 2: Santorini -->
+            <article class="quest-card" data-rarity="epic">
+                <div class="card-rarity-banner">Epic</div>
+                <div class="card-header">
+                    <span class="card-region">Europe</span>
+                    <span class="card-xp">+720 XP</span>
+                </div>
+                <div class="card-image-area card-image-santorini">
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badge">
+                        <span class="badge-icon">&#9968;</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Santorini, Greece</h3>
+                    <p class="card-desc">Conquer the cliffs of the caldera, feast on legendary Mediterranean loot, and witness the mythic sunset of Oia.</p>
+                    <div class="card-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Difficulty</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill difficulty" style="width: 25%;"></div>
+                            </div>
+                            <span class="stat-num">2.5/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Cost</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill cost" style="width: 75%;"></div>
+                            </div>
+                            <span class="stat-num">7.5/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Adventure</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill adventure" style="width: 50%;"></div>
+                            </div>
+                            <span class="stat-num">5/10</span>
+                        </div>
+                    </div>
+                    <div class="card-achievement">
+                        <span class="achievement-icon">&#127942;</span>
+                        <span class="achievement-text">Unlocks: Island Hopper</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-btn">Accept Quest</span>
+                </div>
+            </article>
+
+            <!-- Quest Card 3: Patagonia -->
+            <article class="quest-card" data-rarity="legendary">
+                <div class="card-rarity-banner">Legendary</div>
+                <div class="card-header">
+                    <span class="card-region">South America</span>
+                    <span class="card-xp">+1,200 XP</span>
+                </div>
+                <div class="card-image-area card-image-patagonia">
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badge">
+                        <span class="badge-icon">&#9968;</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Patagonia, Argentina</h3>
+                    <p class="card-desc">Brave the winds at the end of the world. Trek glacial passes, encounter rare wildlife, and earn the ultimate explorer title.</p>
+                    <div class="card-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Difficulty</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill difficulty" style="width: 90%;"></div>
+                            </div>
+                            <span class="stat-num">9/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Cost</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill cost" style="width: 70%;"></div>
+                            </div>
+                            <span class="stat-num">7/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Adventure</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill adventure" style="width: 100%;"></div>
+                            </div>
+                            <span class="stat-num">10/10</span>
+                        </div>
+                    </div>
+                    <div class="card-achievement">
+                        <span class="achievement-icon">&#127942;</span>
+                        <span class="achievement-text">Unlocks: End of the World</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-btn">Accept Quest</span>
+                </div>
+            </article>
+
+            <!-- Quest Card 4: Marrakech -->
+            <article class="quest-card" data-rarity="rare">
+                <div class="card-rarity-banner">Rare</div>
+                <div class="card-header">
+                    <span class="card-region">Africa</span>
+                    <span class="card-xp">+600 XP</span>
+                </div>
+                <div class="card-image-area card-image-marrakech">
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badge">
+                        <span class="badge-icon">&#9790;</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Marrakech, Morocco</h3>
+                    <p class="card-desc">Navigate the labyrinth of the medina, barter for rare crafted items, and uncover hidden riads behind ancient walls.</p>
+                    <div class="card-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Difficulty</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill difficulty" style="width: 55%;"></div>
+                            </div>
+                            <span class="stat-num">5.5/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Cost</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill cost" style="width: 30%;"></div>
+                            </div>
+                            <span class="stat-num">3/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Adventure</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill adventure" style="width: 80%;"></div>
+                            </div>
+                            <span class="stat-num">8/10</span>
+                        </div>
+                    </div>
+                    <div class="card-achievement">
+                        <span class="achievement-icon">&#127942;</span>
+                        <span class="achievement-text">Unlocks: Souk Navigator</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-btn">Accept Quest</span>
+                </div>
+            </article>
+
+            <!-- Quest Card 5: Reykjavik -->
+            <article class="quest-card" data-rarity="epic">
+                <div class="card-rarity-banner">Epic</div>
+                <div class="card-header">
+                    <span class="card-region">Europe</span>
+                    <span class="card-xp">+950 XP</span>
+                </div>
+                <div class="card-image-area card-image-reykjavik">
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badge">
+                        <span class="badge-icon">&#10052;</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Reykjavik, Iceland</h3>
+                    <p class="card-desc">Harness geothermal power, chase the Northern Lights boss encounter, and explore volcanic dungeons of fire and ice.</p>
+                    <div class="card-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Difficulty</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill difficulty" style="width: 70%;"></div>
+                            </div>
+                            <span class="stat-num">7/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Cost</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill cost" style="width: 85%;"></div>
+                            </div>
+                            <span class="stat-num">8.5/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Adventure</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill adventure" style="width: 95%;"></div>
+                            </div>
+                            <span class="stat-num">9.5/10</span>
+                        </div>
+                    </div>
+                    <div class="card-achievement">
+                        <span class="achievement-icon">&#127942;</span>
+                        <span class="achievement-text">Unlocks: Aurora Chaser</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-btn">Accept Quest</span>
+                </div>
+            </article>
+
+            <!-- Quest Card 6: Amalfi Coast -->
+            <article class="quest-card" data-rarity="rare">
+                <div class="card-rarity-banner">Rare</div>
+                <div class="card-header">
+                    <span class="card-region">Europe</span>
+                    <span class="card-xp">+680 XP</span>
+                </div>
+                <div class="card-image-area card-image-amalfi">
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badge">
+                        <span class="badge-icon">&#9752;</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Amalfi Coast, Italy</h3>
+                    <p class="card-desc">Cruise the legendary coastal highway, collect culinary artifacts in cliffside villages, and complete the Limoncello side quest.</p>
+                    <div class="card-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Difficulty</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill difficulty" style="width: 30%;"></div>
+                            </div>
+                            <span class="stat-num">3/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Cost</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill cost" style="width: 80%;"></div>
+                            </div>
+                            <span class="stat-num">8/10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Adventure</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill adventure" style="width: 55%;"></div>
+                            </div>
+                            <span class="stat-num">5.5/10</span>
+                        </div>
+                    </div>
+                    <div class="card-achievement">
+                        <span class="achievement-icon">&#127942;</span>
+                        <span class="achievement-text">Unlocks: La Dolce Vita</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-btn">Accept Quest</span>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Achievements Section -->
+    <section class="achievements-section">
+        <div class="section-header">
+            <div class="section-header-line"></div>
+            <h2 class="section-title">Achievements &amp; Leaderboard</h2>
+            <div class="section-header-line"></div>
+        </div>
+
+        <div class="achievements-layout">
+
+            <!-- Achievements Panel -->
+            <div class="achievements-panel">
+                <h3 class="panel-title">Recent Achievements</h3>
+                <div class="achievement-list">
+                    <div class="achievement-item unlocked">
+                        <div class="achievement-icon-wrap gold">
+                            <span>&#127757;</span>
+                        </div>
+                        <div class="achievement-info">
+                            <span class="achievement-name">First Steps</span>
+                            <span class="achievement-desc">Complete your first quest</span>
+                        </div>
+                        <span class="achievement-status">&#10003; Unlocked</span>
+                    </div>
+                    <div class="achievement-item unlocked">
+                        <div class="achievement-icon-wrap gold">
+                            <span>&#9992;</span>
+                        </div>
+                        <div class="achievement-info">
+                            <span class="achievement-name">Frequent Flyer</span>
+                            <span class="achievement-desc">Complete 10 quests</span>
+                        </div>
+                        <span class="achievement-status">&#10003; Unlocked</span>
+                    </div>
+                    <div class="achievement-item unlocked">
+                        <div class="achievement-icon-wrap gold">
+                            <span>&#127956;</span>
+                        </div>
+                        <div class="achievement-info">
+                            <span class="achievement-name">Mountain Goat</span>
+                            <span class="achievement-desc">Complete a Difficulty 8+ quest</span>
+                        </div>
+                        <span class="achievement-status">&#10003; Unlocked</span>
+                    </div>
+                    <div class="achievement-item locked">
+                        <div class="achievement-icon-wrap locked">
+                            <span>&#128274;</span>
+                        </div>
+                        <div class="achievement-info">
+                            <span class="achievement-name">Globe Trotter</span>
+                            <span class="achievement-desc">Visit all 7 continents</span>
+                        </div>
+                        <span class="achievement-status locked-text">5/7 Continents</span>
+                    </div>
+                    <div class="achievement-item locked">
+                        <div class="achievement-icon-wrap locked">
+                            <span>&#128274;</span>
+                        </div>
+                        <div class="achievement-info">
+                            <span class="achievement-name">Legendary Explorer</span>
+                            <span class="achievement-desc">Reach Level 50</span>
+                        </div>
+                        <span class="achievement-status locked-text">Level 27/50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard Panel -->
+            <div class="leaderboard-panel">
+                <h3 class="panel-title">Global Leaderboard</h3>
+                <div class="leaderboard-list">
+                    <div class="leaderboard-row rank-1">
+                        <span class="rank-badge">1</span>
+                        <span class="lb-name">WanderlustKing</span>
+                        <span class="lb-level">LVL 58</span>
+                        <span class="lb-xp">58,200 XP</span>
+                    </div>
+                    <div class="leaderboard-row rank-2">
+                        <span class="rank-badge">2</span>
+                        <span class="lb-name">NomadQueen</span>
+                        <span class="lb-level">LVL 52</span>
+                        <span class="lb-xp">52,750 XP</span>
+                    </div>
+                    <div class="leaderboard-row rank-3">
+                        <span class="rank-badge">3</span>
+                        <span class="lb-name">AdventureBot</span>
+                        <span class="lb-level">LVL 49</span>
+                        <span class="lb-xp">49,100 XP</span>
+                    </div>
+                    <div class="leaderboard-row">
+                        <span class="rank-badge">4</span>
+                        <span class="lb-name">SkyDrifter</span>
+                        <span class="lb-level">LVL 44</span>
+                        <span class="lb-xp">44,600 XP</span>
+                    </div>
+                    <div class="leaderboard-row">
+                        <span class="rank-badge">5</span>
+                        <span class="lb-name">RouteHacker</span>
+                        <span class="lb-level">LVL 39</span>
+                        <span class="lb-xp">39,200 XP</span>
+                    </div>
+                    <div class="leaderboard-row highlight">
+                        <span class="rank-badge you">12</span>
+                        <span class="lb-name">TravelNomad_42 <small>(You)</small></span>
+                        <span class="lb-level">LVL 27</span>
+                        <span class="lb-xp">26,800 XP</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Game Menu Footer -->
+    <footer class="game-footer">
+        <div class="footer-inner">
+            <div class="footer-menu">
+                <a href="#" class="footer-menu-item">
+                    <span class="footer-icon">&#9881;</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="footer-menu-item">
+                    <span class="footer-icon">&#9878;</span>
+                    <span>Quest Log</span>
+                </a>
+                <a href="#" class="footer-menu-item">
+                    <span class="footer-icon">&#128230;</span>
+                    <span>Inventory</span>
+                </a>
+                <a href="#" class="footer-menu-item">
+                    <span class="footer-icon">&#127758;</span>
+                    <span>World Map</span>
+                </a>
+                <a href="#" class="footer-menu-item">
+                    <span class="footer-icon">&#128100;</span>
+                    <span>Party</span>
+                </a>
+                <a href="gallery.html" class="footer-menu-item">
+                    <span class="footer-icon">&#128444;</span>
+                    <span>Gallery</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 Quest Board &mdash; Best Places to Travel</p>
+                <p class="footer-version">v3.27 | Server: Wanderlust-NA | Ping: 42ms</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

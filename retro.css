@@ -1,0 +1,840 @@
+/* ============================================
+   RETRO / 90s WEB DESIGN - TRAVEL PAGE
+   A loving homage to GeoCities & Web 1.0
+   Best viewed in 800x600 with Netscape Navigator
+   ============================================ */
+
+/* -- Fonts -- */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+/* -- Animations -- */
+@keyframes marquee {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes blink1 {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@keyframes blink2 {
+    0%, 32% { opacity: 0; }
+    33%, 65% { opacity: 1; }
+    66%, 100% { opacity: 0; }
+}
+
+@keyframes blink3 {
+    0%, 65% { opacity: 0; }
+    66%, 100% { opacity: 1; }
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+@keyframes rainbow-shift {
+    0%   { color: #ff0000; }
+    16%  { color: #ff8800; }
+    33%  { color: #ffff00; }
+    50%  { color: #00ff00; }
+    66%  { color: #0088ff; }
+    83%  { color: #8800ff; }
+    100% { color: #ff0000; }
+}
+
+@keyframes construction-flash {
+    0%, 49% { background-color: #ffff00; color: #000; }
+    50%, 100% { background-color: #ff0000; color: #fff; }
+}
+
+@keyframes sparkle-spin {
+    0%   { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.3); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 5px currentColor; }
+    50%      { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+/* -- Tiled Background -- */
+body {
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    background-color: #3300cc;
+    background-image:
+        radial-gradient(circle, #4400dd 1px, transparent 1px),
+        radial-gradient(circle, #4400dd 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    color: #ffff00;
+    margin: 0;
+    padding: 10px;
+    min-height: 100vh;
+}
+
+/* -- Back Link -- */
+.back-link {
+    text-align: center;
+    padding: 8px;
+    background: #000080;
+    border: 3px outset #808080;
+    margin-bottom: 10px;
+}
+
+.back-link a {
+    color: #00ffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.back-link a:hover {
+    color: #ff00ff;
+    text-decoration: underline;
+}
+
+/* -- Marquee Scrolling Bar -- */
+.marquee-bar {
+    background: #000;
+    border: 3px inset #808080;
+    padding: 6px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.marquee-text {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* -- Main Header -- */
+.header-container {
+    background: linear-gradient(180deg, #000080 0%, #0000aa 30%, #000080 60%, #000066 100%);
+    border: 5px outset #c0c0c0;
+    padding: 20px 15px;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 0px #000;
+}
+
+.sparkle-row {
+    font-size: 1.5rem;
+    letter-spacing: 15px;
+    padding: 5px 0;
+}
+
+.sparkle {
+    display: inline-block;
+}
+
+.blink1 { animation: blink1 1s infinite; }
+.blink2 { animation: blink2 1.5s infinite; }
+.blink3 { animation: blink3 2s infinite; }
+
+.main-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3rem;
+    color: #ffff00;
+    text-shadow:
+        3px 3px 0px #ff0000,
+        -1px -1px 0px #00ffff,
+        0 0 15px #ffff00;
+    margin: 10px 0;
+    letter-spacing: 3px;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.title-star {
+    color: #ff0000;
+    font-size: 2.5rem;
+    vertical-align: middle;
+}
+
+.welcome-msg {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.wave-text {
+    display: inline-block;
+    animation: wave 1s ease-in-out infinite;
+    animation: rainbow-shift 4s linear infinite;
+}
+
+.w1 { animation-delay: 0s; color: #ff0000; }
+.w2 { animation-delay: 0.1s; color: #ff8800; }
+.w3 { animation-delay: 0.2s; color: #ffff00; }
+.w4 { animation-delay: 0.3s; color: #00ff00; }
+.w5 { animation-delay: 0.4s; color: #00ffff; }
+.w6 { animation-delay: 0.5s; color: #0088ff; }
+.w7 { animation-delay: 0.6s; color: #8800ff; }
+.w8 { animation-delay: 0.7s; color: #ff00ff; }
+
+.subtitle {
+    color: #c0c0c0;
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* -- Under Construction Banner -- */
+.construction-banner {
+    background: #ffff00;
+    border: 4px outset #808080;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.construction-stripe {
+    display: block;
+    height: 15px;
+    background: repeating-linear-gradient(
+        -45deg,
+        #000 0px,
+        #000 10px,
+        #ffff00 10px,
+        #ffff00 20px
+    );
+    margin: 5px 0;
+}
+
+.construction-content {
+    padding: 10px 0;
+}
+
+.construction-icon {
+    font-size: 2rem;
+    vertical-align: middle;
+}
+
+.blink-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff0000;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 3px;
+    animation: construction-flash 0.8s infinite;
+    padding: 5px 15px;
+    display: inline-block;
+}
+
+.construction-note {
+    color: #000;
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+    font-style: italic;
+}
+
+/* -- Rainbow Horizontal Rules -- */
+.rainbow-hr {
+    border: none;
+    height: 4px;
+    margin: 3px 0;
+}
+
+.hr-red     { background: #ff0000; }
+.hr-yellow  { background: #ffff00; }
+.hr-green   { background: #00ff00; }
+.hr-blue    { background: #0000ff; }
+.hr-magenta { background: #ff00ff; }
+.hr-cyan    { background: #00ffff; }
+
+/* -- Navigation Links -- */
+.nav-links {
+    background: #000;
+    border: 3px outset #808080;
+    padding: 12px;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.nav-links a {
+    color: #00ffff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ffff00;
+    background: #ff0000;
+    text-decoration: none;
+}
+
+.nav-bullet {
+    color: #ff0000;
+}
+
+.nav-sep {
+    color: #808080;
+    margin: 0 8px;
+}
+
+/* -- Section Headers -- */
+.section-header {
+    text-align: center;
+    margin: 20px 0 15px 0;
+}
+
+.section-header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: #ffff00;
+    text-shadow: 2px 2px 0 #ff0000;
+    letter-spacing: 2px;
+}
+
+.section-sub {
+    color: #c0c0c0;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* -- Destinations Grid -- */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+/* -- Destination Cards -- */
+.destination-card {
+    border: 4px outset #c0c0c0;
+    box-shadow: 5px 5px 0px #000;
+    overflow: hidden;
+}
+
+.card-bg-1 { background: #ffffcc; }
+.card-bg-2 { background: #ccffff; }
+.card-bg-3 { background: #ffccff; }
+.card-bg-4 { background: #ccffcc; }
+.card-bg-5 { background: #ccccff; }
+.card-bg-6 { background: #ffddcc; }
+
+.card-header-bar {
+    padding: 8px 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    border-bottom: 3px outset #808080;
+}
+
+.bar-1 { background: linear-gradient(90deg, #cc0000, #ff3333, #cc0000); }
+.bar-2 { background: linear-gradient(90deg, #0000cc, #3333ff, #0000cc); }
+.bar-3 { background: linear-gradient(90deg, #006600, #009900, #006600); }
+.bar-4 { background: linear-gradient(90deg, #cc6600, #ff9933, #cc6600); }
+.bar-5 { background: linear-gradient(90deg, #660099, #9933cc, #660099); }
+.bar-6 { background: linear-gradient(90deg, #cc0066, #ff3399, #cc0066); }
+
+.card-icon {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.card-body {
+    padding: 12px 15px;
+    color: #000;
+    position: relative;
+}
+
+.card-body h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    color: #000080;
+    text-align: center;
+    margin: 5px 0 8px 0;
+    text-shadow: 1px 1px 0 #c0c0c0;
+}
+
+.card-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #000080, transparent);
+    margin: 8px 0;
+}
+
+.card-body p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+.card-badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: #ff0000;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border: 2px outset #ff6666;
+    transform: rotate(12deg);
+    animation: blink1 1.2s infinite;
+}
+
+.badge-new { background: #00cc00; border-color: #66ff66; }
+.badge-cool { background: #0066ff; border-color: #6699ff; }
+.badge-wow { background: #ff6600; border-color: #ff9933; }
+.badge-epic { background: #9900cc; border-color: #cc66ff; }
+.badge-fav { background: #ff0066; border-color: #ff6699; }
+
+.card-details {
+    background: #fff;
+    border: 2px inset #808080;
+    padding: 8px 10px;
+    margin: 10px 0;
+    font-size: 0.85rem;
+}
+
+.card-details p {
+    margin: 3px 0;
+}
+
+.stars {
+    color: #ff8800;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.card-footer-deco {
+    text-align: center;
+    color: #808080;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    letter-spacing: 2px;
+}
+
+/* -- Links Section -- */
+.links-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.section-title-retro {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
+    color: #00ffff;
+    text-shadow: 2px 2px 0 #008080;
+    margin-bottom: 10px;
+}
+
+.links-box {
+    background: #000;
+    border: 4px outset #808080;
+    padding: 15px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 4px 4px 0 #000;
+}
+
+.retro-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.retro-links li {
+    padding: 6px 0;
+    border-bottom: 1px dashed #333;
+    font-size: 1rem;
+}
+
+.retro-links li:last-child {
+    border-bottom: none;
+}
+
+.retro-links a {
+    color: #00ff00;
+    text-decoration: underline;
+}
+
+.retro-links a:hover {
+    color: #ffff00;
+    background: #333;
+}
+
+.link-bullet {
+    color: #ffff00;
+}
+
+.link-new {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 1px 5px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.link-hot {
+    background: #ff0000;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 1px 5px;
+    border: 1px outset #ff6666;
+    margin-left: 5px;
+}
+
+/* -- Guestbook Section -- */
+.guestbook-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.guestbook-box {
+    background: #ffffcc;
+    border: 4px outset #c0c0c0;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    color: #000;
+    box-shadow: 5px 5px 0 #000;
+}
+
+.guestbook-intro {
+    font-size: 0.95rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.guestbook-entries {
+    margin-bottom: 20px;
+}
+
+.gb-entry {
+    background: #fff;
+    border: 2px inset #808080;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.gb-name {
+    font-weight: bold;
+    color: #000080;
+    font-size: 0.85rem;
+    margin: 0 0 5px 0;
+}
+
+.gb-msg {
+    color: #333;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.guestbook-form {
+    border-top: 3px groove #808080;
+    padding-top: 15px;
+}
+
+.guestbook-form b {
+    color: #000080;
+}
+
+.fake-form p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+}
+
+.fake-input {
+    display: inline-block;
+    width: 200px;
+    height: 18px;
+    background: #fff;
+    border: 2px inset #808080;
+    vertical-align: middle;
+}
+
+.input-long {
+    width: 350px;
+}
+
+.fake-textarea {
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border: 2px inset #808080;
+    margin: 5px 0 10px 0;
+    box-sizing: border-box;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* -- Retro Buttons -- */
+.retro-button {
+    display: inline-block;
+    background: #c0c0c0;
+    border: 3px outset #fff;
+    padding: 5px 15px;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 1px 1px 0 #000;
+}
+
+.retro-button:hover {
+    border-style: inset;
+}
+
+.retro-button:active {
+    border-style: inset;
+    box-shadow: none;
+    transform: translate(1px, 1px);
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+}
+
+.btn-small {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-width: 2px;
+}
+
+/* -- WebRing Section -- */
+.webring-section {
+    margin: 20px auto;
+    max-width: 550px;
+}
+
+.webring-box {
+    background: #000066;
+    border: 4px ridge #c0c0c0;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 4px 4px 0 #000;
+}
+
+.webring-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.webring-header h3 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffff00;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 0 #ff0000;
+    margin: 0;
+}
+
+.webring-desc {
+    color: #c0c0c0;
+    font-size: 0.85rem;
+    margin: 5px 0;
+}
+
+.webring-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0 8px 0;
+    flex-wrap: wrap;
+}
+
+.webring-id {
+    color: #808080;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    margin: 5px 0 0 0;
+}
+
+/* -- Footer -- */
+.retro-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.badge-box {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 3px outset #c0c0c0;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    line-height: 1.4;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.badge-netscape {
+    background: #006600;
+    color: #00ff00;
+}
+
+.badge-resolution {
+    background: #000080;
+    color: #00ffff;
+}
+
+.badge-ie {
+    background: #660000;
+    color: #ff6666;
+}
+
+/* -- Visitor Counter -- */
+.visitor-counter {
+    margin: 20px 0;
+}
+
+.visitor-counter p {
+    font-size: 0.9rem;
+    color: #c0c0c0;
+    margin: 5px 0;
+}
+
+.counter-display {
+    display: inline-flex;
+    gap: 2px;
+    margin: 8px 0;
+}
+
+.counter-digit {
+    display: inline-block;
+    width: 28px;
+    height: 36px;
+    background: #000;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 36px;
+    text-align: center;
+    border: 2px inset #333;
+}
+
+.counter-digit:nth-child(4) {
+    width: 12px;
+    background: transparent;
+    border: none;
+    color: #00ff00;
+}
+
+.counter-since {
+    font-size: 0.75rem;
+    color: #808080;
+    font-style: italic;
+}
+
+.footer-info {
+    margin: 15px 0;
+    font-size: 0.8rem;
+    color: #c0c0c0;
+    line-height: 1.8;
+}
+
+.footer-info a {
+    color: #00ffff;
+}
+
+.footer-info a:hover {
+    color: #ff00ff;
+}
+
+.email-line {
+    margin-top: 5px;
+}
+
+.footer-deco {
+    margin: 15px 0;
+    font-size: 1rem;
+    color: #ffff00;
+    letter-spacing: 2px;
+}
+
+.footer-deco .sparkle {
+    font-size: 1.2rem;
+}
+
+.made-with {
+    margin: 15px 0 20px 0;
+}
+
+/* -- Responsive Adjustments -- */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .welcome-msg {
+        font-size: 1.3rem;
+    }
+
+    .destinations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fake-input, .input-long {
+        width: 100%;
+    }
+
+    .nav-links {
+        font-size: 0.9rem;
+    }
+
+    .webring-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .sparkle-row {
+        letter-spacing: 8px;
+        font-size: 1.2rem;
+    }
+
+    .blink-text {
+        font-size: 1.1rem;
+    }
+}

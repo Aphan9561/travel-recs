@@ -1,0 +1,888 @@
+/* ============================================
+   MY TRAVEL JOURNAL — Notebook/Journal Style
+   ============================================ */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  color: #3a3328;
+  /* Lined paper background */
+  background-color: #fdf6e3;
+  background-image:
+    /* Horizontal lines */
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 31px,
+      #c9daea 31px,
+      #c9daea 32px
+    ),
+    /* Left margin line */
+    linear-gradient(
+      to right,
+      transparent 79px,
+      #e8a0a0 79px,
+      #e8a0a0 81px,
+      transparent 81px
+    );
+  background-size: 100% 32px, 100% 100%;
+  background-attachment: local;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle paper texture overlay via pseudo-element */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255,248,230,0.3) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,243,200,0.2) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Back Link ---------- */
+.back-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+}
+
+.back-link a {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: #7a6a5a;
+  text-decoration: none;
+  background: rgba(253, 246, 227, 0.92);
+  padding: 6px 16px;
+  border: 1px dashed #bfa98a;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.back-link a:hover {
+  background: #f5e6c8;
+  color: #4a3a2a;
+}
+
+/* ---------- Journal Cover / Header ---------- */
+.journal-cover {
+  max-width: 640px;
+  margin: 60px auto 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-inner {
+  background: linear-gradient(135deg, #d4a76a 0%, #c49454 40%, #b8834a 100%);
+  border-radius: 6px;
+  padding: 50px 40px 40px;
+  position: relative;
+  color: #fff9ee;
+  text-align: center;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.1);
+  border: 3px solid #a07040;
+  overflow: hidden;
+}
+
+/* Leather texture lines */
+.cover-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 4px,
+    rgba(0,0,0,0.03) 4px,
+    rgba(0,0,0,0.03) 5px
+  );
+  pointer-events: none;
+}
+
+/* Tape corners on cover */
+.tape {
+  position: absolute;
+  width: 70px;
+  height: 26px;
+  background: rgba(255, 255, 220, 0.45);
+  border: 1px solid rgba(200, 190, 150, 0.3);
+  z-index: 2;
+}
+
+.tape-top-left {
+  top: -6px;
+  left: 20px;
+  transform: rotate(-18deg);
+}
+
+.tape-top-right {
+  top: -6px;
+  right: 20px;
+  transform: rotate(15deg);
+}
+
+.cover-label {
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.cover-title {
+  font-family: 'Caveat', cursive;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.cover-subtitle {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.4rem;
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+.cover-note {
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 14px;
+}
+
+.cover-line {
+  width: 60%;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  margin: 0 auto 14px;
+  border-radius: 1px;
+}
+
+.cover-owner {
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.underline-scribble {
+  border-bottom: 2px dashed rgba(255,255,255,0.5);
+  padding-bottom: 2px;
+}
+
+/* Cover doodles */
+.cover-doodle-plane {
+  position: absolute;
+  top: 18px;
+  right: 80px;
+  width: 30px;
+  height: 30px;
+  border-right: 2px solid rgba(255,255,255,0.35);
+  border-top: 2px solid rgba(255,255,255,0.35);
+  transform: rotate(45deg) scale(0.7);
+}
+
+.cover-doodle-plane::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -12px;
+  width: 18px;
+  height: 2px;
+  background: rgba(255,255,255,0.25);
+  transform: rotate(-45deg);
+}
+
+.cover-doodle-heart {
+  position: absolute;
+  bottom: 24px;
+  left: 30px;
+  width: 16px;
+  height: 16px;
+  background: rgba(255,200,200,0.5);
+  transform: rotate(-45deg);
+  border-radius: 50% 50% 0 0;
+}
+
+.cover-doodle-heart::before,
+.cover-doodle-heart::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: rgba(255,200,200,0.5);
+  border-radius: 50%;
+}
+
+.cover-doodle-heart::before {
+  top: -8px;
+  left: 0;
+}
+
+.cover-doodle-heart::after {
+  top: 0;
+  left: 8px;
+}
+
+/* ---------- Floating Margin Notes ---------- */
+.margin-note {
+  position: absolute;
+  z-index: 2;
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.85rem;
+  color: #8a7a6a;
+  max-width: 160px;
+  line-height: 1.4;
+}
+
+.margin-note-top {
+  top: 180px;
+  right: calc(50% - 420px);
+  transform: rotate(-3deg);
+}
+
+.margin-note-attr {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* ---------- Journal Pages (Main) ---------- */
+.journal-pages {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 20px 30px 40px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Journal Entry ---------- */
+.journal-entry {
+  position: relative;
+  margin-bottom: 30px;
+  padding: 24px 20px 30px 30px;
+  background: rgba(255, 252, 240, 0.45);
+  border-radius: 4px;
+}
+
+/* Notebook hole punches */
+.journal-entry::before {
+  content: '';
+  position: absolute;
+  left: -50px;
+  top: 40px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e8dcc8;
+  border: 2px solid #c9b99a;
+}
+
+.journal-entry::after {
+  content: '';
+  position: absolute;
+  left: -50px;
+  bottom: 40px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e8dcc8;
+  border: 2px solid #c9b99a;
+}
+
+/* ---------- Date Tab ---------- */
+.entry-date-tab {
+  position: absolute;
+  top: -8px;
+  right: 30px;
+  background: #f5e6c8;
+  border: 2px solid #d4c4a8;
+  border-radius: 0 0 8px 8px;
+  padding: 6px 14px 8px;
+  text-align: center;
+  transform: rotate(2deg);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.08);
+  z-index: 3;
+}
+
+.date-month {
+  display: block;
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8a7a6a;
+}
+
+.date-day {
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5a4a3a;
+  line-height: 1;
+}
+
+/* ---------- Entry Title & Subtitle ---------- */
+.entry-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3a3328;
+  margin-bottom: 2px;
+  line-height: 1.2;
+  border-bottom: 3px solid #3a3328;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.entry-subtitle {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1rem;
+  color: #8a7a6a;
+  margin-bottom: 18px;
+}
+
+/* ---------- Photo Placeholder with Tape ---------- */
+.photo-placeholder {
+  position: relative;
+  width: 260px;
+  padding: 10px 10px 30px;
+  background: #fff;
+  box-shadow: 2px 3px 10px rgba(0,0,0,0.12);
+  margin: 16px 0 20px;
+  z-index: 2;
+}
+
+.photo-tilted-left {
+  transform: rotate(-2.5deg);
+  float: right;
+  margin-left: 20px;
+}
+
+.photo-tilted-right {
+  transform: rotate(2deg);
+  float: left;
+  margin-right: 20px;
+}
+
+.photo-straight {
+  transform: rotate(-0.5deg);
+  float: right;
+  margin-left: 20px;
+}
+
+.photo-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 1px;
+}
+
+/* Gradient placeholders for each destination */
+.kyoto-gradient {
+  background: linear-gradient(160deg, #ff9a9e 0%, #fecfef 30%, #f6d5c0 60%, #c1dfc4 100%);
+}
+
+.santorini-gradient {
+  background: linear-gradient(160deg, #667eea 0%, #89b4fa 30%, #ffffff 55%, #f4a261 100%);
+}
+
+.patagonia-gradient {
+  background: linear-gradient(160deg, #a8edea 0%, #89cff0 30%, #d4d4d4 60%, #4a7c59 100%);
+}
+
+.marrakech-gradient {
+  background: linear-gradient(160deg, #f093fb 0%, #f5576c 30%, #e8a87c 60%, #d4a76a 100%);
+}
+
+.reykjavik-gradient {
+  background: linear-gradient(160deg, #0f2027 0%, #203a43 25%, #2c5364 50%, #43cea2 80%, #85ffbd 100%);
+}
+
+.amalfi-gradient {
+  background: linear-gradient(160deg, #ffecd2 0%, #fcb69f 30%, #ff9a76 55%, #667eea 100%);
+}
+
+/* Photo caption */
+.photo-caption {
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.8rem;
+  color: #7a6a5a;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* Tape corners on photos */
+.tape-corner {
+  position: absolute;
+  width: 44px;
+  height: 18px;
+  background: rgba(255, 255, 220, 0.6);
+  border: 1px solid rgba(200, 190, 150, 0.25);
+  z-index: 3;
+}
+
+.tape-corner-tl {
+  top: -6px;
+  left: -8px;
+  transform: rotate(-30deg);
+}
+
+.tape-corner-tr {
+  top: -6px;
+  right: -8px;
+  transform: rotate(30deg);
+}
+
+.tape-corner-bl {
+  bottom: 14px;
+  left: -8px;
+  transform: rotate(30deg);
+}
+
+.tape-corner-br {
+  bottom: 14px;
+  right: -8px;
+  transform: rotate(-30deg);
+}
+
+/* ---------- Entry Text ---------- */
+.entry-text {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  color: #4a4035;
+  line-height: 1.75;
+}
+
+.entry-text p {
+  margin-bottom: 12px;
+}
+
+/* Highlighted text */
+.highlight {
+  background: linear-gradient(to bottom, transparent 55%, #ffe08a 55%, #ffe08a 90%, transparent 90%);
+  padding: 0 3px;
+}
+
+/* Crossed out text */
+.crossed-out {
+  text-decoration: line-through;
+  text-decoration-color: #c44;
+  text-decoration-thickness: 2px;
+  opacity: 0.65;
+  font-style: italic;
+}
+
+/* Wavy underline */
+.underline-wavy {
+  text-decoration: underline wavy #d4a76a;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Scribble note style */
+.scribble-note {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: #c44;
+  transform: rotate(-1deg);
+  margin-top: 8px;
+  padding-left: 8px;
+  border-left: 3px solid #c44;
+}
+
+/* Clearfix after floated photos */
+.entry-content::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* ---------- Rating ---------- */
+.entry-rating {
+  margin-top: 16px;
+  padding-top: 10px;
+  clear: both;
+}
+
+.rating-label {
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.9rem;
+  color: #8a7a6a;
+  margin-right: 6px;
+}
+
+.stars {
+  font-size: 1.4rem;
+  color: #d4a030;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+/* ---------- Entry Margin Notes ---------- */
+.entry-margin-note {
+  position: absolute;
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.82rem;
+  color: #9a8a7a;
+  max-width: 140px;
+  line-height: 1.4;
+  padding: 8px;
+  background: rgba(255,252,230,0.5);
+  border-left: 2px solid #d4c4a8;
+  z-index: 2;
+}
+
+.entry-margin-right {
+  right: -160px;
+  top: 50%;
+  transform: translateY(-50%) rotate(2deg);
+}
+
+.entry-margin-left {
+  left: -160px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-2deg);
+}
+
+/* ---------- Entry Doodles ---------- */
+.entry-doodle {
+  position: absolute;
+  z-index: 1;
+}
+
+/* Arrow doodle */
+.doodle-arrow {
+  bottom: 20px;
+  right: 30px;
+  width: 40px;
+  height: 2px;
+  background: #bfa98a;
+  transform: rotate(-5deg);
+}
+
+.doodle-arrow::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid #bfa98a;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+/* Mountain doodle */
+.doodle-mountain {
+  bottom: 10px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 28px solid rgba(100, 140, 100, 0.2);
+}
+
+.doodle-mountain::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 8px;
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 20px solid rgba(100, 140, 100, 0.15);
+}
+
+/* Snowflake doodle */
+.doodle-snowflake {
+  bottom: 18px;
+  right: 40px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+.doodle-snowflake::before {
+  content: '+';
+  font-size: 1.6rem;
+  color: rgba(100, 160, 200, 0.4);
+  font-weight: bold;
+  position: absolute;
+  top: -8px;
+  left: -4px;
+}
+
+.doodle-snowflake::after {
+  content: '+';
+  font-size: 1.1rem;
+  color: rgba(100, 160, 200, 0.3);
+  font-weight: bold;
+  position: absolute;
+  top: 2px;
+  left: 14px;
+}
+
+/* Lemon doodle */
+.doodle-lemon {
+  bottom: 10px;
+  left: 50px;
+  width: 22px;
+  height: 18px;
+  background: rgba(255, 220, 80, 0.35);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  border: 1.5px solid rgba(200, 170, 40, 0.3);
+}
+
+.doodle-lemon::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 8px;
+  width: 6px;
+  height: 8px;
+  background: rgba(100, 160, 60, 0.3);
+  border-radius: 50% 50% 0 0;
+}
+
+/* Tiny sun doodle (in margin notes) */
+.tiny-doodle-sun {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #f5c842;
+  border-radius: 50%;
+  margin-top: 4px;
+  box-shadow: 0 0 0 3px rgba(245, 200, 66, 0.3);
+}
+
+/* Tiny heart */
+.tiny-heart {
+  color: #e88;
+  font-size: 1.2rem;
+}
+
+/* ---------- Page Divider ---------- */
+.page-divider {
+  text-align: center;
+  margin: 10px 0 30px;
+  position: relative;
+}
+
+.page-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    #c9b99a 0,
+    #c9b99a 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.divider-dots {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  color: #bfa98a;
+  background: #fdf6e3;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 4px;
+}
+
+/* ---------- Journal Footer ---------- */
+.journal-footer {
+  max-width: 640px;
+  margin: 40px auto 60px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  padding: 30px;
+  position: relative;
+}
+
+.footer-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: #8a7a6a;
+}
+
+.footer-subtext {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1rem;
+  color: #aaa096;
+  margin-top: 4px;
+}
+
+/* Small paper airplane doodle in footer */
+.footer-doodle-plane {
+  position: absolute;
+  right: 60px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(180,160,140,0.4);
+  border-top: 2px solid rgba(180,160,140,0.4);
+  transform: rotate(45deg) scale(0.8);
+}
+
+.footer-doodle-plane::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -8px;
+  width: 14px;
+  height: 1.5px;
+  background: rgba(180,160,140,0.3);
+  transform: rotate(-45deg);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .margin-note-top {
+    display: none;
+  }
+
+  .entry-margin-right,
+  .entry-margin-left {
+    position: relative;
+    right: auto;
+    left: auto;
+    top: auto;
+    transform: rotate(-1deg);
+    max-width: 100%;
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .journal-pages {
+    padding: 20px 20px 40px 70px;
+  }
+
+  .journal-entry::before {
+    left: -40px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .journal-entry::after {
+    left: -40px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .cover-title {
+    font-size: 2.4rem;
+  }
+
+  .entry-title {
+    font-size: 1.8rem;
+  }
+
+  .photo-placeholder {
+    float: none;
+    margin: 14px auto 18px;
+    width: 90%;
+    max-width: 280px;
+  }
+
+  .photo-tilted-left,
+  .photo-tilted-right {
+    transform: rotate(-1deg);
+  }
+
+  .entry-date-tab {
+    right: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .journal-pages {
+    padding: 16px 14px 30px 50px;
+  }
+
+  .journal-entry::before,
+  .journal-entry::after {
+    left: -32px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .cover-inner {
+    padding: 36px 20px 28px;
+  }
+
+  .cover-title {
+    font-size: 2rem;
+  }
+
+  .entry-title {
+    font-size: 1.5rem;
+  }
+
+  .entry-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+  }
+
+  body {
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 27px,
+        #c9daea 27px,
+        #c9daea 28px
+      ),
+      linear-gradient(
+        to right,
+        transparent 39px,
+        #e8a0a0 39px,
+        #e8a0a0 41px,
+        transparent 41px
+      );
+    background-size: 100% 28px, 100% 100%;
+  }
+}

@@ -1,0 +1,937 @@
+/* ========================================================
+   EXPERIMENTAL / AVANT-GARDE TRAVEL WEBSITE
+   "Art installation meets web design"
+   ======================================================== */
+
+/* --- RESET & FOUNDATION --- */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background: #0a0a0a;
+}
+
+body {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    color: #e8e4de;
+    background: #0a0a0a;
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: #ff4d00;
+    color: #0a0a0a;
+}
+
+
+/* --- BACK LINK --- */
+
+.back-link {
+    position: fixed;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 1000;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e8e4de;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(232, 228, 222, 0.3);
+    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.6);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: difference;
+}
+
+.back-link:hover {
+    background: #e8e4de;
+    color: #0a0a0a;
+    border-color: #e8e4de;
+    mix-blend-mode: normal;
+}
+
+
+/* --- HERO / HEADER --- */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 77, 0, 0.08) 0%,
+        transparent 70%
+    );
+    animation: pulse-glow 8s ease-in-out infinite;
+}
+
+.hero::after {
+    content: 'EXPLORE';
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(6rem, 12vw, 14rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(232, 228, 222, 0.06);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+}
+
+.hero-inner {
+    position: relative;
+    width: 90vw;
+    height: 60vh;
+}
+
+/* Title fragments — scattered across the viewport */
+.title-fragment {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    line-height: 0.85;
+    color: #e8e4de;
+}
+
+.title-best {
+    top: 0;
+    left: 2%;
+    font-size: clamp(4rem, 10vw, 10rem);
+    transform: rotate(-3deg);
+    animation: drift-in-left 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.title-places {
+    top: 15%;
+    right: 5%;
+    font-size: clamp(5rem, 13vw, 14rem);
+    font-style: italic;
+    color: #ff4d00;
+    animation: drift-in-right 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.title-to {
+    top: 55%;
+    left: 35%;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    transform: rotate(90deg);
+    animation: drift-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.title-travel {
+    bottom: 5%;
+    left: 10%;
+    font-size: clamp(5rem, 14vw, 16rem);
+    letter-spacing: -0.03em;
+    animation: drift-in-left 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-subtitle {
+    position: absolute;
+    bottom: 18%;
+    right: 5%;
+    max-width: 280px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    text-align: right;
+    opacity: 0.5;
+    animation: fade-in 2.5s ease both;
+}
+
+.hero-year {
+    position: absolute;
+    top: 12%;
+    right: 8%;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    opacity: 0.25;
+    transform: rotate(90deg);
+    transform-origin: right center;
+}
+
+.hero-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, rgba(232, 228, 222, 0.3));
+    animation: line-grow 2s 1.5s ease both;
+}
+
+
+/* --- MANIFESTO STRIP (Horizontal Scroll Marquee via CSS) --- */
+
+.manifesto {
+    position: relative;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(232, 228, 222, 0.08);
+    border-bottom: 1px solid rgba(232, 228, 222, 0.08);
+    overflow: hidden;
+    background: #0d0d0d;
+}
+
+.manifesto-track {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 222, 0.15);
+    animation: marquee 20s linear infinite;
+    width: max-content;
+}
+
+.manifesto-track span {
+    flex-shrink: 0;
+}
+
+
+/* --- DESTINATIONS SECTION --- */
+
+.destinations {
+    position: relative;
+    padding: 10rem 0 15rem;
+    min-height: 300vh;
+}
+
+.destinations::before {
+    content: 'DESTINATIONS';
+    position: sticky;
+    top: 50%;
+    left: -2%;
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 8rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(232, 228, 222, 0.04);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Base destination card styling */
+.dest {
+    position: relative;
+    margin-bottom: 12rem;
+    z-index: 1;
+}
+
+.dest-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(5rem, 10vw, 10rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 77, 0, 0.2);
+    line-height: 0.8;
+    position: absolute;
+    z-index: -1;
+}
+
+.dest-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    position: relative;
+}
+
+.dest-name-accent {
+    font-style: italic;
+    color: #ff4d00;
+}
+
+.dest-country {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-top: 1rem;
+}
+
+.dest-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    line-height: 1.9;
+    max-width: 320px;
+    opacity: 0.6;
+    margin-top: 1.5rem;
+}
+
+.dest-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.25;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(232, 228, 222, 0.08);
+    display: inline-block;
+}
+
+
+/* --- INDIVIDUAL DESTINATION POSITIONING (the chaos) --- */
+
+/* 01 KYOTO — top-left, slight rotation */
+.dest-kyoto {
+    margin-left: 8%;
+    width: 45%;
+    transform: rotate(-1deg);
+}
+
+.dest-kyoto .dest-number {
+    top: -3rem;
+    left: -2rem;
+}
+
+.dest-kyoto .dest-name {
+    font-size: clamp(4rem, 9vw, 9rem);
+    color: #e8e4de;
+}
+
+.dest-kyoto::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -30%;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(255, 77, 0, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+/* 02 SANTORINI — far right, tall and narrow */
+.dest-santorini {
+    margin-left: 55%;
+    width: 35%;
+    transform: rotate(2deg);
+    margin-top: -4rem;
+}
+
+.dest-santorini .dest-number {
+    top: -2rem;
+    right: 0;
+    left: auto;
+    transform: rotate(-90deg);
+    transform-origin: top right;
+}
+
+.dest-santorini .dest-name {
+    font-size: clamp(5rem, 11vw, 12rem);
+    color: #ff4d00;
+    mix-blend-mode: normal;
+}
+
+.dest-santorini .dest-description {
+    max-width: 260px;
+}
+
+.dest-santorini::before {
+    content: '';
+    position: absolute;
+    top: -5rem;
+    left: -15%;
+    width: 1px;
+    height: 300px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(232, 228, 222, 0.1),
+        transparent
+    );
+}
+
+
+/* 03 PATAGONIA — center-left, massive text */
+.dest-patagonia {
+    margin-left: 12%;
+    width: 60%;
+    margin-top: 4rem;
+}
+
+.dest-patagonia .dest-number {
+    top: -4rem;
+    left: 40%;
+    font-size: clamp(8rem, 16vw, 18rem);
+    -webkit-text-stroke: 1px rgba(232, 228, 222, 0.03);
+}
+
+.dest-patagonia .dest-name {
+    font-size: clamp(6rem, 14vw, 16rem);
+    letter-spacing: -0.05em;
+}
+
+.dest-patagonia .dest-description {
+    margin-left: 20%;
+    max-width: 350px;
+}
+
+.dest-patagonia .dest-tag {
+    margin-left: 20%;
+}
+
+.dest-patagonia::after {
+    content: '53.1S  71.7W';
+    position: absolute;
+    top: 30%;
+    right: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    opacity: 0.15;
+    transform: rotate(90deg);
+    transform-origin: right center;
+}
+
+
+/* 04 MARRAKECH — right-aligned, warm tones */
+.dest-marrakech {
+    margin-left: 50%;
+    width: 42%;
+    transform: rotate(-1.5deg);
+    padding: 3rem;
+    border-left: 2px solid rgba(255, 77, 0, 0.15);
+    margin-top: 2rem;
+}
+
+.dest-marrakech .dest-number {
+    top: -1rem;
+    left: -4rem;
+}
+
+.dest-marrakech .dest-name {
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    color: #e8e4de;
+}
+
+.dest-marrakech .dest-description {
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    line-height: 2;
+    opacity: 0.5;
+}
+
+.dest-marrakech::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -80px;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 77, 0, 0.06);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+
+/* 05 REYKJAVIK — top left again, overlapping pattern */
+.dest-reykjavik {
+    margin-left: 5%;
+    width: 50%;
+    margin-top: 6rem;
+    transform: rotate(0.5deg);
+}
+
+.dest-reykjavik .dest-number {
+    top: -3rem;
+    right: 10%;
+    left: auto;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(120, 180, 255, 0.15);
+}
+
+.dest-reykjavik .dest-name {
+    font-size: clamp(4rem, 8vw, 8rem);
+    background: linear-gradient(135deg, #e8e4de 30%, #78b4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dest-reykjavik .dest-description {
+    max-width: 300px;
+}
+
+.dest-reykjavik::after {
+    content: '';
+    position: absolute;
+    bottom: -3rem;
+    left: 30%;
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(120, 180, 255, 0.2),
+        transparent
+    );
+}
+
+
+/* 06 AMALFI COAST — centered, grand finale */
+.dest-amalfi {
+    margin-left: 25%;
+    width: 55%;
+    text-align: center;
+    margin-top: 8rem;
+    padding-top: 5rem;
+    border-top: 1px solid rgba(232, 228, 222, 0.05);
+}
+
+.dest-amalfi .dest-number {
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(10rem, 20vw, 22rem);
+    -webkit-text-stroke: 1px rgba(232, 228, 222, 0.02);
+}
+
+.dest-amalfi .dest-name {
+    font-size: clamp(5rem, 12vw, 14rem);
+    position: relative;
+    z-index: 1;
+}
+
+.dest-amalfi .dest-description {
+    margin: 2rem auto 0;
+    max-width: 380px;
+    text-align: center;
+}
+
+.dest-amalfi .dest-tag {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.dest-amalfi .dest-country {
+    letter-spacing: 0.8em;
+}
+
+.dest-amalfi::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 77, 0, 0.04) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+
+/* --- INTERSTITIAL / STICKY QUOTE --- */
+
+.interstitial {
+    position: relative;
+    min-height: 200vh;
+}
+
+.interstitial-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.interstitial-spacer {
+    height: 100vh;
+}
+
+.interstitial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 700px;
+    color: rgba(232, 228, 222, 0.3);
+}
+
+.quote-emphasis {
+    color: #ff4d00;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.interstitial::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    width: 40vw;
+    height: 40vw;
+    border: 1px solid rgba(232, 228, 222, 0.02);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+/* --- COLOPHON (NON-FOOTER) --- */
+
+.colophon {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: end;
+    padding: 8rem 5% 4rem;
+    border-top: 1px solid rgba(232, 228, 222, 0.05);
+    min-height: 60vh;
+}
+
+.colophon-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-self: end;
+}
+
+.colophon-center {
+    text-align: center;
+    align-self: center;
+    grid-row: 1;
+}
+
+.colophon-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: right;
+    align-self: end;
+}
+
+.colophon-giant {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(8rem, 18vw, 20rem);
+    font-weight: 900;
+    line-height: 0.75;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(232, 228, 222, 0.06);
+    letter-spacing: 0.05em;
+}
+
+.colophon-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.25;
+}
+
+.colophon-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+.colophon-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(232, 228, 222, 0.05);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    opacity: 0.3;
+}
+
+.colophon-bottom a {
+    color: #e8e4de;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.colophon-bottom a:hover {
+    opacity: 1;
+    color: #ff4d00;
+}
+
+.colophon-separator {
+    opacity: 0.3;
+}
+
+
+/* ========================================================
+   ANIMATIONS
+   ======================================================== */
+
+@keyframes drift-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-60px) rotate(-3deg);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drift-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drift-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px) rotate(90deg);
+    }
+    to {
+        opacity: 0.4;
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 0.5; }
+}
+
+@keyframes line-grow {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        height: 80px;
+        opacity: 1;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.6;
+    }
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+
+/* ========================================================
+   RESPONSIVE
+   ======================================================== */
+
+@media (max-width: 768px) {
+
+    .back-link {
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.65rem;
+    }
+
+    .hero-inner {
+        height: 70vh;
+    }
+
+    .title-places {
+        right: 2%;
+    }
+
+    .title-travel {
+        left: 3%;
+    }
+
+    .hero-subtitle {
+        right: 3%;
+        max-width: 200px;
+        font-size: 0.6rem;
+    }
+
+    .hero::after {
+        font-size: clamp(4rem, 15vw, 8rem);
+    }
+
+    .destinations {
+        padding: 6rem 0 8rem;
+    }
+
+    .dest {
+        margin-bottom: 8rem;
+    }
+
+    /* Reset transforms on mobile for readability */
+    .dest-kyoto,
+    .dest-santorini,
+    .dest-marrakech,
+    .dest-reykjavik {
+        transform: none;
+    }
+
+    .dest-kyoto {
+        margin-left: 5%;
+        width: 85%;
+    }
+
+    .dest-santorini {
+        margin-left: 10%;
+        width: 80%;
+        margin-top: 0;
+    }
+
+    .dest-patagonia {
+        margin-left: 5%;
+        width: 90%;
+    }
+
+    .dest-patagonia .dest-description,
+    .dest-patagonia .dest-tag {
+        margin-left: 0;
+    }
+
+    .dest-marrakech {
+        margin-left: 8%;
+        width: 84%;
+        padding: 2rem;
+    }
+
+    .dest-reykjavik {
+        margin-left: 5%;
+        width: 85%;
+    }
+
+    .dest-amalfi {
+        margin-left: 5%;
+        width: 90%;
+    }
+
+    .colophon {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        text-align: center;
+        padding: 5rem 5% 3rem;
+        min-height: auto;
+    }
+
+    .colophon-left,
+    .colophon-right {
+        text-align: center;
+    }
+
+    .colophon-center {
+        order: -1;
+        margin-bottom: 3rem;
+    }
+
+    .colophon-giant {
+        font-size: clamp(5rem, 25vw, 10rem);
+    }
+
+    .colophon-bottom {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 3rem;
+    }
+
+    .colophon-separator {
+        display: none;
+    }
+
+    .interstitial blockquote {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .title-best {
+        font-size: 3.5rem;
+    }
+
+    .title-places {
+        font-size: 4rem;
+        top: 20%;
+    }
+
+    .title-to {
+        top: 50%;
+        left: 25%;
+        font-size: 1.2rem;
+    }
+
+    .title-travel {
+        font-size: 4.5rem;
+        bottom: 10%;
+    }
+
+    .dest-name {
+        font-size: clamp(2.5rem, 12vw, 5rem) !important;
+    }
+
+    .dest-number {
+        font-size: clamp(3rem, 15vw, 6rem) !important;
+    }
+}
