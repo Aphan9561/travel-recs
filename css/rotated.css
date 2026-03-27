@@ -1,0 +1,716 @@
+/* ============================================
+   EVERYTHING IS ROTATED — Bulletin Board Style
+   A playful, scattered-papers-on-a-desk design
+   where absolutely nothing is straight.
+   ============================================ */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #3a3328;
+  min-height: 100vh;
+  position: relative;
+  line-height: 1.6;
+  overflow-x: hidden;
+
+  /* Cork board background */
+  background-color: #c4956a;
+  background-image:
+    /* Cork texture noise */
+    radial-gradient(ellipse at 15% 25%, rgba(180, 130, 80, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 60%, rgba(160, 115, 65, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(190, 140, 90, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 15%, rgba(170, 120, 70, 0.3) 0%, transparent 55%),
+    /* Cork grain */
+    repeating-linear-gradient(
+      35deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.02) 3px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 5px,
+      rgba(255, 255, 255, 0.03) 5px,
+      rgba(255, 255, 255, 0.03) 6px
+    );
+}
+
+/* Subtle dark vignette around the cork board edges */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(60, 35, 15, 0.25) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Wooden frame border around the whole page */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  border: 12px solid #6b4226;
+  border-image: linear-gradient(
+    135deg,
+    #8b5e3c 0%, #6b4226 30%, #5a3520 50%, #7a4f30 70%, #8b5e3c 100%
+  ) 1;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ---------- Back Link (rotated!) ---------- */
+.back-link {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  z-index: 999;
+  transform: rotate(-6deg);
+}
+
+.back-link a {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  color: #5a4030;
+  text-decoration: none;
+  background: #fffde7;
+  padding: 8px 18px;
+  border-radius: 3px;
+  box-shadow:
+    2px 3px 8px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.back-link a:hover {
+  transform: rotate(3deg) scale(1.05);
+  box-shadow:
+    3px 5px 12px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+}
+
+/* Pin on the back link */
+.back-link a::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #ff6b6b, #cc3333);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Header (visibly rotated) ---------- */
+.board-header {
+  max-width: 700px;
+  margin: 80px auto 20px;
+  padding: 0 30px;
+  position: relative;
+  z-index: 10;
+  transform: rotate(-3deg);
+}
+
+.header-inner {
+  background: linear-gradient(145deg, #fff9c4 0%, #fff176 50%, #ffee58 100%);
+  padding: 36px 40px 30px;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    3px 5px 15px rgba(0, 0, 0, 0.2),
+    -1px -1px 0 rgba(255, 255, 255, 0.5) inset;
+  /* Slightly torn / folded paper look */
+  border-radius: 2px;
+}
+
+/* Sticky note curl effect */
+.header-inner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(0, 0, 0, 0.06) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: 0 0 0 0;
+}
+
+/* Pin on header */
+.header-inner::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 35% 35%, #ff8a80, #d32f2f);
+  border-radius: 50%;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.header-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  color: #7a6a4a;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  transform: rotate(2deg);
+}
+
+.header-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #d84315;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  transform: rotate(-1.5deg);
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.header-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: #8d6e4a;
+  transform: rotate(1deg);
+}
+
+/* ---------- Bulletin Board (Main) ---------- */
+.bulletin-board {
+  max-width: 1100px;
+  margin: 40px auto 30px;
+  padding: 20px 40px 60px;
+  position: relative;
+  z-index: 2;
+
+  /* Scattered card layout using CSS grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px 40px;
+}
+
+/* ---------- Destination Cards ---------- */
+.destination-card {
+  position: relative;
+  padding: 32px 26px 26px;
+  border-radius: 3px;
+  box-shadow:
+    4px 6px 16px rgba(0, 0, 0, 0.18),
+    1px 1px 0 rgba(255, 255, 255, 0.3) inset;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+}
+
+.destination-card:hover {
+  box-shadow:
+    6px 10px 24px rgba(0, 0, 0, 0.25),
+    1px 1px 0 rgba(255, 255, 255, 0.3) inset;
+  z-index: 10;
+}
+
+/* ---------- Pin / Thumbtack ---------- */
+.pin {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  z-index: 5;
+}
+
+/* Pin needle shadow on the card */
+.pin::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 2px 2px;
+}
+
+/* ---------- Card Content (everything rotated inside too) ---------- */
+.card-name {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.card-region {
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  opacity: 0.75;
+}
+
+.card-description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.07);
+  color: rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+
+/* ---------- Individual Card Styles ---------- */
+
+/* Card 1: Kyoto — warm pink, rotated -7deg */
+.card-kyoto {
+  background: linear-gradient(155deg, #fce4ec, #f8bbd0 80%);
+  transform: rotate(-7deg);
+  color: #4a2030;
+}
+
+.card-kyoto .pin {
+  background: radial-gradient(circle at 35% 35%, #ff5252, #b71c1c);
+}
+
+.card-kyoto .card-name {
+  transform: rotate(3deg);
+  color: #880e4f;
+}
+
+.card-kyoto .card-region {
+  transform: rotate(-1.5deg);
+  color: #ad1457;
+}
+
+.card-kyoto .card-description {
+  transform: rotate(0.8deg);
+}
+
+.card-kyoto .card-tags {
+  transform: rotate(-2deg);
+}
+
+.card-kyoto .tag {
+  background: rgba(136, 14, 79, 0.12);
+  transform: rotate(1.5deg);
+}
+
+/* Card 2: Santorini — sky blue, rotated 5deg */
+.card-santorini {
+  background: linear-gradient(155deg, #e3f2fd, #bbdefb 80%);
+  transform: rotate(5deg);
+  color: #1a3a5c;
+}
+
+.card-santorini .pin {
+  background: radial-gradient(circle at 35% 35%, #42a5f5, #1565c0);
+}
+
+.card-santorini .card-name {
+  transform: rotate(-2deg);
+  color: #0d47a1;
+}
+
+.card-santorini .card-region {
+  transform: rotate(2.5deg);
+  color: #1565c0;
+}
+
+.card-santorini .card-description {
+  transform: rotate(-1deg);
+}
+
+.card-santorini .card-tags {
+  transform: rotate(1.5deg);
+}
+
+.card-santorini .tag {
+  background: rgba(13, 71, 161, 0.1);
+  transform: rotate(-2deg);
+}
+
+/* Card 3: Patagonia — mint green, rotated -11deg */
+.card-patagonia {
+  background: linear-gradient(155deg, #e0f2f1, #b2dfdb 80%);
+  transform: rotate(-11deg);
+  color: #1a3c36;
+}
+
+.card-patagonia .pin {
+  background: radial-gradient(circle at 35% 35%, #66bb6a, #2e7d32);
+}
+
+.card-patagonia .card-name {
+  transform: rotate(4deg);
+  color: #1b5e20;
+}
+
+.card-patagonia .card-region {
+  transform: rotate(-1deg);
+  color: #2e7d32;
+}
+
+.card-patagonia .card-description {
+  transform: rotate(1.5deg);
+}
+
+.card-patagonia .card-tags {
+  transform: rotate(-3deg);
+}
+
+.card-patagonia .tag {
+  background: rgba(27, 94, 32, 0.1);
+  transform: rotate(2deg);
+}
+
+/* Card 4: Marrakech — warm orange/peach, rotated 9deg */
+.card-marrakech {
+  background: linear-gradient(155deg, #fff3e0, #ffcc80 80%);
+  transform: rotate(9deg);
+  color: #4a2c10;
+}
+
+.card-marrakech .pin {
+  background: radial-gradient(circle at 35% 35%, #ffa726, #e65100);
+}
+
+.card-marrakech .card-name {
+  transform: rotate(-3deg);
+  color: #bf360c;
+}
+
+.card-marrakech .card-region {
+  transform: rotate(2deg);
+  color: #e65100;
+}
+
+.card-marrakech .card-description {
+  transform: rotate(-1.5deg);
+}
+
+.card-marrakech .card-tags {
+  transform: rotate(2.5deg);
+}
+
+.card-marrakech .tag {
+  background: rgba(191, 54, 12, 0.1);
+  transform: rotate(-1deg);
+}
+
+/* Card 5: Reykjavik — lavender/purple, rotated -4deg */
+.card-reykjavik {
+  background: linear-gradient(155deg, #ede7f6, #d1c4e9 80%);
+  transform: rotate(-4deg);
+  color: #2a1a4a;
+}
+
+.card-reykjavik .pin {
+  background: radial-gradient(circle at 35% 35%, #ab47bc, #6a1b9a);
+}
+
+.card-reykjavik .card-name {
+  transform: rotate(2.5deg);
+  color: #4a148c;
+}
+
+.card-reykjavik .card-region {
+  transform: rotate(-2deg);
+  color: #6a1b9a;
+}
+
+.card-reykjavik .card-description {
+  transform: rotate(1deg);
+}
+
+.card-reykjavik .card-tags {
+  transform: rotate(-1.5deg);
+}
+
+.card-reykjavik .tag {
+  background: rgba(74, 20, 140, 0.1);
+  transform: rotate(3deg);
+}
+
+/* Card 6: Amalfi Coast — sunny yellow, rotated 12deg */
+.card-amalfi {
+  background: linear-gradient(155deg, #fffde7, #fff59d 80%);
+  transform: rotate(12deg);
+  color: #4a4010;
+}
+
+.card-amalfi .pin {
+  background: radial-gradient(circle at 35% 35%, #ffee58, #f9a825);
+}
+
+.card-amalfi .card-name {
+  transform: rotate(-4deg);
+  color: #e65100;
+}
+
+.card-amalfi .card-region {
+  transform: rotate(1.5deg);
+  color: #ef6c00;
+}
+
+.card-amalfi .card-description {
+  transform: rotate(-0.8deg);
+}
+
+.card-amalfi .card-tags {
+  transform: rotate(3deg);
+}
+
+.card-amalfi .tag {
+  background: rgba(230, 81, 0, 0.1);
+  transform: rotate(-2.5deg);
+}
+
+/* ---------- Hover Effects — cards lift & re-rotate ---------- */
+.card-kyoto:hover    { transform: rotate(-4deg) translateY(-6px); }
+.card-santorini:hover { transform: rotate(2deg) translateY(-6px); }
+.card-patagonia:hover { transform: rotate(-8deg) translateY(-6px); }
+.card-marrakech:hover { transform: rotate(6deg) translateY(-6px); }
+.card-reykjavik:hover { transform: rotate(-1deg) translateY(-6px); }
+.card-amalfi:hover   { transform: rotate(9deg) translateY(-6px); }
+
+/* ---------- Footer (rotated, obviously) ---------- */
+.board-footer {
+  max-width: 600px;
+  margin: 20px auto 80px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transform: rotate(4deg);
+}
+
+.footer-inner {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 24px 36px;
+  border-radius: 3px;
+  box-shadow:
+    3px 4px 12px rgba(0, 0, 0, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  position: relative;
+}
+
+/* Pin on footer */
+.footer-inner::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 35% 35%, #81c784, #2e7d32);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.footer-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: #6d4c41;
+  transform: rotate(-2deg);
+  margin-bottom: 4px;
+}
+
+.footer-subtext {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.95rem;
+  color: #8d6e63;
+  transform: rotate(1.5deg);
+}
+
+/* ---------- Decorative scattered elements ---------- */
+
+/* Small decorative sticky notes in the background */
+.bulletin-board::before {
+  content: 'BUCKET LIST';
+  position: absolute;
+  top: -20px;
+  right: 60px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.85rem;
+  color: #5d4037;
+  background: #c5e1a5;
+  padding: 8px 14px;
+  transform: rotate(8deg);
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.bulletin-board::after {
+  content: 'go everywhere!';
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: #4a148c;
+  background: #e1bee7;
+  padding: 6px 12px;
+  transform: rotate(-5deg);
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .bulletin-board {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+    padding: 20px 30px 60px;
+  }
+
+  .header-title {
+    font-size: 2.3rem;
+  }
+
+  /* Reduce extreme rotations on smaller screens */
+  .card-patagonia { transform: rotate(-8deg); }
+  .card-marrakech { transform: rotate(6deg); }
+  .card-amalfi    { transform: rotate(8deg); }
+}
+
+@media (max-width: 700px) {
+  html {
+    font-size: 16px;
+  }
+
+  body::after {
+    border-width: 6px;
+  }
+
+  .back-link {
+    top: 18px;
+    left: 18px;
+  }
+
+  .board-header {
+    margin-top: 60px;
+    padding: 0 20px;
+    transform: rotate(-2deg);
+  }
+
+  .header-title {
+    font-size: 1.9rem;
+  }
+
+  .bulletin-board {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 20px 24px 50px;
+  }
+
+  /* Tone down rotations for single column */
+  .card-kyoto      { transform: rotate(-5deg); }
+  .card-santorini  { transform: rotate(4deg); }
+  .card-patagonia  { transform: rotate(-6deg); }
+  .card-marrakech  { transform: rotate(5deg); }
+  .card-reykjavik  { transform: rotate(-3deg); }
+  .card-amalfi     { transform: rotate(7deg); }
+
+  .card-kyoto:hover    { transform: rotate(-2deg) translateY(-4px); }
+  .card-santorini:hover { transform: rotate(1deg) translateY(-4px); }
+  .card-patagonia:hover { transform: rotate(-3deg) translateY(-4px); }
+  .card-marrakech:hover { transform: rotate(2deg) translateY(-4px); }
+  .card-reykjavik:hover { transform: rotate(0deg) translateY(-4px); }
+  .card-amalfi:hover   { transform: rotate(4deg) translateY(-4px); }
+
+  .board-footer {
+    transform: rotate(2.5deg);
+    margin-bottom: 60px;
+  }
+
+  .bulletin-board::before {
+    right: 20px;
+    top: -15px;
+    font-size: 0.75rem;
+  }
+
+  .bulletin-board::after {
+    left: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .header-inner {
+    padding: 28px 24px 22px;
+  }
+
+  .header-title {
+    font-size: 1.6rem;
+  }
+
+  .destination-card {
+    padding: 28px 20px 22px;
+  }
+
+  .card-name {
+    font-size: 1.4rem;
+  }
+
+  .bulletin-board {
+    padding: 16px 16px 40px;
+  }
+
+  .board-footer {
+    margin: 10px 16px 50px;
+  }
+
+  .footer-inner {
+    padding: 18px 22px;
+  }
+}

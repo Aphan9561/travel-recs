@@ -1,0 +1,674 @@
+/* =============================================================
+   EXTREME TYPOGRAPHY — A Love Letter to Type
+   Best Places to Travel
+   =============================================================
+   No images. No icons. Only letters.
+   Typography IS the design.
+   ============================================================= */
+
+/* ——————————————————————————————————————————————
+   RESET & FOUNDATIONS
+   —————————————————————————————————————————————— */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background: #0a0a0a;
+  color: #f0f0f0;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #e63946;
+  color: #fff;
+}
+
+/* ——————————————————————————————————————————————
+   TYPE SYSTEM — the soul of this page
+   —————————————————————————————————————————————— */
+
+/* Anton: the screaming headline */
+/* Playfair Display: the elegant whisper */
+/* Space Mono: the mechanical truth */
+/* Inter: the invisible workhorse */
+
+:root {
+  --font-headline: 'Anton', 'Impact', sans-serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+
+  --color-bg: #0a0a0a;
+  --color-fg: #f0f0f0;
+  --color-accent: #e63946;
+  --color-muted: #333;
+  --color-ghost: rgba(240, 240, 240, 0.04);
+}
+
+
+/* ——————————————————————————————————————————————
+   BACK TO GALLERY NAV
+   —————————————————————————————————————————————— */
+
+.back-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  mix-blend-mode: difference;
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.back-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+
+/* ——————————————————————————————————————————————
+   HERO SECTION
+   The words ARE the design
+   —————————————————————————————————————————————— */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6rem 3vw 4rem;
+  overflow: hidden;
+  border-bottom: 2px solid var(--color-muted);
+}
+
+/* Background text texture — whispered words behind everything */
+.bg-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  font-family: var(--font-headline);
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+  line-height: 1.1;
+  color: var(--color-ghost);
+  word-spacing: 0.5em;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  user-select: none;
+  word-break: break-all;
+  transform: rotate(-5deg);
+  transform-origin: top left;
+}
+
+/* The four massive hero words */
+.hero-words {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-word {
+  font-family: var(--font-headline);
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--color-fg);
+}
+
+.hero-word--best {
+  font-size: clamp(5rem, 22vw, 20rem);
+  color: var(--color-accent);
+  margin-left: -0.05em;
+}
+
+.hero-word--places {
+  font-size: clamp(5rem, 22vw, 20rem);
+  margin-left: -0.05em;
+}
+
+.hero-word--to {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 8vw, 7rem);
+  letter-spacing: 0.3em;
+  line-height: 1.4;
+  color: rgba(240, 240, 240, 0.35);
+  margin-left: 0.5em;
+}
+
+.hero-word--travel {
+  font-size: clamp(6rem, 28vw, 26rem);
+  letter-spacing: -0.04em;
+  margin-left: -0.06em;
+}
+
+.hero-break {
+  color: var(--color-accent);
+}
+
+/* Subtitle — tiny in contrast */
+.hero-subtitle {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.4);
+  margin-top: 3rem;
+  padding-left: 0.5em;
+}
+
+/* Vertical text on sides */
+.hero-vertical-left,
+.hero-vertical-right {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.15);
+  writing-mode: vertical-rl;
+  z-index: 2;
+}
+
+.hero-vertical-left {
+  left: 1rem;
+  bottom: 2rem;
+}
+
+.hero-vertical-right {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/* ——————————————————————————————————————————————
+   DESTINATIONS — Type as architecture
+   Each name is the dominant visual
+   —————————————————————————————————————————————— */
+
+.destinations {
+  position: relative;
+}
+
+.dest {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-muted);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Enormous background word — the ghost behind each section */
+.dest-bg-word {
+  position: absolute;
+  font-family: var(--font-headline);
+  font-size: clamp(8rem, 35vw, 40rem);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: rgba(240, 240, 240, 0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.dest-bg-word--second {
+  transform: translate(-50%, -10%);
+  font-size: clamp(8rem, 35vw, 40rem);
+  color: rgba(240, 240, 240, 0.02);
+}
+
+/* Destination number — Swiss modernism nod */
+.dest-number {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.dest-number::before {
+  content: '— ';
+  color: rgba(240, 240, 240, 0.2);
+}
+
+/* The massive destination name — this IS the design */
+.dest-name {
+  font-family: var(--font-headline);
+  font-size: clamp(4.5rem, 18vw, 18rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--color-fg);
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0.1em;
+}
+
+.dest-name-break {
+  display: block;
+  margin-left: clamp(1rem, 5vw, 5rem);
+  color: rgba(240, 240, 240, 0.5);
+}
+
+/* Country label */
+.dest-country {
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: clamp(0.6rem, 1.1vw, 0.8rem);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.3);
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Body text — the quiet counterpart */
+.dest-body {
+  max-width: 42ch;
+  position: relative;
+  z-index: 2;
+  margin-left: clamp(0rem, 8vw, 8rem);
+}
+
+.dest-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--color-fg);
+  margin-bottom: 1rem;
+}
+
+.dest-body p:last-child {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  line-height: 1.75;
+  color: rgba(240, 240, 240, 0.55);
+}
+
+/* Detail line */
+.dest-detail {
+  position: relative;
+  z-index: 2;
+  margin-top: 2.5rem;
+  margin-left: clamp(0rem, 8vw, 8rem);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(240, 240, 240, 0.1);
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+}
+
+.dest-detail-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.dest-detail-value {
+  font-family: var(--font-serif);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  color: rgba(240, 240, 240, 0.4);
+  font-style: italic;
+}
+
+/* Texture strip — repeated words as decoration */
+.dest-texture {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  font-family: var(--font-headline);
+  font-size: clamp(0.55rem, 0.9vw, 0.75rem);
+  letter-spacing: 0.5em;
+  line-height: 2.2;
+  color: rgba(240, 240, 240, 0.035);
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+
+/* ——————————————————————————————————————————————
+   DESTINATION ALTERNATION — visual rhythm
+   Even sections get a different layout
+   —————————————————————————————————————————————— */
+
+.dest:nth-child(even) {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.dest:nth-child(even) .dest-name-break {
+  margin-left: 0;
+  margin-right: clamp(1rem, 5vw, 5rem);
+}
+
+.dest:nth-child(even) .dest-body {
+  margin-left: auto;
+  margin-right: clamp(0rem, 8vw, 8rem);
+  text-align: right;
+}
+
+.dest:nth-child(even) .dest-detail {
+  margin-left: auto;
+  margin-right: clamp(0rem, 8vw, 8rem);
+  justify-content: flex-end;
+}
+
+.dest:nth-child(even) .dest-number::before {
+  content: none;
+}
+
+.dest:nth-child(even) .dest-number::after {
+  content: ' —';
+  color: rgba(240, 240, 240, 0.2);
+}
+
+
+/* ——————————————————————————————————————————————
+   DESTINATION-SPECIFIC ACCENTS
+   Each place gets one typographic twist
+   —————————————————————————————————————————————— */
+
+/* Kyoto — ultra-tight tracking */
+.dest--kyoto .dest-name {
+  letter-spacing: -0.06em;
+}
+
+/* Santorini — wide tracking, thin weight feeling */
+.dest--santorini .dest-name {
+  letter-spacing: 0.08em;
+  font-size: clamp(4rem, 15vw, 15rem);
+}
+
+/* Patagonia — stacked and compressed */
+.dest--patagonia .dest-name {
+  line-height: 0.78;
+}
+
+.dest--patagonia .dest-name-break {
+  letter-spacing: 0.1em;
+  font-size: 0.7em;
+}
+
+/* Marrakech — accent color name */
+.dest--marrakech .dest-name {
+  color: var(--color-accent);
+}
+
+.dest--marrakech .dest-name-break {
+  color: rgba(230, 57, 70, 0.45);
+}
+
+/* Reykjavik — mono underlay effect via outline simulation */
+.dest--reykjavik .dest-name {
+  -webkit-text-stroke: 1.5px var(--color-fg);
+  color: transparent;
+}
+
+.dest--reykjavik .dest-name-break {
+  -webkit-text-stroke: 1.5px rgba(240, 240, 240, 0.3);
+  color: transparent;
+}
+
+/* Amalfi Coast — serif for elegance */
+.dest--amalfi .dest-name {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: clamp(3.5rem, 14vw, 14rem);
+}
+
+.dest--amalfi .dest-name-break {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(240, 240, 240, 0.35);
+}
+
+
+/* ——————————————————————————————————————————————
+   FOOTER — one final shout
+   —————————————————————————————————————————————— */
+
+.footer {
+  position: relative;
+  padding: clamp(6rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-headline);
+  font-size: clamp(4rem, 20vw, 18rem);
+  white-space: nowrap;
+  color: rgba(240, 240, 240, 0.025);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.05em;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-big {
+  font-family: var(--font-headline);
+  font-size: clamp(6rem, 25vw, 22rem);
+  line-height: 0.85;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+.footer-small {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+  line-height: 1.8;
+  color: rgba(240, 240, 240, 0.4);
+  max-width: 50ch;
+  margin: 0 auto 2rem;
+}
+
+.footer-small em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-fg);
+}
+
+.footer-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.15);
+}
+
+
+/* ——————————————————————————————————————————————
+   RESPONSIVE — type adapts, never surrenders
+   —————————————————————————————————————————————— */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 4vw 3rem;
+  }
+
+  .hero-vertical-left,
+  .hero-vertical-right {
+    display: none;
+  }
+
+  .hero-word--to {
+    letter-spacing: 0.15em;
+    margin-left: 0.2em;
+  }
+
+  .dest {
+    min-height: auto;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
+  }
+
+  .dest:nth-child(even) {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .dest:nth-child(even) .dest-name-break {
+    margin-right: 0;
+    margin-left: clamp(0.5rem, 3vw, 2rem);
+  }
+
+  .dest:nth-child(even) .dest-body {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .dest:nth-child(even) .dest-detail {
+    margin-right: 0;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+
+  .dest-body {
+    margin-left: 0;
+  }
+
+  .dest-detail {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .dest-name-break {
+    margin-left: clamp(0.5rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-word--best,
+  .hero-word--places {
+    font-size: clamp(4rem, 20vw, 10rem);
+  }
+
+  .hero-word--travel {
+    font-size: clamp(5rem, 25vw, 12rem);
+  }
+
+  .dest-name {
+    font-size: clamp(3.5rem, 16vw, 8rem);
+  }
+
+  .dest--santorini .dest-name {
+    font-size: clamp(3rem, 14vw, 7rem);
+  }
+
+  .dest--amalfi .dest-name {
+    font-size: clamp(2.5rem, 12vw, 6rem);
+  }
+
+  .footer-big {
+    font-size: clamp(5rem, 22vw, 10rem);
+  }
+}
+
+
+/* ——————————————————————————————————————————————
+   PRINT — because type deserves paper too
+   —————————————————————————————————————————————— */
+
+@media print {
+  html {
+    background: #fff;
+    color: #000;
+  }
+
+  .bg-texture,
+  .dest-bg-word,
+  .dest-texture,
+  .footer-bg-text,
+  .hero-vertical-left,
+  .hero-vertical-right,
+  .back-nav {
+    display: none;
+  }
+
+  .dest {
+    page-break-inside: avoid;
+    min-height: auto;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .hero-word,
+  .dest-name,
+  .footer-big {
+    color: #000;
+  }
+
+  .hero-break,
+  .hero-word--best,
+  .dest-number,
+  .dest-detail-label,
+  .footer-big {
+    color: #000;
+  }
+}
+
+
+/* =============================================================
+   END — Every pixel on this page was made of letters.
+   No images were harmed in the making of this design.
+   ============================================================= */
