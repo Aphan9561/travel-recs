@@ -1,9 +1,7 @@
 /* ============================================================
-   MAP / CARTOGRAPHY THEME — Best Places to Travel
-   Vintage atlas, old-world explorer aesthetic
+   INTERACTIVE MAP / CARTOGRAPHY THEME
    ============================================================ */
 
-/* --- Reset & Base --- */
 *,
 *::before,
 *::after {
@@ -13,34 +11,23 @@
 }
 
 :root {
-  /* Parchment & Paper */
   --parchment:        #f5edd6;
   --parchment-dark:   #e8dcc4;
   --parchment-light:  #faf6eb;
   --cream:            #fdfaf0;
-
-  /* Ink & Text */
   --ink-dark:         #2c1e0e;
   --ink-medium:       #5a4630;
   --ink-light:        #8a7554;
   --ink-faded:        #b5a280;
-
-  /* Map Colors */
   --map-green:        #6b7f52;
-  --map-green-muted:  #8a9e6e;
   --map-blue:         #5b7a8a;
-  --map-blue-muted:   #7a9aaa;
   --map-red:          #9e4a3a;
   --map-red-muted:    #b86e5e;
   --map-gold:         #c9a84c;
   --map-gold-dark:    #a68a2e;
-
-  /* Borders & Lines */
   --border-color:     #b5a280;
   --border-dark:      #8a7554;
   --route-color:      #9e4a3a;
-
-  /* Fonts */
   --font-display:     'Playfair Display', 'Georgia', serif;
   --font-body:        'Libre Baskerville', 'Georgia', serif;
   --font-smallcaps:   'IM Fell English SC', 'Georgia', serif;
@@ -59,18 +46,13 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
-
-  /* Parchment texture (layered gradients) */
   background-image:
     radial-gradient(ellipse at 20% 50%, rgba(139, 119, 80, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(139, 119, 80, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(101, 85, 55, 0.05) 0%, transparent 55%),
-    radial-gradient(ellipse at 10% 90%, rgba(170, 145, 100, 0.07) 0%, transparent 40%),
-    radial-gradient(ellipse at 90% 70%, rgba(130, 110, 70, 0.06) 0%, transparent 45%);
+    radial-gradient(ellipse at 50% 80%, rgba(101, 85, 55, 0.05) 0%, transparent 55%);
   background-attachment: fixed;
 }
 
-/* Subtle page border (like a map sheet) */
 body::before {
   content: '';
   position: fixed;
@@ -172,10 +154,6 @@ body::after {
 .compass-s   { bottom: 0; left: 50%; transform: translateX(-50%); font-size: 0.7rem; }
 .compass-e   { right: 0; top: 50%; transform: translateY(-50%); font-size: 0.7rem; }
 .compass-w   { left: 0; top: 50%; transform: translateY(-50%); font-size: 0.7rem; }
-.compass-ne  { top: 14px; right: 10px; font-size: 0.5rem; }
-.compass-se  { bottom: 14px; right: 10px; font-size: 0.5rem; }
-.compass-sw  { bottom: 14px; left: 10px; font-size: 0.5rem; }
-.compass-nw  { top: 14px; left: 10px; font-size: 0.5rem; }
 
 .compass-center {
   top: 50%;
@@ -239,7 +217,6 @@ body::after {
     linear-gradient(45deg,  transparent 8px, var(--parchment-light) 8px);
 }
 
-/* Inner decorative border */
 .cartouche-inner::before {
   content: '';
   position: absolute;
@@ -247,7 +224,6 @@ body::after {
   border: 1px solid var(--border-color);
 }
 
-/* Top ornament line */
 .cartouche-inner::after {
   content: '\2726  \2726  \2726';
   position: absolute;
@@ -296,262 +272,342 @@ body::after {
 
 
 /* ============================================================
-   ROUTE LINES (Decorative)
+   MAP CONTROLS
    ============================================================ */
-.route-line {
-  height: 0;
-  margin: 2.5rem auto;
-  max-width: 500px;
-  border-top: 2px dashed var(--route-color);
-  opacity: 0.35;
-  position: relative;
-}
-
-.route-line::before,
-.route-line::after {
-  content: '\2666';
-  position: absolute;
-  top: -9px;
-  font-size: 0.7rem;
-  color: var(--route-color);
-}
-
-.route-line::before { left: -4px; }
-.route-line::after  { right: -4px; }
-
-.route-line-1 { max-width: 350px; }
-.route-line-2 { max-width: 420px; transform: rotate(-1deg); }
-.route-line-3 { max-width: 380px; transform: rotate(0.5deg); }
-
-
-/* ============================================================
-   ATLAS INTRODUCTION
-   ============================================================ */
-.atlas-intro {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
-}
-
-.atlas-intro p {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--ink-medium);
-  line-height: 1.9;
-}
-
-
-/* ============================================================
-   DESTINATIONS / WAYPOINTS
-   ============================================================ */
-.destinations {
-  max-width: 780px;
-  margin: 1rem auto 0;
-  padding: 0 2rem;
-  position: relative;
-}
-
-/* Vertical dotted "route" line connecting waypoints */
-.destinations::before {
-  content: '';
-  position: absolute;
-  left: calc(2rem + 28px);
-  top: 0;
-  bottom: 0;
-  width: 0;
-  border-left: 2px dotted var(--ink-faded);
-  opacity: 0.4;
-}
-
-.waypoint {
-  display: flex;
-  gap: 1.8rem;
-  padding: 2rem 0;
-  position: relative;
-  align-items: flex-start;
-}
-
-.waypoint:hover .waypoint-content {
-  background: var(--parchment-light);
-  border-color: var(--border-dark);
-}
-
-.waypoint:hover .marker-dot {
-  background-color: var(--map-red);
-  box-shadow: 0 0 0 4px rgba(158, 74, 58, 0.15);
-}
-
-
-/* --- Waypoint Marker --- */
-.waypoint-marker {
-  flex-shrink: 0;
-  width: 56px;
+.map-controls {
+  position: fixed;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  z-index: 60;
+}
+
+.map-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--border-dark);
+  background: var(--parchment-light);
+  color: var(--ink-dark);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding-top: 1.6rem;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.map-btn:hover {
+  background: var(--ink-dark);
+  color: var(--parchment-light);
+}
+
+.map-btn.active {
+  background: var(--map-red);
+  color: var(--parchment-light);
+  border-color: var(--map-red);
+}
+
+
+/* ============================================================
+   INTERACTIVE MAP
+   ============================================================ */
+.map-container {
+  max-width: 960px;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
   position: relative;
+}
+
+.map-viewport {
+  border: 3px double var(--border-dark);
+  background: var(--parchment-light);
+  overflow: hidden;
+  cursor: grab;
+  position: relative;
+}
+
+.map-viewport:active {
+  cursor: grabbing;
+}
+
+.map-viewport::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--border-color);
+  pointer-events: none;
   z-index: 2;
 }
 
-.marker-dot {
+.world-map {
+  width: 100%;
+  height: auto;
   display: block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: var(--map-red-muted);
-  border: 2px solid var(--parchment);
-  box-shadow: 0 0 0 2px var(--map-red-muted);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
 }
 
-.marker-number {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--ink-light);
-  letter-spacing: 0.05em;
+/* Continent styling */
+.continents path {
+  transition: fill 0.3s ease;
+}
+
+.continents path:hover {
+  fill: #d8ccb0;
+}
+
+/* Pin styling */
+.pin {
+  cursor: pointer;
+}
+
+.pin-dot {
+  transition: fill 0.2s ease, r 0.2s ease;
+}
+
+.pin:hover .pin-dot {
+  fill: var(--map-gold-dark);
+  r: 7;
+}
+
+.pin.active .pin-dot {
+  fill: var(--map-gold-dark);
+  r: 7;
+}
+
+.pin-label {
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.pin:hover .pin-label {
+  opacity: 1;
+}
+
+/* Pin pulse animation */
+.pin-pulse {
+  opacity: 0;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.pin:nth-child(1) .pin-pulse { animation-delay: 0s; }
+.pin:nth-child(2) .pin-pulse { animation-delay: 0.5s; }
+.pin:nth-child(3) .pin-pulse { animation-delay: 1s; }
+.pin:nth-child(4) .pin-pulse { animation-delay: 1.5s; }
+.pin:nth-child(5) .pin-pulse { animation-delay: 2s; }
+.pin:nth-child(6) .pin-pulse { animation-delay: 2.5s; }
+
+@keyframes pulse {
+  0%   { r: 5;  opacity: 0.6; }
+  100% { r: 18; opacity: 0; }
+}
+
+/* Route line animation */
+.route-line {
+  stroke-dashoffset: 200;
+  animation: drawRoute 4s linear infinite;
+}
+
+@keyframes drawRoute {
+  to { stroke-dashoffset: 0; }
+}
+
+.route-paths.hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.route-paths {
+  transition: opacity 0.4s ease;
 }
 
 
-/* --- Waypoint Content --- */
-.waypoint-content {
-  flex: 1;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  padding: 1.5rem 1.8rem;
-  position: relative;
-  transition: all 0.3s ease;
+/* ============================================================
+   INFO PANEL
+   ============================================================ */
+.info-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  background: var(--parchment-light);
+  border: 2px solid var(--border-dark);
+  padding: 1.8rem;
+  z-index: 10;
+  transform: translateX(120%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.06);
 }
 
-/* Corner notch effect */
-.waypoint-content::before {
+.info-panel::before {
   content: '';
   position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 16px;
-  height: 16px;
-  background:
-    linear-gradient(225deg, var(--parchment) 50%, transparent 50%);
-  border-bottom: 1px solid var(--border-color);
-  border-left: 1px solid var(--border-color);
+  inset: 4px;
+  border: 1px solid var(--border-color);
+  pointer-events: none;
 }
 
-/* Cross-hair decoration in top-left */
-.waypoint-content::after {
-  content: '+';
+.info-panel.visible {
+  transform: translateX(0);
+}
+
+.info-close {
   position: absolute;
-  top: 6px;
-  left: 8px;
-  font-family: monospace;
-  font-size: 0.65rem;
-  color: var(--ink-faded);
-  opacity: 0.6;
-}
-
-.waypoint-name {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--ink-dark);
-  margin-bottom: 0.1rem;
-  letter-spacing: 0.03em;
-}
-
-.waypoint-region {
-  font-family: var(--font-smallcaps);
-  font-size: 0.8rem;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
   color: var(--ink-light);
-  letter-spacing: 0.12em;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.info-close:hover {
+  color: var(--map-red);
+}
+
+.info-number {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-faded);
+  letter-spacing: 0.1em;
+  display: block;
   margin-bottom: 0.3rem;
 }
 
-.waypoint-coords {
-  font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
-  color: var(--map-blue);
-  letter-spacing: 0.06em;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px dotted var(--border-color);
+.info-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink-dark);
+  margin-bottom: 0.2rem;
 }
 
-.waypoint-desc {
-  font-size: 0.92rem;
+.info-region {
+  font-family: var(--font-smallcaps);
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.2rem;
+}
+
+.info-coords {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: var(--map-blue);
+  letter-spacing: 0.06em;
+}
+
+.info-divider {
+  height: 0;
+  border-top: 1px dotted var(--border-color);
+  margin: 1rem 0;
+}
+
+.info-desc {
+  font-size: 0.88rem;
   color: var(--ink-medium);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
-.waypoint-details {
+.info-tags {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.detail-tag {
+.info-tag {
   font-family: var(--font-smallcaps);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.1em;
   color: var(--ink-light);
   border: 1px solid var(--border-color);
-  padding: 0.25rem 0.65rem;
-  background: var(--parchment-light);
-}
-
-
-/* --- Route Connector (between waypoints) --- */
-.route-connector {
-  width: 56px;
-  height: 30px;
-  position: relative;
-  margin-left: 0;
-}
-
-.route-connector::before {
-  content: '\2022  \2022  \2022';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.4rem;
-  color: var(--route-color);
-  opacity: 0.5;
-  letter-spacing: 0.3em;
-  writing-mode: vertical-lr;
+  padding: 0.2rem 0.55rem;
+  background: var(--parchment);
 }
 
 
 /* ============================================================
-   COORDINATE LABELS (Decorative)
+   DESTINATION LIST (below map)
    ============================================================ */
-.coord-label {
-  position: fixed;
-  font-family: 'Courier New', monospace;
-  font-size: 0.65rem;
-  color: var(--ink-faded);
-  opacity: 0.3;
-  letter-spacing: 0.05em;
-  z-index: 50;
-  pointer-events: none;
+.dest-list {
+  max-width: 960px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
 }
 
-.coord-label-left {
-  left: 20px;
-  top: 50%;
-  transform: rotate(-90deg) translateX(-50%);
-  transform-origin: left center;
+.dest-list-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink-dark);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
 }
 
-.coord-label-right {
-  right: 20px;
-  top: 50%;
-  transform: rotate(90deg) translateX(50%);
-  transform-origin: right center;
+.dest-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.dest-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.25s ease;
+  text-align: left;
+}
+
+.dest-list-item:hover,
+.dest-list-item.active {
+  background: var(--parchment-light);
+  border-color: var(--border-dark);
+}
+
+.dest-list-item.active {
+  border-color: var(--map-red);
+}
+
+.dest-list-num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--map-red-muted);
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.dest-list-name {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-dark);
+}
+
+.dest-list-region {
+  font-family: var(--font-smallcaps);
+  font-size: 0.7rem;
+  color: var(--ink-light);
+  margin-left: auto;
+  letter-spacing: 0.06em;
 }
 
 
@@ -571,7 +627,6 @@ body::after {
   background: var(--parchment-light);
 }
 
-/* Inner border */
 .legend-border::before {
   content: '';
   position: absolute;
@@ -647,8 +702,6 @@ body::after {
   letter-spacing: 0.08em;
 }
 
-
-/* --- Scale Bar --- */
 .legend-scale {
   text-align: center;
   margin-bottom: 1.2rem;
@@ -684,8 +737,6 @@ body::after {
   letter-spacing: 0.08em;
 }
 
-
-/* --- Footer Text --- */
 .legend-footer-text {
   text-align: center;
   font-family: var(--font-smallcaps);
@@ -704,112 +755,53 @@ body::after {
   body::before { inset: 6px; }
   body::after  { inset: 9px; }
 
-  .compass-rose {
-    top: 30px;
-    right: 30px;
-    width: 70px;
-    height: 70px;
-    opacity: 0.2;
-  }
+  .compass-rose { display: none; }
 
-  .compass-ring { width: 42px; height: 42px; }
-  .compass-needle-v { height: 38px; }
-  .compass-needle-h { width: 38px; }
-  .compass-ne, .compass-se, .compass-sw, .compass-nw { display: none; }
-
-  .cartouche-title {
-    font-size: 1.9rem;
-  }
-
-  .cartouche-inner {
-    padding: 2rem 1.5rem 1.5rem;
-  }
-
-  .destinations::before {
-    display: none;
-  }
-
-  .waypoint {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .waypoint-marker {
+  .map-controls {
+    left: auto;
+    right: 20px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
     flex-direction: row;
-    width: auto;
-    padding-top: 0;
   }
 
-  .route-connector {
+  .cartouche-title { font-size: 1.9rem; }
+  .cartouche-inner { padding: 2rem 1.5rem 1.5rem; }
+
+  .dest-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
     width: 100%;
-    height: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    transform: translateY(100%);
+    border-radius: 12px 12px 0 0;
   }
 
-  .route-connector::before {
-    writing-mode: horizontal-tb;
+  .info-panel.visible {
+    transform: translateY(0);
   }
 
   .legend-items {
     grid-template-columns: 1fr;
   }
-
-  .coord-label {
-    display: none;
-  }
-
-  .corner-ornament {
-    width: 24px;
-    height: 24px;
-  }
-
-  .corner-tl::before, .corner-tr::before,
-  .corner-bl::before, .corner-br::before { width: 14px; }
-  .corner-tl::after, .corner-tr::after,
-  .corner-bl::after, .corner-br::after { height: 14px; }
 }
 
 @media (max-width: 480px) {
-  .back-nav {
-    padding: 1.5rem 1.5rem 0;
-  }
-
-  .cartouche {
-    padding: 0 1.2rem;
-  }
-
-  .cartouche-title {
-    font-size: 1.5rem;
-  }
-
-  .cartouche-subtitle {
-    font-size: 0.75rem;
-  }
-
-  .destinations {
-    padding: 0 1.2rem;
-  }
-
-  .waypoint-content {
-    padding: 1.2rem;
-  }
-
-  .waypoint-name {
-    font-size: 1.3rem;
-  }
-
-  .atlas-intro {
-    padding: 0 1.2rem;
-  }
-
-  .map-legend {
-    padding: 0 1.2rem;
-  }
-
-  .legend-border {
-    padding: 1.2rem;
-  }
-
-  .compass-rose {
-    display: none;
-  }
+  .back-nav { padding: 1.5rem 1.5rem 0; }
+  .cartouche { padding: 0 1.2rem; }
+  .cartouche-title { font-size: 1.5rem; }
+  .map-container { padding: 0 1rem; }
+  .dest-list { padding: 0 1rem; }
+  .dest-list-grid { grid-template-columns: 1fr; }
+  .map-legend { padding: 0 1.2rem; }
+  .legend-border { padding: 1.2rem; }
 }

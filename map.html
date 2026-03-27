@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Best Places to Travel — An Explorer's Atlas</title>
+  <title>Best Places to Travel — Interactive Explorer's Atlas</title>
   <link rel="stylesheet" href="map.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
     <a href="gallery.html" class="back-link">&larr; Back to Gallery</a>
   </nav>
 
-  <!-- Compass Rose (decorative, top-right) -->
+  <!-- Compass Rose -->
   <div class="compass-rose" aria-hidden="true">
     <span class="compass-n">N</span>
     <span class="compass-e">E</span>
@@ -23,201 +23,210 @@
     <span class="compass-ring"></span>
     <span class="compass-needle-v"></span>
     <span class="compass-needle-h"></span>
-    <span class="compass-ne">NE</span>
-    <span class="compass-se">SE</span>
-    <span class="compass-sw">SW</span>
-    <span class="compass-nw">NW</span>
   </div>
 
   <!-- Header Cartouche -->
   <header class="cartouche">
     <div class="cartouche-inner">
-      <p class="cartouche-subtitle">A Curated Atlas of</p>
+      <p class="cartouche-subtitle">An Interactive Atlas of</p>
       <h1 class="cartouche-title">The World's Best<br>Places to Travel</h1>
       <div class="cartouche-ornament" aria-hidden="true">
         &#10038; &#8226; &#10038; &#8226; &#10038;
       </div>
-      <p class="cartouche-edition">Anno MMXXVI &mdash; Compiled for the Discerning Explorer</p>
+      <p class="cartouche-edition">Anno MMXXVI &mdash; Click a waypoint to explore</p>
     </div>
   </header>
 
-  <!-- Dotted Route Line (decorative) -->
-  <div class="route-line route-line-1" aria-hidden="true"></div>
+  <!-- Map Controls -->
+  <div class="map-controls">
+    <button class="map-btn" id="zoom-in" title="Zoom In">+</button>
+    <button class="map-btn" id="zoom-out" title="Zoom Out">&minus;</button>
+    <button class="map-btn" id="zoom-reset" title="Reset View">&#8634;</button>
+    <button class="map-btn" id="toggle-routes" title="Toggle Routes">&#9473;</button>
+  </div>
 
-  <!-- Introduction -->
-  <section class="atlas-intro">
-    <p>
-      Herein lies a collection of the globe's most extraordinary destinations,
-      charted and catalogued for those who seek wonder beyond the familiar horizon.
-      Each waypoint has been surveyed, measured, and found worthy of the journey.
-    </p>
+  <!-- Interactive Map Container -->
+  <section class="map-container" id="map-container">
+    <div class="map-viewport" id="map-viewport">
+      <svg class="world-map" id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grid lines -->
+        <g class="map-grid" opacity="0.15">
+          <line x1="0" y1="250" x2="1000" y2="250" stroke="#8a7554" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="0" y1="125" x2="1000" y2="125" stroke="#8a7554" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <line x1="0" y1="375" x2="1000" y2="375" stroke="#8a7554" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <line x1="500" y1="0" x2="500" y2="500" stroke="#8a7554" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="250" y1="0" x2="250" y2="500" stroke="#8a7554" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <line x1="750" y1="0" x2="750" y2="500" stroke="#8a7554" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <!-- Additional grid -->
+          <line x1="125" y1="0" x2="125" y2="500" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="375" y1="0" x2="375" y2="500" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="625" y1="0" x2="625" y2="500" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="875" y1="0" x2="875" y2="500" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="0" y1="62.5" x2="1000" y2="62.5" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="0" y1="187.5" x2="1000" y2="187.5" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="0" y1="312.5" x2="1000" y2="312.5" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+          <line x1="0" y1="437.5" x2="1000" y2="437.5" stroke="#8a7554" stroke-width="0.3" stroke-dasharray="1,8"/>
+        </g>
+
+        <!-- Simplified continent outlines -->
+        <g class="continents" fill="#e0d5b8" stroke="#b5a280" stroke-width="0.8">
+          <!-- North America -->
+          <path d="M120,80 L145,75 L170,80 L195,90 L210,85 L230,95 L240,110 L250,130 L245,145 L250,160 L255,175 L250,190 L240,200 L230,205 L225,215 L215,230 L200,235 L185,225 L175,215 L160,225 L150,240 L145,250 L140,245 L135,235 L128,225 L120,220 L110,210 L105,195 L95,185 L85,170 L90,155 L100,140 L105,125 L100,110 L105,95 L115,85 Z"/>
+          <!-- South America -->
+          <path d="M215,270 L225,265 L240,270 L255,280 L265,295 L270,315 L275,335 L270,355 L265,375 L255,390 L245,400 L235,410 L225,405 L220,390 L215,375 L210,355 L215,335 L220,315 L215,295 L210,280 Z"/>
+          <!-- Europe -->
+          <path d="M450,90 L460,85 L475,80 L490,85 L505,80 L520,85 L530,95 L525,110 L520,120 L510,130 L500,135 L490,140 L480,145 L470,140 L460,135 L455,125 L450,115 L445,100 Z"/>
+          <!-- Africa -->
+          <path d="M460,175 L475,170 L495,175 L510,180 L525,190 L535,205 L540,225 L535,245 L530,265 L520,285 L510,300 L500,310 L490,315 L480,310 L470,300 L462,285 L458,265 L455,245 L452,225 L455,205 L458,190 Z"/>
+          <!-- Asia -->
+          <path d="M540,65 L570,60 L600,55 L640,60 L680,65 L720,70 L755,80 L770,95 L780,110 L785,130 L780,150 L770,165 L755,175 L740,180 L720,185 L700,180 L680,175 L660,180 L640,190 L620,195 L600,190 L580,180 L560,170 L545,155 L535,140 L530,120 L535,100 L540,80 Z"/>
+          <!-- India -->
+          <path d="M640,190 L655,195 L665,210 L670,230 L665,250 L655,260 L645,255 L635,245 L630,230 L632,215 L635,200 Z"/>
+          <!-- Southeast Asia / Indonesia -->
+          <path d="M700,210 L720,205 L740,210 L755,220 L740,225 L720,230 L705,225 Z"/>
+          <path d="M730,235 L750,230 L770,235 L760,245 L745,248 L730,242 Z"/>
+          <!-- Australia -->
+          <path d="M760,310 L790,300 L820,305 L845,315 L855,335 L850,355 L835,370 L815,375 L795,370 L775,360 L762,345 L755,330 Z"/>
+          <!-- Japan -->
+          <path d="M790,110 L795,100 L800,105 L798,115 L793,120 Z"/>
+          <!-- Greenland -->
+          <path d="M310,40 L340,35 L355,45 L350,60 L335,65 L315,60 Z"/>
+          <!-- Iceland -->
+          <path d="M410,55 L425,50 L435,55 L430,63 L418,65 Z"/>
+        </g>
+
+        <!-- Grid labels -->
+        <g class="grid-labels" fill="#8a7554" font-family="'Courier New', monospace" font-size="7" opacity="0.4">
+          <text x="5" y="253">0°</text>
+          <text x="5" y="128">45°N</text>
+          <text x="5" y="65">67°N</text>
+          <text x="5" y="378">45°S</text>
+          <text x="497" y="497">0°</text>
+          <text x="247" y="497">90°W</text>
+          <text x="747" y="497">90°E</text>
+        </g>
+
+        <!-- Route paths (animated) -->
+        <g class="route-paths" id="route-paths">
+          <!-- Kyoto to Santorini -->
+          <path class="route-line" d="M877,152 C800,140 650,120 570,143" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Santorini to Marrakech -->
+          <path class="route-line" d="M570,143 C540,155 500,170 488,186" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Marrakech to Amalfi -->
+          <path class="route-line" d="M488,186 C495,175 510,155 539,136" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Amalfi to Reykjavik -->
+          <path class="route-line" d="M539,136 C500,110 460,80 440,72" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Reykjavik to Patagonia -->
+          <path class="route-line" d="M440,72 C380,120 300,250 240,380" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+        </g>
+
+        <!-- Destination pins -->
+        <g class="destination-pins" id="destination-pins">
+
+          <!-- Kyoto: 35°N, 135.7°E => x=877, y=152 -->
+          <g class="pin" data-dest="kyoto" transform="translate(877, 152)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Kyoto</text>
+          </g>
+
+          <!-- Santorini: 36.4°N, 25.5°E => x=570, y=143 -->
+          <g class="pin" data-dest="santorini" transform="translate(570, 143)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Santorini</text>
+          </g>
+
+          <!-- Patagonia: 41.8°S, 68.9°W => x=240, y=380 (approximate) -->
+          <g class="pin" data-dest="patagonia" transform="translate(240, 380)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Patagonia</text>
+          </g>
+
+          <!-- Marrakech: 31.6°N, 8°W => x=488, y=186 (approximate) -->
+          <g class="pin" data-dest="marrakech" transform="translate(488, 186)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Marrakech</text>
+          </g>
+
+          <!-- Reykjavik: 64.1°N, 21.9°W => x=440, y=72 -->
+          <g class="pin" data-dest="reykjavik" transform="translate(440, 72)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Reykjavik</text>
+          </g>
+
+          <!-- Amalfi Coast: 40.6°N, 14.6°E => x=539, y=136 -->
+          <g class="pin" data-dest="amalfi" transform="translate(539, 136)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Amalfi</text>
+          </g>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- Info Panel (appears on pin click) -->
+    <div class="info-panel" id="info-panel">
+      <button class="info-close" id="info-close">&times;</button>
+      <span class="info-number" id="info-number"></span>
+      <h2 class="info-name" id="info-name"></h2>
+      <p class="info-region" id="info-region"></p>
+      <p class="info-coords" id="info-coords"></p>
+      <div class="info-divider"></div>
+      <p class="info-desc" id="info-desc"></p>
+      <div class="info-tags" id="info-tags"></div>
+    </div>
   </section>
 
-  <!-- Dotted Route Line -->
-  <div class="route-line route-line-2" aria-hidden="true"></div>
-
-  <!-- Destinations Grid -->
-  <section class="destinations">
-
-    <article class="waypoint">
-      <div class="waypoint-marker" aria-hidden="true">
-        <span class="marker-dot"></span>
-        <span class="marker-number">I</span>
-      </div>
-      <div class="waypoint-content">
-        <h2 class="waypoint-name">Kyoto</h2>
-        <p class="waypoint-region">Kansai, Japan</p>
-        <p class="waypoint-coords">35.0116&deg; N, 135.7681&deg; E</p>
-        <p class="waypoint-desc">
-          Ancient capital of a thousand temples, where bamboo groves whisper
-          and geisha still glide through lantern-lit alleys. A place where
-          every season paints its own masterpiece.
-        </p>
-        <div class="waypoint-details">
-          <span class="detail-tag">Temples</span>
-          <span class="detail-tag">Gardens</span>
-          <span class="detail-tag">Tea Ceremony</span>
-        </div>
-      </div>
-    </article>
-
-    <div class="route-connector" aria-hidden="true"></div>
-
-    <article class="waypoint">
-      <div class="waypoint-marker" aria-hidden="true">
-        <span class="marker-dot"></span>
-        <span class="marker-number">II</span>
-      </div>
-      <div class="waypoint-content">
-        <h2 class="waypoint-name">Santorini</h2>
-        <p class="waypoint-region">Cyclades, Greece</p>
-        <p class="waypoint-coords">36.3932&deg; N, 25.4615&deg; E</p>
-        <p class="waypoint-desc">
-          A crescent of volcanic cliffs crowned with whitewashed villages,
-          where the Aegean stretches endlessly and sunsets over the caldera
-          have moved poets to silence.
-        </p>
-        <div class="waypoint-details">
-          <span class="detail-tag">Caldera Views</span>
-          <span class="detail-tag">Sunsets</span>
-          <span class="detail-tag">Wine</span>
-        </div>
-      </div>
-    </article>
-
-    <div class="route-connector" aria-hidden="true"></div>
-
-    <article class="waypoint">
-      <div class="waypoint-marker" aria-hidden="true">
-        <span class="marker-dot"></span>
-        <span class="marker-number">III</span>
-      </div>
-      <div class="waypoint-content">
-        <h2 class="waypoint-name">Patagonia</h2>
-        <p class="waypoint-region">Argentina &amp; Chile</p>
-        <p class="waypoint-coords">41.8101&deg; S, 68.9063&deg; W</p>
-        <p class="waypoint-desc">
-          The uttermost end of the earth, where glaciers calve into turquoise
-          lakes, granite spires pierce the clouds, and the wind carries
-          the wild spirit of untamed lands.
-        </p>
-        <div class="waypoint-details">
-          <span class="detail-tag">Glaciers</span>
-          <span class="detail-tag">Trekking</span>
-          <span class="detail-tag">Wildlife</span>
-        </div>
-      </div>
-    </article>
-
-    <div class="route-connector" aria-hidden="true"></div>
-
-    <article class="waypoint">
-      <div class="waypoint-marker" aria-hidden="true">
-        <span class="marker-dot"></span>
-        <span class="marker-number">IV</span>
-      </div>
-      <div class="waypoint-content">
-        <h2 class="waypoint-name">Marrakech</h2>
-        <p class="waypoint-region">Marrakech-Safi, Morocco</p>
-        <p class="waypoint-coords">31.6295&deg; N, 7.9811&deg; W</p>
-        <p class="waypoint-desc">
-          The Red City, where labyrinthine souks overflow with spice and silk,
-          where riads hide courtyards of impossible beauty, and the call to
-          prayer drifts over terracotta rooftops.
-        </p>
-        <div class="waypoint-details">
-          <span class="detail-tag">Souks</span>
-          <span class="detail-tag">Architecture</span>
-          <span class="detail-tag">Cuisine</span>
-        </div>
-      </div>
-    </article>
-
-    <div class="route-connector" aria-hidden="true"></div>
-
-    <article class="waypoint">
-      <div class="waypoint-marker" aria-hidden="true">
-        <span class="marker-dot"></span>
-        <span class="marker-number">V</span>
-      </div>
-      <div class="waypoint-content">
-        <h2 class="waypoint-name">Reykjavik</h2>
-        <p class="waypoint-region">Capital Region, Iceland</p>
-        <p class="waypoint-coords">64.1466&deg; N, 21.9426&deg; W</p>
-        <p class="waypoint-desc">
-          Gateway to fire and ice, where geothermal springs steam beneath
-          the aurora borealis, black sand beaches meet roaring waves, and
-          the midnight sun defies the clock.
-        </p>
-        <div class="waypoint-details">
-          <span class="detail-tag">Northern Lights</span>
-          <span class="detail-tag">Geysers</span>
-          <span class="detail-tag">Hot Springs</span>
-        </div>
-      </div>
-    </article>
-
-    <div class="route-connector" aria-hidden="true"></div>
-
-    <article class="waypoint">
-      <div class="waypoint-marker" aria-hidden="true">
-        <span class="marker-dot"></span>
-        <span class="marker-number">VI</span>
-      </div>
-      <div class="waypoint-content">
-        <h2 class="waypoint-name">Amalfi Coast</h2>
-        <p class="waypoint-region">Campania, Italy</p>
-        <p class="waypoint-coords">40.6340&deg; N, 14.6027&deg; E</p>
-        <p class="waypoint-desc">
-          A ribbon of pastel villages clinging to dramatic sea cliffs,
-          where lemon groves perfume the salt air, and every winding road
-          reveals another view that stops the heart.
-        </p>
-        <div class="waypoint-details">
-          <span class="detail-tag">Coastal Roads</span>
-          <span class="detail-tag">Limoncello</span>
-          <span class="detail-tag">Villages</span>
-        </div>
-      </div>
-    </article>
-
+  <!-- Destination List (below map) -->
+  <section class="dest-list">
+    <h2 class="dest-list-title">Surveyed Waypoints</h2>
+    <div class="dest-list-grid" id="dest-list-grid">
+      <button class="dest-list-item" data-dest="kyoto">
+        <span class="dest-list-num">I</span>
+        <span class="dest-list-name">Kyoto</span>
+        <span class="dest-list-region">Japan</span>
+      </button>
+      <button class="dest-list-item" data-dest="santorini">
+        <span class="dest-list-num">II</span>
+        <span class="dest-list-name">Santorini</span>
+        <span class="dest-list-region">Greece</span>
+      </button>
+      <button class="dest-list-item" data-dest="patagonia">
+        <span class="dest-list-num">III</span>
+        <span class="dest-list-name">Patagonia</span>
+        <span class="dest-list-region">Argentina & Chile</span>
+      </button>
+      <button class="dest-list-item" data-dest="marrakech">
+        <span class="dest-list-num">IV</span>
+        <span class="dest-list-name">Marrakech</span>
+        <span class="dest-list-region">Morocco</span>
+      </button>
+      <button class="dest-list-item" data-dest="reykjavik">
+        <span class="dest-list-num">V</span>
+        <span class="dest-list-name">Reykjavik</span>
+        <span class="dest-list-region">Iceland</span>
+      </button>
+      <button class="dest-list-item" data-dest="amalfi">
+        <span class="dest-list-num">VI</span>
+        <span class="dest-list-name">Amalfi Coast</span>
+        <span class="dest-list-region">Italy</span>
+      </button>
+    </div>
   </section>
-
-  <!-- Decorative Route Line -->
-  <div class="route-line route-line-3" aria-hidden="true"></div>
-
-  <!-- Coordinate Grid Decorations -->
-  <div class="coord-label coord-label-left" aria-hidden="true">40&deg; N</div>
-  <div class="coord-label coord-label-right" aria-hidden="true">25&deg; E</div>
 
   <!-- Footer Legend -->
   <footer class="map-legend">
     <div class="legend-border">
-      <h3 class="legend-title">Legend &amp; Key</h3>
+      <h3 class="legend-title">Legend & Key</h3>
       <div class="legend-items">
         <div class="legend-item">
           <span class="legend-symbol legend-symbol-dot"></span>
-          <span class="legend-label">Surveyed Waypoint</span>
+          <span class="legend-label">Surveyed Waypoint (click to explore)</span>
         </div>
         <div class="legend-item">
           <span class="legend-symbol legend-symbol-route"></span>
@@ -239,7 +248,7 @@
         <p class="scale-label">0 &mdash; 500 &mdash; 1000 &mdash; 2000 &mdash; 5000 km</p>
       </div>
       <p class="legend-footer-text">
-        Cartography &amp; Design &copy; MMXXVI &bull;
+        Cartography & Design &copy; MMXXVI &bull;
         Projection: Mercator &bull;
         All Routes Approximate
       </p>
@@ -252,5 +261,6 @@
   <div class="corner-ornament corner-bl" aria-hidden="true"></div>
   <div class="corner-ornament corner-br" aria-hidden="true"></div>
 
+  <script src="map.js"></script>
 </body>
 </html>
