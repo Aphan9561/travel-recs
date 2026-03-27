@@ -1,0 +1,647 @@
+/* ============================================
+   CINEMATIC TRAVEL — Dark & Atmospheric Design
+   ============================================ */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #0a0a0a;
+  --dark: #111111;
+  --dark-gray: #1a1a1a;
+  --mid-gray: #2a2a2a;
+  --muted: #666666;
+  --light-muted: #999999;
+  --light: #d4d0c8;
+  --off-white: #e8e4dc;
+  --gold: #c8a44e;
+  --gold-light: #e0c97a;
+  --gold-dim: #8a7034;
+  --amber: #d4943a;
+  --warm-black: #0e0c08;
+  --serif: 'Playfair Display', 'Georgia', serif;
+  --sans: 'Raleway', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  background-color: var(--black);
+  color: var(--light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- Letterbox Bands --- */
+.letterbox-band {
+  width: 100%;
+  height: 28px;
+  background: var(--black);
+  border-top: 1px solid var(--mid-gray);
+  border-bottom: 1px solid var(--mid-gray);
+  position: relative;
+}
+
+.letterbox-band::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold-dim) 20%,
+    var(--gold) 50%,
+    var(--gold-dim) 80%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* --- Top Navigation --- */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.7) 100%);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(200, 164, 78, 0.15);
+}
+
+.back-link {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 1px solid rgba(200, 164, 78, 0.3);
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background: rgba(200, 164, 78, 0.1);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.nav-brand {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: var(--light-muted);
+  text-transform: uppercase;
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(200, 164, 78, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(212, 148, 58, 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, var(--warm-black) 0%, var(--dark) 40%, var(--dark-gray) 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, transparent 30%, transparent 70%, rgba(10, 10, 10, 0.8) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  padding: 80px 40px 40px;
+}
+
+.hero-overline {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 1.15;
+  color: var(--off-white);
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.hero-title-accent {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.hero-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 32px;
+}
+
+.hero-subtitle {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--light-muted);
+  max-width: 580px;
+  margin: 0 auto 48px;
+  letter-spacing: 0.3px;
+}
+
+.hero-tagline {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-top: 1px solid rgba(200, 164, 78, 0.2);
+  border-bottom: 1px solid rgba(200, 164, 78, 0.2);
+  display: inline-block;
+  padding: 12px 28px;
+}
+
+/* --- Introduction Section --- */
+.intro-section {
+  padding: 100px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--dark-gray) 0%, var(--dark) 100%);
+}
+
+.intro-content {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.intro-label {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.7rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 20px;
+}
+
+.intro-heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: var(--off-white);
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.intro-text {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+
+/* --- Destinations Section --- */
+.destinations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: var(--black);
+}
+
+/* --- Destination Card (Movie Poster Style) --- */
+.dest-card {
+  position: relative;
+  min-height: 620px;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: 1px solid rgba(200, 164, 78, 0.08);
+}
+
+.dest-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.3) 0%,
+    rgba(10, 10, 10, 0.5) 40%,
+    rgba(10, 10, 10, 0.88) 100%
+  );
+  z-index: 1;
+}
+
+.dest-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Individual Destination Gradient Backgrounds --- */
+
+/* Kyoto: Deep crimson to dark, evoking temples and autumn leaves */
+.dest-kyoto {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(180, 40, 40, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 70%, rgba(200, 164, 78, 0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #1a0a0a 0%, #0d0806 40%, #110e0a 100%);
+}
+
+/* Santorini: Deep ocean blue to white-gold warmth */
+.dest-santorini {
+  background:
+    radial-gradient(ellipse at 60% 20%, rgba(40, 80, 160, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 80%, rgba(200, 164, 78, 0.12) 0%, transparent 50%),
+    linear-gradient(160deg, #08101a 0%, #0a0e18 40%, #0e0c08 100%);
+}
+
+/* Patagonia: Icy blue-teal with granite gray undertones */
+.dest-patagonia {
+  background:
+    radial-gradient(ellipse at 40% 25%, rgba(60, 140, 160, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 75%, rgba(100, 120, 140, 0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #0a1214 0%, #0c1012 40%, #0e0e10 100%);
+}
+
+/* Marrakech: Warm ochre and terracotta tones */
+.dest-marrakech {
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(200, 120, 40, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 25% 70%, rgba(160, 60, 30, 0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #140e06 0%, #100c08 40%, #0e0a06 100%);
+}
+
+/* Reykjavik: Northern lights aurora greens and cool violets */
+.dest-reykjavik {
+  background:
+    radial-gradient(ellipse at 55% 20%, rgba(40, 180, 120, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 60%, rgba(80, 60, 160, 0.18) 0%, transparent 50%),
+    linear-gradient(160deg, #080e0c 0%, #0a0c12 40%, #0c0a10 100%);
+}
+
+/* Amalfi Coast: Sun-warmed pastel warmth, lemon-gold and Mediterranean blue */
+.dest-amalfi {
+  background:
+    radial-gradient(ellipse at 45% 30%, rgba(220, 180, 60, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 65% 75%, rgba(60, 100, 160, 0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #12100a 0%, #0e0c06 40%, #0a0c12 100%);
+}
+
+/* --- Card Typography --- */
+.dest-number {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--gold-dim);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.dest-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--off-white);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.dest-country {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.dest-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.dest-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--light-muted);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.dest-details {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.dest-details li {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+}
+
+.dest-details li::before {
+  content: '\2014';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+  font-size: 0.7rem;
+}
+
+.dest-genre {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border: 1px solid rgba(200, 164, 78, 0.2);
+  display: inline-block;
+  padding: 6px 14px;
+}
+
+/* --- Closing Section --- */
+.closing-section {
+  padding: 120px 40px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(200, 164, 78, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, var(--dark) 0%, var(--dark-gray) 50%, var(--dark) 100%);
+}
+
+.closing-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.closing-label {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.7rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 20px;
+}
+
+.closing-heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: var(--off-white);
+  margin-bottom: 24px;
+}
+
+.closing-text {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* --- Footer --- */
+.cinematic-footer {
+  padding: 60px 40px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--dark) 0%, var(--black) 100%);
+  border-top: 1px solid rgba(200, 164, 78, 0.1);
+}
+
+.footer-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: 0.9rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.footer-divider {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0 auto 28px;
+}
+
+.footer-credits p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+.footer-copyright {
+  font-size: 0.7rem;
+  color: var(--mid-gray);
+  margin-top: 8px;
+  letter-spacing: 1.5px;
+}
+
+/* Film strip decoration */
+.footer-film-strip {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(200, 164, 78, 0.08);
+}
+
+.footer-film-strip span {
+  display: block;
+  width: 18px;
+  height: 12px;
+  border: 1px solid rgba(200, 164, 78, 0.15);
+  border-radius: 1px;
+}
+
+.footer-film-strip span:nth-child(odd) {
+  background: rgba(200, 164, 78, 0.05);
+}
+
+/* --- Responsive Design --- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .destinations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dest-card {
+    min-height: 540px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .top-bar {
+    padding: 12px 20px;
+  }
+
+  .nav-brand {
+    display: none;
+  }
+
+  .hero-content {
+    padding: 100px 24px 40px;
+  }
+
+  .hero-overline {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .destinations {
+    grid-template-columns: 1fr;
+  }
+
+  .dest-card {
+    min-height: 480px;
+    padding: 40px 28px;
+  }
+
+  .intro-section,
+  .closing-section {
+    padding: 70px 24px;
+  }
+
+  .intro-heading {
+    font-size: 1.8rem;
+  }
+
+  .closing-heading {
+    font-size: 2rem;
+  }
+
+  .cinematic-footer {
+    padding: 40px 24px 30px;
+  }
+}
+
+/* --- Selection Styling --- */
+::selection {
+  background: rgba(200, 164, 78, 0.3);
+  color: var(--off-white);
+}
+
+/* --- Scrollbar Styling (Webkit) --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mid-gray);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dim);
+}

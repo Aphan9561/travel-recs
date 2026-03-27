@@ -1,0 +1,748 @@
+/* ========================================
+   COLORFUL TRAVEL — Vibrant & Joyful
+   ======================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #2d3436;
+  background: #fefefe;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* --- Top Nav / Back Link --- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 3px solid;
+  border-image: linear-gradient(90deg, #FF6B6B, #FECA57, #48DBFB, #FF9FF3, #54A0FF, #5F27CD) 1;
+}
+
+.back-link {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #5F27CD;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #FF6B6B;
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 32px 80px;
+  background: linear-gradient(135deg,
+    #667eea 0%,
+    #764ba2 20%,
+    #f093fb 40%,
+    #f5576c 55%,
+    #feca57 70%,
+    #48dbfb 85%,
+    #0abde3 100%
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating decorative shapes */
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  background: #fff;
+  top: -60px;
+  left: -80px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  background: #FECA57;
+  top: 20%;
+  right: 8%;
+  animation-delay: -2s;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  background: #FF6B6B;
+  bottom: 15%;
+  left: 10%;
+  animation-delay: -4s;
+}
+
+.shape-4 {
+  width: 220px;
+  height: 220px;
+  background: #fff;
+  bottom: -40px;
+  right: -60px;
+  animation-delay: -1s;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.shape-5 {
+  width: 90px;
+  height: 90px;
+  background: #48DBFB;
+  top: 40%;
+  left: 5%;
+  animation-delay: -3s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-eyebrow {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.hero-title span {
+  display: inline-block;
+}
+
+.word-explore {
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+}
+
+.word-the {
+  font-weight: 500;
+  font-size: 0.6em;
+  vertical-align: middle;
+  opacity: 0.85;
+  margin: 0 8px;
+}
+
+.word-world {
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+}
+
+.word-in {
+  font-weight: 500;
+  font-size: 0.6em;
+  vertical-align: middle;
+  opacity: 0.85;
+  margin: 0 8px;
+}
+
+.word-color {
+  display: block;
+  background: linear-gradient(90deg, #FECA57, #FF6B6B, #FF9FF3, #48DBFB, #54A0FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.1));
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+/* Hero Tags */
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.tag {
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.tag-pink   { background: #FF6B6B; }
+.tag-yellow { background: #F79F1F; color: #fff; }
+.tag-green  { background: #26de81; }
+.tag-blue   { background: #54A0FF; }
+.tag-purple { background: #5F27CD; }
+
+/* --- Section Header --- */
+.destinations {
+  padding: 100px 32px 80px;
+  background: #fefefe;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #5F27CD, #54A0FF, #48DBFB, #0abde3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: #636e72;
+  font-weight: 600;
+}
+
+/* --- Destination Cards Grid --- */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Card Base --- */
+.card {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.card-image {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-icon {
+  font-size: 4rem;
+  opacity: 0.35;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+}
+
+.card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.card-body {
+  padding: 28px 28px 32px;
+}
+
+.card-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  opacity: 0.88;
+}
+
+.card-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.detail-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.card-accent {
+  height: 6px;
+  width: 100%;
+}
+
+/* --- Kyoto: Warm Reds & Pinks --- */
+.card-kyoto {
+  background: linear-gradient(180deg, #fff5f5, #ffffff);
+  box-shadow: 0 8px 30px rgba(255, 107, 107, 0.18);
+}
+
+.card-kyoto .card-image {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ff6348);
+  color: #fff;
+}
+
+.card-kyoto .card-title {
+  color: #c0392b;
+}
+
+.card-kyoto .card-accent {
+  background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+}
+
+/* --- Santorini: Ocean Blues & White --- */
+.card-santorini {
+  background: linear-gradient(180deg, #f0f9ff, #ffffff);
+  box-shadow: 0 8px 30px rgba(84, 160, 255, 0.18);
+}
+
+.card-santorini .card-image {
+  background: linear-gradient(135deg, #54a0ff, #2e86de, #0abde3);
+  color: #fff;
+}
+
+.card-santorini .card-title {
+  color: #2e86de;
+}
+
+.card-santorini .card-accent {
+  background: linear-gradient(90deg, #54a0ff, #0abde3);
+}
+
+/* --- Patagonia: Emerald Greens & Teals --- */
+.card-patagonia {
+  background: linear-gradient(180deg, #f0fff4, #ffffff);
+  box-shadow: 0 8px 30px rgba(38, 222, 129, 0.18);
+}
+
+.card-patagonia .card-image {
+  background: linear-gradient(135deg, #26de81, #20bf6b, #0a8f5a);
+  color: #fff;
+}
+
+.card-patagonia .card-title {
+  color: #20bf6b;
+}
+
+.card-patagonia .card-accent {
+  background: linear-gradient(90deg, #26de81, #0a8f5a);
+}
+
+/* --- Marrakech: Warm Oranges & Golds --- */
+.card-marrakech {
+  background: linear-gradient(180deg, #fffbf0, #ffffff);
+  box-shadow: 0 8px 30px rgba(247, 159, 31, 0.18);
+}
+
+.card-marrakech .card-image {
+  background: linear-gradient(135deg, #F79F1F, #e67e22, #fd9644);
+  color: #fff;
+}
+
+.card-marrakech .card-title {
+  color: #e67e22;
+}
+
+.card-marrakech .card-accent {
+  background: linear-gradient(90deg, #F79F1F, #fd9644);
+}
+
+/* --- Reykjavik: Cool Purples & Indigos --- */
+.card-reykjavik {
+  background: linear-gradient(180deg, #f5f0ff, #ffffff);
+  box-shadow: 0 8px 30px rgba(95, 39, 205, 0.18);
+}
+
+.card-reykjavik .card-image {
+  background: linear-gradient(135deg, #5f27cd, #7c3aed, #a855f7);
+  color: #fff;
+}
+
+.card-reykjavik .card-title {
+  color: #5f27cd;
+}
+
+.card-reykjavik .card-accent {
+  background: linear-gradient(90deg, #5f27cd, #a855f7);
+}
+
+/* --- Amalfi Coast: Bright Pinks & Corals --- */
+.card-amalfi {
+  background: linear-gradient(180deg, #fff5fb, #ffffff);
+  box-shadow: 0 8px 30px rgba(255, 159, 243, 0.18);
+}
+
+.card-amalfi .card-image {
+  background: linear-gradient(135deg, #ff9ff3, #f368e0, #e056a0);
+  color: #fff;
+}
+
+.card-amalfi .card-title {
+  color: #e056a0;
+}
+
+.card-amalfi .card-accent {
+  background: linear-gradient(90deg, #ff9ff3, #e056a0);
+}
+
+/* --- CTA Band --- */
+.cta-band {
+  padding: 80px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 40%, #f093fb 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  animation: ctaPulse 6s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+}
+
+.cta-btn-primary {
+  background: #FECA57;
+  color: #2d3436;
+  box-shadow: 0 6px 24px rgba(254, 202, 87, 0.45);
+}
+
+.cta-btn-primary:hover {
+  box-shadow: 0 10px 36px rgba(254, 202, 87, 0.6);
+}
+
+.cta-btn-secondary {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.cta-btn-secondary:hover {
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Footer --- */
+.footer {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 64px 32px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #FF6B6B, #FECA57, #26de81, #48DBFB, #54A0FF, #5F27CD, #FF9FF3);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.footer-logo {
+  font-family: 'Baloo 2', cursive;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.logo-letter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.logo-letter:hover {
+  transform: translateY(-4px);
+}
+
+.footer-tagline {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.footer-col h4 {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  color: #FECA57;
+  letter-spacing: 0.04em;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #48DBFB;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 24px 60px;
+    min-height: 90vh;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .hero-tags {
+    gap: 8px;
+  }
+
+  .tag {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
+  .destinations {
+    padding: 60px 20px;
+  }
+
+  .destinations-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .cta-band {
+    padding: 60px 24px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    padding: 12px 20px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.9rem;
+  }
+
+  .word-the,
+  .word-in {
+    display: none;
+  }
+
+  .card-body {
+    padding: 22px 22px 26px;
+  }
+
+  .card-title {
+    font-size: 1.45rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}

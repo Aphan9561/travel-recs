@@ -1,0 +1,329 @@
+/* ===================================================
+   MINIMALIST TRAVEL SITE — voyage.
+   Palette: black, white, one muted accent (#8a8a8a)
+   Typography: Inter (light/regular/medium/semibold)
+   =================================================== */
+
+/* --- Reset & Base --- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color: #1a1a1a;
+  background-color: #fdfdfd;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* --- Back to Gallery Link --- */
+
+.back-link {
+  display: inline-block;
+  position: fixed;
+  top: 1.5rem;
+  left: 2rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #8a8a8a;
+  z-index: 100;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #1a1a1a;
+}
+
+
+/* --- Header / Nav --- */
+
+.site-header {
+  padding: 2.5rem 4rem 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #1a1a1a;
+}
+
+
+/* --- Hero Section --- */
+
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8rem 4rem 6rem;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #8a8a8a;
+  max-width: 420px;
+  margin: 0 auto 3rem;
+}
+
+.hero-line {
+  width: 48px;
+  height: 1px;
+  background-color: #d0d0d0;
+  margin: 0 auto;
+}
+
+
+/* --- Destinations Section --- */
+
+.destinations {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 4rem 8rem;
+}
+
+.section-heading {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.destination-card {
+  padding: 3rem 2.5rem;
+  border-top: 1px solid #e8e8e8;
+  transition: background-color 0.4s ease;
+}
+
+.destination-card:nth-child(odd) {
+  border-right: 1px solid #e8e8e8;
+}
+
+.destination-card:nth-last-child(-n+2) {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.destination-card:hover {
+  background-color: #f7f7f7;
+}
+
+.destination-number {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #c0c0c0;
+  margin-bottom: 1.25rem;
+}
+
+.destination-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+
+.destination-region {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin-bottom: 1.25rem;
+}
+
+.destination-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #5a5a5a;
+  max-width: 380px;
+}
+
+
+/* --- Footer --- */
+
+.site-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4rem 4rem;
+}
+
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background-color: #e8e8e8;
+  margin-bottom: 2.5rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: #b0b0b0;
+}
+
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+
+  .back-link {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: block;
+    padding: 1.25rem 2rem 0;
+  }
+
+  .site-header {
+    padding: 2rem 2rem 1.5rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero {
+    padding: 5rem 2rem 4rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .destinations {
+    padding: 2rem 2rem 5rem;
+  }
+
+  .destination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-card:nth-child(odd) {
+    border-right: none;
+  }
+
+  .destination-card {
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .destination-card:last-child {
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .site-footer {
+    padding: 0 2rem 3rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .destination-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .destination-name {
+    font-size: 1.25rem;
+  }
+}
