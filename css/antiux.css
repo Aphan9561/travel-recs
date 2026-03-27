@@ -1,0 +1,1109 @@
+/* ==========================================================================
+   ANTI-UX CSS — Intentionally the worst travel website ever designed
+   Everything here is a deliberate crime against usability.
+   ========================================================================== */
+
+/* --- Reset & Horrible Defaults --- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* smooth scroll would be too nice */
+  overflow-x: hidden;
+  cursor: crosshair; /* wrong cursor for EVERYTHING */
+}
+
+body {
+  background-color: #2b0033;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(255, 0, 255, 0.03) 35px,
+      rgba(255, 0, 255, 0.03) 70px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 35px,
+      rgba(0, 255, 0, 0.02) 35px,
+      rgba(0, 255, 0, 0.02) 70px
+    );
+  color: #ff00ff;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+  min-height: 300vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Custom awful scrollbar */
+body::-webkit-scrollbar {
+  width: 25px;
+}
+
+body::-webkit-scrollbar-track {
+  background: repeating-linear-gradient(
+    0deg,
+    #ff0000,
+    #ff0000 10px,
+    #00ff00 10px,
+    #00ff00 20px
+  );
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #ffff00;
+  border: 3px dashed #ff00ff;
+  border-radius: 0;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
+}
+
+::selection {
+  background: #ff0000;
+  color: #00ff00;
+}
+
+/* --- MISPLACED FOOTER (at the top!) --- */
+
+.misplaced-footer {
+  background: linear-gradient(90deg, #ff6600, #ff0066, #6600ff, #00ffcc);
+  padding: 1rem 2rem;
+  border-bottom: 5px dashed #ffff00;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-text {
+  font-family: 'Papyrus', fantasy;
+  font-size: 0.7rem;
+  color: #330033;
+  letter-spacing: 0.15em;
+}
+
+.sideways-text {
+  transform: rotate(90deg);
+  display: inline-block;
+  transform-origin: center;
+  font-size: 0.5rem;
+}
+
+/* --- HIDDEN "BACK TO GALLERY" LINK --- */
+
+.back-link-hidden {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 9999;
+  background: rgba(43, 0, 51, 0.95);
+  border: 1px solid rgba(43, 0, 51, 0.95);
+  padding: 3px 6px;
+  text-decoration: none;
+  cursor: help;
+  transition: all 0.3s ease;
+  opacity: 0.15;
+  font-size: 0.45rem;
+}
+
+.back-link-hidden .decoy-text {
+  display: block;
+  color: #3b0044;
+  font-size: 0.4rem;
+  font-family: 'Times New Roman', serif;
+}
+
+.back-link-hidden .real-text {
+  display: block;
+  color: #550066;
+  font-size: 0.5rem;
+  font-family: monospace;
+}
+
+.back-link-hidden:hover {
+  opacity: 1;
+  background: #ffff00;
+  border-color: #ff00ff;
+  transform: scale(2.5);
+  transform-origin: bottom right;
+  padding: 8px 14px;
+}
+
+.back-link-hidden:hover .decoy-text {
+  display: none;
+}
+
+.back-link-hidden:hover .real-text {
+  color: #000;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* --- CHAOS HEADER --- */
+
+.chaos-header {
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(0, 0, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.15) 0%, transparent 70%);
+  border-bottom: 8px double #00ff00;
+  overflow: visible;
+}
+
+.title-wrapper {
+  position: relative;
+}
+
+.main-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.title-piece {
+  display: inline-block;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.piece-1 {
+  font-family: Impact, Haettenschweiler, sans-serif;
+  font-size: 6rem;
+  color: #00ff00;
+  transform: rotate(-12deg) scaleX(-1); /* mirrored! */
+  text-shadow: 4px 4px 0 #ff0000, -2px -2px 0 #0000ff;
+  cursor: not-allowed;
+}
+
+.piece-2 {
+  font-family: 'Papyrus', fantasy;
+  font-size: 3rem;
+  color: #ffff00;
+  transform: rotate(8deg) translateY(-20px);
+  text-decoration: line-through wavy #ff00ff;
+  cursor: wait;
+}
+
+.piece-3 {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: #ff6600;
+  transform: rotate(180deg) translateY(30px);
+  align-self: flex-end;
+  cursor: cell;
+}
+
+.piece-4 {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 4.5rem;
+  color: #ff0066;
+  transform: rotate(5deg) skewX(-10deg);
+  text-shadow: 3px 3px 6px rgba(0, 255, 255, 0.8);
+  letter-spacing: 0.3em;
+  cursor: grab;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  font-family: Georgia, serif;
+  color: #cc99ff;
+}
+
+.upside-down {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.mirrored {
+  transform: scaleX(-1);
+  display: inline-block;
+  color: #00ffcc;
+  font-style: italic;
+}
+
+/* Header decorations */
+.header-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 1.5rem 0;
+}
+
+.deco-symbol {
+  font-size: 3rem;
+  display: inline-block;
+}
+
+.deco-symbol.spin {
+  animation: spin 3s linear infinite;
+}
+
+.deco-symbol.wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+/* Fake navigation with horrible buttons */
+.fake-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.fake-btn {
+  padding: 0.5rem 1.2rem;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.9rem;
+  border: 2px solid #ff00ff;
+  cursor: default;
+  transition: all 0.3s ease;
+  display: inline-block;
+  user-select: none;
+}
+
+.fake-btn:nth-child(1) {
+  background: #ff0000;
+  color: #ff3300; /* nearly invisible on red */
+  transform: rotate(-3deg);
+}
+
+.fake-btn.looks-disabled {
+  background: #555;
+  color: #666; /* extremely low contrast */
+  border-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.fake-btn.wrong-cursor {
+  background: #00ff00;
+  color: #009900;
+  cursor: wait;
+}
+
+.fake-btn.shrinks-on-hover {
+  background: #ffff00;
+  color: #cc9900;
+  cursor: pointer;
+}
+
+.fake-btn.shrinks-on-hover:hover {
+  transform: scale(0.1);
+  opacity: 0.2;
+}
+
+.fake-btn.runs-away {
+  background: #ff00ff;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.fake-btn.runs-away:hover {
+  transform: translate(200px, -100px) rotate(720deg);
+  opacity: 0;
+}
+
+.fake-btn.invisible-btn {
+  background: transparent;
+  color: transparent;
+  border-color: transparent;
+}
+
+.fake-btn.invisible-btn:hover {
+  color: #ff0000;
+  border-color: #ff0000;
+  background: #ffff00;
+  transform: scale(3);
+  z-index: 100;
+  position: relative;
+}
+
+/* --- SCROLLING BANNER --- */
+
+.scrolling-banner {
+  background: #ffff00;
+  overflow: hidden;
+  padding: 0.6rem 0;
+  border-top: 3px solid #ff0000;
+  border-bottom: 3px solid #ff0000;
+  transform: rotate(-1deg);
+  margin: -5px 0;
+}
+
+.banner-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 15s linear infinite;
+  font-family: Impact, sans-serif;
+  font-size: 1.4rem;
+  color: #ff0000;
+  letter-spacing: 0.1em;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- DESTINATION CHAOS AREA --- */
+
+.destination-chaos {
+  position: relative;
+  padding: 4rem 2rem 8rem;
+  min-height: 180vh;
+}
+
+/* --- INDIVIDUAL CARD STYLES --- */
+
+.dest-card {
+  position: relative;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 650px;
+  border: 4px solid;
+  transition: all 0.4s ease;
+  overflow: visible;
+}
+
+.card-number {
+  position: absolute;
+  font-size: 5rem;
+  opacity: 0.2;
+  top: -1.5rem;
+  right: -0.5rem;
+  font-family: Impact, sans-serif;
+  pointer-events: none;
+}
+
+.card-sticker {
+  position: absolute;
+  font-size: 3rem;
+  pointer-events: none;
+}
+
+.dest-name {
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  margin-bottom: 0.5rem;
+}
+
+.dest-region {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.3rem;
+}
+
+.dest-coords {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.dest-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.dest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 2px solid;
+  display: inline-block;
+}
+
+/* --- KYOTO: Upside down card --- */
+
+.card-kyoto {
+  background: #1a0000;
+  border-color: #ff3300;
+  color: #00ff00;
+  transform: rotate(180deg);
+  cursor: help;
+  font-family: 'Papyrus', fantasy;
+}
+
+.card-kyoto .dest-name {
+  font-family: Impact, sans-serif;
+  font-size: 2.5rem;
+  color: #ffff00;
+  text-shadow: 2px 2px 0 #ff0000;
+}
+
+.card-kyoto .dest-coords {
+  color: #ff6600;
+}
+
+.card-kyoto .tag {
+  border-color: #ff3300;
+  color: #ff3300;
+}
+
+.card-kyoto .card-sticker {
+  top: -20px;
+  left: 10px;
+  transform: rotate(180deg); /* un-rotate the emoji so it reads right when card is flipped */
+}
+
+.card-kyoto .card-number {
+  color: #ff0000;
+}
+
+.card-kyoto:hover {
+  transform: rotate(181deg) translate(20px, -10px);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+}
+
+/* --- SANTORINI: Rotated sideways --- */
+
+.card-santorini {
+  background: linear-gradient(135deg, #000066, #000033);
+  border-color: #00ffff;
+  color: #ff9900;
+  transform: rotate(-7deg);
+  cursor: cell;
+  font-family: 'Times New Roman', serif;
+  margin-left: 10%;
+}
+
+.card-santorini .dest-name {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 2rem;
+  color: #00ffff;
+  text-decoration: underline overline wavy #ff00ff;
+}
+
+.card-santorini .dest-coords {
+  color: #ffff00;
+}
+
+.card-santorini .tag {
+  border-color: #00ffff;
+  color: #00ffff;
+  transform: rotate(5deg);
+}
+
+.card-santorini .card-sticker {
+  bottom: -15px;
+  right: 20px;
+}
+
+.card-santorini .card-number {
+  color: #00ffff;
+}
+
+.card-santorini:hover {
+  transform: rotate(7deg) scale(1.05);
+  border-color: #ff00ff;
+}
+
+/* --- PATAGONIA: Mirrored text --- */
+
+.card-patagonia {
+  background: #003300;
+  border-color: #ff00ff;
+  color: #ffff00;
+  cursor: not-allowed;
+  font-family: 'Courier New', monospace;
+  margin-right: 5%;
+  margin-left: auto;
+  transform: skewX(-5deg);
+}
+
+.card-patagonia .card-body {
+  transform: scaleX(-1); /* mirrored! */
+}
+
+.card-patagonia .dest-name {
+  font-family: Impact, sans-serif;
+  font-size: 2.2rem;
+  color: #ff00ff;
+  text-shadow: -2px 2px 0 #00ff00;
+}
+
+.card-patagonia .dest-desc {
+  font-style: italic;
+  color: #ccff00;
+}
+
+.card-patagonia .dest-coords {
+  color: #ff6600;
+}
+
+.card-patagonia .tag {
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.card-patagonia .card-sticker {
+  top: 50%;
+  left: -25px;
+  transform: translateY(-50%);
+}
+
+.card-patagonia .card-number {
+  color: #00ff00;
+}
+
+.card-patagonia:hover {
+  transform: skewX(5deg) skewY(-2deg);
+  box-shadow: -10px 10px 0 #ff00ff, 10px -10px 0 #00ff00;
+}
+
+/* --- MARRAKECH: Tiny unreadable text --- */
+
+.card-marrakech {
+  background: #ff6600;
+  border-color: #ff0000;
+  color: #ff3300; /* orange on orange, brilliant */
+  cursor: zoom-in;
+  font-family: 'Papyrus', fantasy;
+  font-size: 0.55rem;
+  transform: rotate(3deg);
+  max-width: 350px;
+  margin-left: 5%;
+}
+
+.card-marrakech .dest-name {
+  font-family: 'Papyrus', fantasy;
+  font-size: 0.9rem; /* hilariously small for a title */
+  color: #ff3300;
+}
+
+.card-marrakech .dest-desc {
+  font-size: 0.45rem; /* you'll need a magnifying glass */
+  line-height: 1.3;
+  color: #cc5500;
+}
+
+.card-marrakech .dest-region {
+  font-size: 0.4rem;
+}
+
+.card-marrakech .dest-coords {
+  font-size: 0.35rem;
+  color: #cc4400;
+}
+
+.card-marrakech .tag {
+  font-size: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  border-color: #ff3300;
+}
+
+.card-marrakech .card-sticker {
+  top: -10px;
+  right: -10px;
+  font-size: 5rem; /* giant sticker on a tiny card */
+}
+
+.card-marrakech .card-number {
+  font-size: 8rem;
+  color: #cc5500;
+}
+
+.card-marrakech:hover {
+  font-size: 1rem;
+  max-width: 650px;
+  transform: rotate(0deg);
+  color: #000;
+  background: #ffcc00;
+}
+
+.card-marrakech:hover .dest-name {
+  font-size: 2rem;
+  color: #000;
+}
+
+.card-marrakech:hover .dest-desc {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.card-marrakech:hover .dest-region {
+  font-size: 0.75rem;
+}
+
+.card-marrakech:hover .dest-coords {
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.card-marrakech:hover .tag {
+  font-size: 0.6rem;
+  border-color: #000;
+  color: #000;
+}
+
+/* --- REYKJAVIK: Heavily skewed and wrong colors --- */
+
+.card-reykjavik {
+  background: linear-gradient(to bottom, #ff00ff, #ff0000, #ffff00);
+  border-color: #00ff00;
+  border-width: 8px;
+  border-style: dotted;
+  color: #00ff00;
+  cursor: progress;
+  font-family: 'Comic Sans MS', cursive;
+  transform: skewY(6deg) rotate(-4deg);
+  margin-left: auto;
+  margin-right: 8%;
+}
+
+.card-reykjavik .dest-name {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  color: #0000ff;
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #ff0000;
+  word-spacing: 0.8em;
+}
+
+.card-reykjavik .dest-desc {
+  color: #003300;
+}
+
+.card-reykjavik .dest-coords {
+  color: #330033;
+  font-size: 1.5rem; /* coordinates are giant for no reason */
+  font-weight: 900;
+}
+
+.card-reykjavik .tag {
+  border-color: #0000ff;
+  color: #0000ff;
+  background: #ffff00;
+  transform: rotate(-8deg);
+}
+
+.card-reykjavik .card-sticker {
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card-reykjavik .card-number {
+  color: #0000ff;
+}
+
+.card-reykjavik:hover {
+  transform: skewY(-6deg) rotate(4deg) scale(0.9);
+  filter: hue-rotate(180deg);
+}
+
+/* --- AMALFI COAST: Overlapping, chaotic, and huge --- */
+
+.card-amalfi {
+  background: #ffff00;
+  border-color: #ff00ff;
+  border-width: 6px;
+  border-style: double;
+  color: #cc9900; /* yellow on yellow */
+  cursor: crosshair;
+  font-family: 'Times New Roman', serif;
+  transform: rotate(2deg);
+  max-width: 800px;
+  position: relative;
+  z-index: 5;
+  margin-top: -3rem; /* intentionally overlap with card above */
+}
+
+.card-amalfi .dest-name {
+  font-family: Impact, sans-serif;
+  font-size: 4rem;
+  color: #ff00ff;
+  text-shadow: 3px 3px 0 #00ffff;
+  line-height: 0.9;
+  transform: rotate(-2deg);
+}
+
+.card-amalfi .dest-desc {
+  color: #999900;
+  writing-mode: vertical-rl;
+  max-height: 200px;
+  font-size: 0.8rem;
+}
+
+.card-amalfi .dest-region {
+  font-size: 1.5rem; /* region is weirdly huge */
+  color: #ff6600;
+  font-weight: 900;
+}
+
+.card-amalfi .dest-coords {
+  color: #cccc00;
+  transform: rotate(5deg);
+  display: inline-block;
+}
+
+.card-amalfi .tag {
+  border-color: #ff00ff;
+  color: #ff00ff;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+}
+
+.card-amalfi .card-sticker {
+  top: 50%;
+  right: -30px;
+  font-size: 5rem;
+  transform: translateY(-50%) rotate(15deg);
+}
+
+.card-amalfi .card-number {
+  color: #ff6600;
+  font-size: 8rem;
+  top: -3rem;
+  opacity: 0.1;
+}
+
+.card-amalfi:hover {
+  transform: rotate(-2deg);
+  background: #ff00ff;
+  color: #ffff00;
+  box-shadow: 0 0 60px rgba(255, 255, 0, 0.6);
+}
+
+.card-amalfi:hover .dest-name {
+  color: #ffff00;
+}
+
+.card-amalfi:hover .dest-desc {
+  color: #ffcc00;
+}
+
+.card-amalfi:hover .tag {
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+/* --- FLOATING ANNOYANCES --- */
+
+.floating-annoyance {
+  position: fixed;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  pointer-events: none;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.annoy-1 {
+  top: 30%;
+  right: -10px;
+  background: #ff0000;
+  color: #ff3300;
+  font-family: 'Papyrus', fantasy;
+  font-size: 0.7rem;
+  transform: rotate(90deg);
+  transform-origin: right center;
+  animation-name: float-up-down;
+}
+
+.annoy-2 {
+  bottom: 20%;
+  left: 10px;
+  background: #00ff00;
+  color: #003300;
+  font-family: Impact, sans-serif;
+  font-size: 1.5rem;
+  transform: rotate(-15deg);
+  animation-name: float-left-right;
+}
+
+.annoy-3 {
+  top: 60%;
+  right: 20px;
+  background: none;
+  color: rgba(255, 255, 0, 0.3);
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.8rem;
+  transform: rotate(180deg);
+}
+
+.annoy-4 {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff00ff;
+  color: #ffff00;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.6rem;
+  border: 3px dashed #00ff00;
+  animation-name: blink-annoying;
+  animation-duration: 2s;
+}
+
+.annoy-5 {
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 0.55rem;
+  border: 1px solid #00ff00;
+  white-space: nowrap;
+}
+
+@keyframes float-up-down {
+  0%, 100% { top: 30%; }
+  50% { top: 50%; }
+}
+
+@keyframes float-left-right {
+  0%, 100% { left: 10px; }
+  50% { left: 40px; }
+}
+
+@keyframes blink-annoying {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* --- SIDEWAYS SIDEBAR --- */
+
+.sideways-sidebar {
+  position: fixed;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  background: #000;
+  color: #00ff00;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  border: 2px solid #00ff00;
+  z-index: 20;
+  white-space: nowrap;
+  cursor: help;
+  transition: all 0.5s ease;
+}
+
+.sideways-sidebar:hover {
+  left: 0;
+  transform: translateY(-50%) rotate(0deg);
+  padding: 1.5rem;
+  font-size: 0.8rem;
+}
+
+.sideways-sidebar h3 {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  color: #ff00ff;
+  text-decoration: underline;
+}
+
+.sideways-sidebar ul {
+  list-style: none;
+}
+
+.sideways-sidebar li {
+  padding: 0.1rem 0;
+}
+
+.sideways-sidebar li::before {
+  content: '> ';
+  color: #ff0000;
+}
+
+/* --- BOTTOM CHAOS SECTION --- */
+
+.bottom-chaos {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, transparent, #000 20%);
+  position: relative;
+}
+
+.giant-text {
+  font-family: Impact, sans-serif;
+  font-size: 6rem;
+  color: #ff00ff;
+  text-shadow:
+    4px 4px 0 #00ff00,
+    -4px -4px 0 #ffff00,
+    4px -4px 0 #00ffff;
+  letter-spacing: 0.2em;
+  transform: skewX(-5deg);
+}
+
+.tiny-text {
+  font-family: 'Courier New', monospace;
+  font-size: 0.4rem;
+  color: #333;
+  max-width: 500px;
+  margin: 1rem auto;
+  line-height: 1.4;
+}
+
+.medium-text {
+  font-family: 'Papyrus', fantasy;
+  font-size: 1.2rem;
+  color: #ff6600;
+  margin-top: 1rem;
+}
+
+/* Fake form */
+.fake-form {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.9rem;
+  color: #00ffff;
+  transform: rotate(2deg);
+}
+
+.fake-input {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: #111;
+  color: #333;
+  border: 2px inset #666;
+  font-family: monospace;
+  font-size: 0.8rem;
+  cursor: not-allowed;
+  min-width: 280px;
+  text-align: center;
+}
+
+.fake-submit {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  background: #444;
+  color: #555;
+  border: 3px outset #666;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.8rem;
+  cursor: no-drop;
+  transition: all 0.3s ease;
+}
+
+.fake-submit:hover {
+  transform: translateX(300px) rotate(45deg);
+  opacity: 0;
+}
+
+/* --- WATERMARK --- */
+
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-family: Impact, sans-serif;
+  font-size: 15rem;
+  color: rgba(255, 0, 255, 0.04);
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+  letter-spacing: 0.2em;
+}
+
+/* --- RESPONSIVE CHAOS (it gets worse on mobile) --- */
+
+@media (max-width: 768px) {
+  .piece-1 {
+    font-size: 3.5rem;
+  }
+
+  .piece-4 {
+    font-size: 2.5rem;
+  }
+
+  .card-amalfi .dest-name {
+    font-size: 2.5rem;
+  }
+
+  .giant-text {
+    font-size: 3rem;
+  }
+
+  .dest-card {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+  }
+
+  .floating-annoyance {
+    display: none; /* fine, we'll spare mobile users... some of the chaos */
+  }
+
+  .sideways-sidebar {
+    display: none;
+  }
+}
+
+/* --- Extra horrible hover effects for all cards --- */
+
+.dest-card {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Make all links on the page look like non-links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Make non-links look like links */
+.dest-region {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dest-region:hover {
+  text-decoration: none;
+}

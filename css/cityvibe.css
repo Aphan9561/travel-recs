@@ -1,0 +1,867 @@
+/* ==========================================================================
+   CITY VIBE — Best Places to Travel
+   Urban nightlife aesthetic: neon glows, dark streets, graffiti type
+   ========================================================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Neon palette */
+  --neon-pink: #ff2d7b;
+  --neon-cyan: #00e5ff;
+  --neon-amber: #ffab00;
+  --neon-purple: #b44dff;
+  --neon-pink-glow: rgba(255, 45, 123, 0.6);
+  --neon-cyan-glow: rgba(0, 229, 255, 0.6);
+  --neon-amber-glow: rgba(255, 171, 0, 0.6);
+  --neon-purple-glow: rgba(180, 77, 255, 0.6);
+
+  /* Backgrounds */
+  --bg-dark: #0a0a0f;
+  --bg-card: #111118;
+  --bg-surface: #16161f;
+  --bg-footer: #08080c;
+
+  /* Text */
+  --text-primary: #e8e8f0;
+  --text-muted: #7a7a8e;
+  --text-dim: #4a4a5e;
+
+  /* Fonts */
+  --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+  --font-body: 'Barlow Condensed', 'Oswald', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Noise / grain texture overlay mixin via pseudo-element */
+.hero-grain,
+.footer-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-conic-gradient(#fff 0% 25%, transparent 0% 50%);
+  background-size: 3px 3px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   BACK NAV
+   ========================================================================== */
+.back-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.back-link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--neon-cyan);
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #fff;
+  text-shadow:
+    0 0 7px var(--neon-cyan-glow),
+    0 0 20px var(--neon-cyan-glow),
+    0 0 40px var(--neon-cyan-glow);
+}
+
+.back-link .arrow {
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.3s ease;
+}
+
+.back-link:hover .arrow {
+  transform: translateX(-4px);
+}
+
+.open-badge {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--neon-amber);
+  border: 1px solid var(--neon-amber);
+  padding: 4px 14px;
+  border-radius: 2px;
+  text-shadow:
+    0 0 6px var(--neon-amber-glow),
+    0 0 18px var(--neon-amber-glow);
+  box-shadow:
+    0 0 6px var(--neon-amber-glow),
+    inset 0 0 6px rgba(255, 171, 0, 0.1);
+}
+
+/* ==========================================================================
+   HERO / HEADER
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(255, 45, 123, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(180, 77, 255, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #0d0d14 0%, #0a0a0f 100%);
+  overflow: hidden;
+}
+
+/* Faint vertical "building" lines */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 80px,
+      rgba(255, 255, 255, 0.015) 80px,
+      rgba(255, 255, 255, 0.015) 81px
+    );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 24px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.neon-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.neon-line {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.neon-pink {
+  color: var(--neon-pink);
+  text-shadow:
+    0 0 7px var(--neon-pink-glow),
+    0 0 20px var(--neon-pink-glow),
+    0 0 42px var(--neon-pink-glow),
+    0 0 82px rgba(255, 45, 123, 0.3),
+    0 0 120px rgba(255, 45, 123, 0.15);
+}
+
+.neon-cyan {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 7px var(--neon-cyan-glow),
+    0 0 20px var(--neon-cyan-glow),
+    0 0 42px var(--neon-cyan-glow),
+    0 0 82px rgba(0, 229, 255, 0.3),
+    0 0 120px rgba(0, 229, 255, 0.15);
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 28px;
+}
+
+/* Subway line in hero */
+.subway-line-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 40px;
+}
+
+.subway-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.subway-bar {
+  width: 60px;
+  height: 4px;
+  flex-shrink: 0;
+}
+
+.dot-pink,
+.bar-pink {
+  background: var(--neon-pink);
+  box-shadow: 0 0 8px var(--neon-pink-glow);
+}
+
+.dot-cyan,
+.bar-cyan {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan-glow);
+}
+
+.dot-amber,
+.bar-amber {
+  background: var(--neon-amber);
+  box-shadow: 0 0 8px var(--neon-amber-glow);
+}
+
+.dot-purple,
+.bar-purple {
+  background: var(--neon-purple);
+  box-shadow: 0 0 8px var(--neon-purple-glow);
+}
+
+/* ==========================================================================
+   DESTINATIONS SECTION
+   ========================================================================== */
+.destinations {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Street sign styling */
+.street-sign {
+  display: inline-block;
+  background: #1a5c2a;
+  border: 2px solid #e8e8f0;
+  border-radius: 4px;
+  padding: 8px 32px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.street-sign::before,
+.street-sign::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 3px;
+  height: 40px;
+  background: #888;
+  transform: translateY(10px);
+}
+
+.street-sign::before {
+  left: 16px;
+}
+
+.street-sign::after {
+  right: 16px;
+}
+
+.street-sign-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.section-sub {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 10px;
+}
+
+/* --- Subway Connector Bars --- */
+.subway-connector,
+.subway-connector-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 32px auto;
+  max-width: 500px;
+}
+
+.subway-connector-mid {
+  grid-column: 1 / -1;
+  margin: 16px auto;
+}
+
+.subway-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid;
+}
+
+.subway-track {
+  height: 3px;
+  flex: 1;
+  max-width: 120px;
+}
+
+.node-pink {
+  border-color: var(--neon-pink);
+  background: var(--bg-dark);
+  box-shadow: 0 0 6px var(--neon-pink-glow);
+}
+
+.node-cyan {
+  border-color: var(--neon-cyan);
+  background: var(--bg-dark);
+  box-shadow: 0 0 6px var(--neon-cyan-glow);
+}
+
+.node-amber {
+  border-color: var(--neon-amber);
+  background: var(--bg-dark);
+  box-shadow: 0 0 6px var(--neon-amber-glow);
+}
+
+.node-purple {
+  border-color: var(--neon-purple);
+  background: var(--bg-dark);
+  box-shadow: 0 0 6px var(--neon-purple-glow);
+}
+
+.track-pink {
+  background: linear-gradient(90deg, var(--neon-pink), rgba(255, 45, 123, 0.2));
+  box-shadow: 0 0 6px var(--neon-pink-glow);
+}
+
+.track-cyan {
+  background: linear-gradient(90deg, var(--neon-cyan), rgba(0, 229, 255, 0.2));
+  box-shadow: 0 0 6px var(--neon-cyan-glow);
+}
+
+.track-amber {
+  background: linear-gradient(90deg, var(--neon-amber), rgba(255, 171, 0, 0.2));
+  box-shadow: 0 0 6px var(--neon-amber-glow);
+}
+
+.track-purple {
+  background: linear-gradient(90deg, var(--neon-purple), rgba(180, 77, 255, 0.2));
+  box-shadow: 0 0 6px var(--neon-purple-glow);
+}
+
+/* --- Card Grid --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 16px;
+}
+
+/* --- Destination Card --- */
+.destination-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.destination-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.destination-card:hover {
+  transform: translateY(-6px);
+}
+
+.destination-card:nth-child(1):hover,
+.destination-card:nth-child(6):hover {
+  box-shadow:
+    0 8px 32px rgba(255, 45, 123, 0.15),
+    0 0 60px rgba(255, 45, 123, 0.08);
+}
+
+.destination-card:nth-child(2):hover,
+.destination-card:nth-child(5):hover {
+  box-shadow:
+    0 8px 32px rgba(0, 229, 255, 0.15),
+    0 0 60px rgba(0, 229, 255, 0.08);
+}
+
+.destination-card:nth-child(3):hover {
+  box-shadow:
+    0 8px 32px rgba(255, 171, 0, 0.15),
+    0 0 60px rgba(255, 171, 0, 0.08);
+}
+
+.destination-card:nth-child(5):hover {
+  box-shadow:
+    0 8px 32px rgba(0, 229, 255, 0.15),
+    0 0 60px rgba(0, 229, 255, 0.08);
+}
+
+/* Note: nth-child(4) is the subway-connector-mid, so cards 4-6 are children 5-7 */
+.destination-card:nth-child(7):hover {
+  box-shadow:
+    0 8px 32px rgba(255, 45, 123, 0.15),
+    0 0 60px rgba(255, 45, 123, 0.08);
+}
+
+/* --- Card Photo Area (gradient placeholders) --- */
+.card-photo {
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 14px;
+}
+
+.gradient-kyoto {
+  background:
+    linear-gradient(135deg, #1a0a2e 0%, #3d1152 30%, #ff2d7b 70%, #ffab00 100%);
+}
+
+.gradient-santorini {
+  background:
+    linear-gradient(135deg, #0a1628 0%, #0d3b66 35%, #00e5ff 70%, #e8e8f0 100%);
+}
+
+.gradient-patagonia {
+  background:
+    linear-gradient(135deg, #0a1a0a 0%, #1a3a2a 30%, #00e5ff 65%, #ffab00 100%);
+}
+
+.gradient-marrakech {
+  background:
+    linear-gradient(135deg, #1a0a0a 0%, #5c2a0a 30%, #ffab00 65%, #b44dff 100%);
+}
+
+.gradient-reykjavik {
+  background:
+    linear-gradient(135deg, #080818 0%, #1a1a3a 30%, #b44dff 60%, #00e5ff 100%);
+}
+
+.gradient-amalfi {
+  background:
+    linear-gradient(135deg, #1a0a1a 0%, #b44dff 25%, #ff2d7b 55%, #ffab00 100%);
+}
+
+/* Grain overlay on card photos */
+.card-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image:
+    repeating-conic-gradient(#fff 0% 25%, transparent 0% 50%);
+  background-size: 2px 2px;
+  pointer-events: none;
+}
+
+.card-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: rgba(255, 255, 255, 0.1);
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Card Body --- */
+.card-body {
+  padding: 20px;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.neon-glow-pink {
+  color: var(--neon-pink);
+  text-shadow:
+    0 0 5px var(--neon-pink-glow),
+    0 0 15px var(--neon-pink-glow),
+    0 0 30px rgba(255, 45, 123, 0.25);
+}
+
+.neon-glow-cyan {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 5px var(--neon-cyan-glow),
+    0 0 15px var(--neon-cyan-glow),
+    0 0 30px rgba(0, 229, 255, 0.25);
+}
+
+.neon-glow-amber {
+  color: var(--neon-amber);
+  text-shadow:
+    0 0 5px var(--neon-amber-glow),
+    0 0 15px var(--neon-amber-glow),
+    0 0 30px rgba(255, 171, 0, 0.25);
+}
+
+.neon-glow-purple {
+  color: var(--neon-purple);
+  text-shadow:
+    0 0 5px var(--neon-purple-glow),
+    0 0 15px var(--neon-purple-glow),
+    0 0 30px rgba(180, 77, 255, 0.25);
+}
+
+/* --- Tags (neighborhood style) --- */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tag {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.tag-pink {
+  color: var(--neon-pink);
+  border-color: rgba(255, 45, 123, 0.4);
+  background: rgba(255, 45, 123, 0.08);
+}
+
+.tag-cyan {
+  color: var(--neon-cyan);
+  border-color: rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.tag-amber {
+  color: var(--neon-amber);
+  border-color: rgba(255, 171, 0, 0.4);
+  background: rgba(255, 171, 0, 0.08);
+}
+
+.tag-purple {
+  color: var(--neon-purple);
+  border-color: rgba(180, 77, 255, 0.4);
+  background: rgba(180, 77, 255, 0.08);
+}
+
+/* --- Card Description --- */
+.card-desc {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+/* --- Metro line at card bottom --- */
+.card-metro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metro-line {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.metro-pink {
+  background: var(--neon-pink);
+  box-shadow: 0 0 6px var(--neon-pink-glow);
+}
+
+.metro-cyan {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 6px var(--neon-cyan-glow);
+}
+
+.metro-amber {
+  background: var(--neon-amber);
+  box-shadow: 0 0 6px var(--neon-amber-glow);
+}
+
+.metro-purple {
+  background: var(--neon-purple);
+  box-shadow: 0 0 6px var(--neon-purple-glow);
+}
+
+.metro-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   FOOTER — Street Sign Style
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(180, 77, 255, 0.06) 0%, transparent 60%),
+    var(--bg-footer);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 60px 24px 40px;
+  overflow: hidden;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+/* Street sign post */
+.footer-sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-post {
+  width: 4px;
+  height: 40px;
+  background: #555;
+  border-radius: 2px;
+}
+
+.sign-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1a5c2a;
+  border: 2px solid #e8e8f0;
+  border-radius: 4px;
+  padding: 10px 40px 8px;
+  position: relative;
+}
+
+.sign-plate-text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 6px;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.sign-plate-sub {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-subway {
+  display: flex;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.footer-subway .subway-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+.footer-fine {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 960px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .subway-connector-mid {
+    grid-column: 1 / -1;
+  }
+
+  .neon-line {
+    font-size: clamp(2.8rem, 8vw, 5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .back-nav {
+    padding: 12px 16px;
+  }
+
+  .open-badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+
+  .hero {
+    min-height: 400px;
+  }
+
+  .neon-line {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+    letter-spacing: 3px;
+  }
+
+  .hero-tagline {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+  }
+
+  .destinations {
+    padding: 40px 16px 60px;
+  }
+
+  .street-sign {
+    padding: 6px 24px;
+  }
+
+  .street-sign-text {
+    font-size: 1.2rem;
+  }
+
+  .card-photo {
+    height: 170px;
+  }
+
+  .sign-plate {
+    padding: 8px 28px 6px;
+  }
+
+  .sign-plate-text {
+    font-size: 1.5rem;
+  }
+
+  .footer-text {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+  }
+
+  .subway-bar {
+    width: 36px;
+  }
+}

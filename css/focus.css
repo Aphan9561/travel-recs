@@ -1,0 +1,422 @@
+/* ============================================
+   FOCUS MODE — A Meditation on Travel
+   Distraction-free, scroll-snap, zen reading
+   ============================================ */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-base: #f8f7f4;
+  --bg-warm: #f5f3ee;
+  --text-primary: #2c2c2c;
+  --text-secondary: #6b6b6b;
+  --text-tertiary: #9a9a9a;
+  --accent: #7a9e9f;
+  --accent-light: #a8c5c6;
+  --accent-faint: rgba(122, 158, 159, 0.12);
+  --rule: rgba(122, 158, 159, 0.3);
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, monospace;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  background: var(--bg-base);
+  line-height: 1.7;
+  overflow: hidden;
+}
+
+/* --- Scroll-Snap Container --- */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* --- Back Link --- */
+.back-link {
+  position: fixed;
+  top: 1.8rem;
+  left: 2.2rem;
+  z-index: 100;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-tertiary);
+  transition: color 0.4s ease;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid transparent;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent-light);
+}
+
+/* --- Page Indicator --- */
+.page-indicator {
+  position: fixed;
+  top: 1.8rem;
+  right: 2.2rem;
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* --- Sections (shared) --- */
+.section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 2rem;
+  position: relative;
+  animation: sectionFadeIn 0.9s ease both;
+}
+
+/* --- Progress / decorative line at top of each section --- */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1.5px;
+  background: var(--rule);
+  opacity: 0;
+  animation: lineReveal 1.2s ease 0.4s forwards;
+}
+
+/* --- Opening / Hero Section --- */
+.section--hero {
+  background: linear-gradient(
+    180deg,
+    #f8f7f4 0%,
+    #f6f4ef 50%,
+    #f4f2ec 100%
+  );
+}
+
+.section--hero::before {
+  display: none;
+}
+
+.hero__label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.4rem;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--text-primary);
+  max-width: 14ch;
+  margin-bottom: 1.6rem;
+  letter-spacing: -0.01em;
+}
+
+.hero__subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 38ch;
+  line-height: 1.7;
+}
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+/* --- Destination Section Backgrounds --- */
+.section--kyoto {
+  background: linear-gradient(180deg, #f6f5f0 0%, #f3f1eb 40%, #f0eee7 100%);
+}
+
+.section--santorini {
+  background: linear-gradient(180deg, #f5f6f8 0%, #f1f3f6 40%, #edf0f4 100%);
+}
+
+.section--patagonia {
+  background: linear-gradient(180deg, #f4f6f4 0%, #f0f3ef 40%, #ecf0ea 100%);
+}
+
+.section--marrakech {
+  background: linear-gradient(180deg, #f8f5f2 0%, #f5f2ee 40%, #f2efe9 100%);
+}
+
+.section--reykjavik {
+  background: linear-gradient(180deg, #f5f5f7 0%, #f1f2f5 40%, #edeef3 100%);
+}
+
+.section--amalfi {
+  background: linear-gradient(180deg, #f7f6f2 0%, #f4f2ed 40%, #f1efe8 100%);
+}
+
+/* --- Destination Content --- */
+.destination {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  animation: contentFloat 0.9s ease both;
+}
+
+.destination__coordinates {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--text-tertiary);
+  margin-bottom: 1.4rem;
+}
+
+.destination__name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.destination__region {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.8rem;
+}
+
+.destination__divider {
+  width: 32px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto 2.8rem auto;
+}
+
+.destination__description {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 52ch;
+  margin: 0 auto 2.6rem auto;
+  text-align: center;
+}
+
+.destination__tags {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.destination__tag {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--accent-faint);
+  border-radius: 2px;
+  background: transparent;
+}
+
+/* --- Closing Section --- */
+.section--closing {
+  background: linear-gradient(180deg, #f4f3ee 0%, #f1f0ea 50%, #eeedea 100%);
+}
+
+.closing__message {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 26ch;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.closing__sub {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* --- Animations --- */
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lineReveal {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 60px;
+  }
+}
+
+@keyframes contentFloat {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* --- Scrollbar --- */
+.scroll-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: var(--accent-light);
+  border-radius: 3px;
+}
+
+.scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-light) transparent;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: 5rem 1.6rem;
+  }
+
+  .back-link {
+    top: 1.2rem;
+    left: 1.4rem;
+  }
+
+  .page-indicator {
+    top: 1.2rem;
+    right: 1.4rem;
+  }
+
+  .destination__tags {
+    gap: 0.5rem;
+  }
+
+  .destination__tag {
+    font-size: 0.58rem;
+    padding: 0.38rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 4rem 1.2rem;
+  }
+
+  .destination__description {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .hero__subtitle {
+    max-width: 28ch;
+  }
+}
+
+/* --- Print --- */
+@media print {
+  .scroll-container {
+    overflow: visible;
+    scroll-snap-type: none;
+    height: auto;
+  }
+
+  .section {
+    min-height: auto;
+    page-break-after: always;
+    padding: 3rem 2rem;
+  }
+
+  .back-link,
+  .page-indicator,
+  .hero__scroll-hint {
+    display: none;
+  }
+}
