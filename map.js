@@ -50,6 +50,22 @@ const destinations = {
     coords: '40.6340\u00b0 N, 14.6027\u00b0 E',
     desc: 'A ribbon of pastel villages clinging to dramatic sea cliffs, where lemon groves perfume the salt air, and every winding road reveals another view that stops the heart.',
     tags: ['Coastal Roads', 'Limoncello', 'Villages']
+  },
+  prague: {
+    number: 'VII',
+    name: 'Prague',
+    region: 'Bohemia, Czech Republic',
+    coords: '50.0755\u00b0 N, 14.4378\u00b0 E',
+    desc: 'A fairy-tale city of Gothic spires and Baroque palaces, where cobblestone lanes wind past astronomical clocks, and the Vltava River reflects centuries of art, music, and revolution.',
+    tags: ['Architecture', 'History', 'Beer']
+  },
+  machupicchu: {
+    number: 'VIII',
+    name: 'Machu Picchu',
+    region: 'Cusco, Peru',
+    coords: '13.1631\u00b0 S, 72.5450\u00b0 W',
+    desc: 'The lost citadel of the Inca, perched among the clouds on a razor-thin ridge, where ancient stone terraces cascade into mist and the silence holds the memory of an empire.',
+    tags: ['Ruins', 'Trekking', 'History']
   }
 };
 
@@ -313,9 +329,9 @@ document.addEventListener('keydown', function(e) {
     showDestination(prev);
   }
 
-  // Number keys 1-6 select destinations
+  // Number keys 1-8 select destinations
   var num = parseInt(e.key);
-  if (num >= 1 && num <= 6) {
+  if (num >= 1 && num <= 8) {
     showDestination(destKeys[num - 1]);
   }
 });

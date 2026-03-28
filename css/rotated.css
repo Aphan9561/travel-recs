@@ -513,6 +513,74 @@ body::after {
   transform: rotate(-2.5deg);
 }
 
+/* Card 7: Prague — light peach, rotated 8deg */
+.card-prague {
+  background: linear-gradient(155deg, #ffecd2, #fcb69f 80%);
+  transform: rotate(8deg);
+  color: #4a2820;
+}
+
+.card-prague .pin {
+  background: radial-gradient(circle at 35% 35%, #ff7043, #bf360c);
+}
+
+.card-prague .card-name {
+  transform: rotate(-3.5deg);
+  color: #bf360c;
+}
+
+.card-prague .card-region {
+  transform: rotate(1.5deg);
+  color: #d84315;
+}
+
+.card-prague .card-description {
+  transform: rotate(-1deg);
+}
+
+.card-prague .card-tags {
+  transform: rotate(2deg);
+}
+
+.card-prague .tag {
+  background: rgba(191, 54, 12, 0.1);
+  transform: rotate(-1.5deg);
+}
+
+/* Card 8: Machu Picchu — light sage green, rotated -10deg */
+.card-machupicchu {
+  background: linear-gradient(155deg, #e8f5e9, #c8e6c9 80%);
+  transform: rotate(-10deg);
+  color: #1b3a1b;
+}
+
+.card-machupicchu .pin {
+  background: radial-gradient(circle at 35% 35%, #81c784, #2e7d32);
+}
+
+.card-machupicchu .card-name {
+  transform: rotate(3.5deg);
+  color: #2e7d32;
+}
+
+.card-machupicchu .card-region {
+  transform: rotate(-2deg);
+  color: #388e3c;
+}
+
+.card-machupicchu .card-description {
+  transform: rotate(1.2deg);
+}
+
+.card-machupicchu .card-tags {
+  transform: rotate(-2.5deg);
+}
+
+.card-machupicchu .tag {
+  background: rgba(46, 125, 50, 0.1);
+  transform: rotate(2deg);
+}
+
 /* ---------- Hover Effects — cards lift & re-rotate ---------- */
 .card-kyoto:hover    { transform: rotate(-4deg) translateY(-6px); }
 .card-santorini:hover { transform: rotate(2deg) translateY(-6px); }
@@ -520,6 +588,8 @@ body::after {
 .card-marrakech:hover { transform: rotate(6deg) translateY(-6px); }
 .card-reykjavik:hover { transform: rotate(-1deg) translateY(-6px); }
 .card-amalfi:hover   { transform: rotate(9deg) translateY(-6px); }
+.card-prague:hover   { transform: rotate(5deg) translateY(-6px); }
+.card-machupicchu:hover { transform: rotate(-7deg) translateY(-6px); }
 
 /* ---------- Footer (rotated, obviously) ---------- */
 .board-footer {
@@ -622,6 +692,8 @@ body::after {
   .card-patagonia { transform: rotate(-8deg); }
   .card-marrakech { transform: rotate(6deg); }
   .card-amalfi    { transform: rotate(8deg); }
+  .card-prague    { transform: rotate(6deg); }
+  .card-machupicchu { transform: rotate(-7deg); }
 }
 
 @media (max-width: 700px) {
@@ -661,6 +733,8 @@ body::after {
   .card-marrakech  { transform: rotate(5deg); }
   .card-reykjavik  { transform: rotate(-3deg); }
   .card-amalfi     { transform: rotate(7deg); }
+  .card-prague     { transform: rotate(5deg); }
+  .card-machupicchu { transform: rotate(-6deg); }
 
   .card-kyoto:hover    { transform: rotate(-2deg) translateY(-4px); }
   .card-santorini:hover { transform: rotate(1deg) translateY(-4px); }
@@ -668,6 +742,8 @@ body::after {
   .card-marrakech:hover { transform: rotate(2deg) translateY(-4px); }
   .card-reykjavik:hover { transform: rotate(0deg) translateY(-4px); }
   .card-amalfi:hover   { transform: rotate(4deg) translateY(-4px); }
+  .card-prague:hover   { transform: rotate(2deg) translateY(-4px); }
+  .card-machupicchu:hover { transform: rotate(-3deg) translateY(-4px); }
 
   .board-footer {
     transform: rotate(2.5deg);

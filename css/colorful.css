@@ -481,6 +481,44 @@ body {
   background: linear-gradient(90deg, #ff9ff3, #e056a0);
 }
 
+/* --- Prague: Warm Ambers & Golds --- */
+.card-prague {
+  background: linear-gradient(180deg, #fffbf0, #ffffff);
+  box-shadow: 0 8px 30px rgba(218, 165, 32, 0.18);
+}
+
+.card-prague .card-image {
+  background: linear-gradient(135deg, #f0c040, #daa520, #b8860b);
+  color: #fff;
+}
+
+.card-prague .card-title {
+  color: #b8860b;
+}
+
+.card-prague .card-accent {
+  background: linear-gradient(90deg, #f0c040, #b8860b);
+}
+
+/* --- Machu Picchu: Earthy Greens & Browns --- */
+.card-machupicchu {
+  background: linear-gradient(180deg, #f5f7f0, #ffffff);
+  box-shadow: 0 8px 30px rgba(85, 107, 47, 0.18);
+}
+
+.card-machupicchu .card-image {
+  background: linear-gradient(135deg, #6b8e23, #556b2f, #4a3728);
+  color: #fff;
+}
+
+.card-machupicchu .card-title {
+  color: #556b2f;
+}
+
+.card-machupicchu .card-accent {
+  background: linear-gradient(90deg, #6b8e23, #4a3728);
+}
+
 /* --- CTA Band --- */
 .cta-band {
   padding: 80px 32px;

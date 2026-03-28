@@ -436,6 +436,30 @@ h1, h2, h3, h4 {
     radial-gradient(ellipse at 80% 40%, rgba(2, 136, 209, 0.3) 0%, transparent 50%);
 }
 
+.prague-gradient {
+  background: linear-gradient(135deg, #f5e6d0 0%, #d4a040 20%, #b8860b 40%, #6a3d9a 60%, #4a2070 80%, #2d1050 100%);
+}
+.prague-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(212, 160, 64, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(106, 61, 154, 0.35) 0%, transparent 50%);
+}
+
+.machupicchu-gradient {
+  background: linear-gradient(135deg, #e8f5e9 0%, #81c784 20%, #4caf50 40%, #2e7d32 55%, #78909c 75%, #546e7a 100%);
+}
+.machupicchu-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255, 255, 255, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 80%, rgba(84, 110, 122, 0.3) 0%, transparent 50%);
+}
+
 /* Season Badge */
 .card-badge {
   position: absolute;

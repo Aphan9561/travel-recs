@@ -84,6 +84,32 @@ var destinations = {
     xpReward: 380,
     coinReward: 90,
     achievement: 'La Dolce Vita'
+  },
+  prague: {
+    name: 'Prague, Czech Republic',
+    region: 'Europe',
+    emoji: '\uD83C\uDFF0',        // castle
+    rarity: 'epic',
+    desc: 'A fairy-tale city of Gothic spires and Baroque palaces! Wander cobblestone lanes, marvel at the astronomical clock, and sip the world\'s best beer.',
+    funStars: 4,
+    budgetCoins: 3,
+    adventurePercent: 70,
+    xpReward: 600,
+    coinReward: 50,
+    achievement: 'Clockwork Scholar'
+  },
+  machupicchu: {
+    name: 'Machu Picchu, Peru',
+    region: 'South America',
+    emoji: '\u26F0\uFE0F',        // mountain
+    rarity: 'legendary',
+    desc: 'The lost citadel of the Inca, perched among the clouds! Trek ancient trails and discover stone terraces cascading into mist.',
+    funStars: 5,
+    budgetCoins: 3,
+    adventurePercent: 95,
+    xpReward: 900,
+    coinReward: 80,
+    achievement: 'Cloud Walker'
   }
 };
 
@@ -529,9 +555,9 @@ document.addEventListener('keydown', function(e) {
     showDestination(prev);
   }
 
-  // Number keys 1-6 select destinations
+  // Number keys 1-8 select destinations
   var num = parseInt(e.key);
-  if (num >= 1 && num <= 6) {
+  if (num >= 1 && num <= 8) {
     showDestination(destKeys[num - 1]);
   }
 });

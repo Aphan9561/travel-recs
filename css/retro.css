@@ -325,6 +325,8 @@ body {
 .card-bg-4 { background: #ccffcc; }
 .card-bg-5 { background: #ccccff; }
 .card-bg-6 { background: #ffddcc; }
+.card-bg-7 { background: #ffe8cc; }
+.card-bg-8 { background: #d4ffcc; }
 
 .card-header-bar {
     padding: 8px 10px;
@@ -343,6 +345,8 @@ body {
 .bar-4 { background: linear-gradient(90deg, #cc6600, #ff9933, #cc6600); }
 .bar-5 { background: linear-gradient(90deg, #660099, #9933cc, #660099); }
 .bar-6 { background: linear-gradient(90deg, #cc0066, #ff3399, #cc0066); }
+.bar-7 { background: linear-gradient(90deg, #cc8800, #ffaa33, #cc8800); }
+.bar-8 { background: linear-gradient(90deg, #006633, #33cc66, #006633); }
 
 .card-icon {
     font-size: 1.2rem;

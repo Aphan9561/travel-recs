@@ -18,10 +18,12 @@
   --neon-cyan: #00e5ff;
   --neon-amber: #ffab00;
   --neon-purple: #b44dff;
+  --neon-green: #39ff14;
   --neon-pink-glow: rgba(255, 45, 123, 0.6);
   --neon-cyan-glow: rgba(0, 229, 255, 0.6);
   --neon-amber-glow: rgba(255, 171, 0, 0.6);
   --neon-purple-glow: rgba(180, 77, 255, 0.6);
+  --neon-green-glow: rgba(57, 255, 20, 0.6);
 
   /* Backgrounds */
   --bg-dark: #0a0a0f;
@@ -266,6 +268,12 @@ body {
   box-shadow: 0 0 8px var(--neon-purple-glow);
 }
 
+.dot-green,
+.bar-green {
+  background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green-glow);
+}
+
 /* ==========================================================================
    DESTINATIONS SECTION
    ========================================================================== */
@@ -382,6 +390,12 @@ body {
   box-shadow: 0 0 6px var(--neon-purple-glow);
 }
 
+.node-green {
+  border-color: var(--neon-green);
+  background: var(--bg-dark);
+  box-shadow: 0 0 6px var(--neon-green-glow);
+}
+
 .track-pink {
   background: linear-gradient(90deg, var(--neon-pink), rgba(255, 45, 123, 0.2));
   box-shadow: 0 0 6px var(--neon-pink-glow);
@@ -400,6 +414,11 @@ body {
 .track-purple {
   background: linear-gradient(90deg, var(--neon-purple), rgba(180, 77, 255, 0.2));
   box-shadow: 0 0 6px var(--neon-purple-glow);
+}
+
+.track-green {
+  background: linear-gradient(90deg, var(--neon-green), rgba(57, 255, 20, 0.2));
+  box-shadow: 0 0 6px var(--neon-green-glow);
 }
 
 /* --- Card Grid --- */
@@ -508,6 +527,16 @@ body {
     linear-gradient(135deg, #1a0a1a 0%, #b44dff 25%, #ff2d7b 55%, #ffab00 100%);
 }
 
+.gradient-prague {
+  background:
+    linear-gradient(135deg, #1a140a 0%, #3d2a0a 30%, #ffab00 65%, #ffd54f 100%);
+}
+
+.gradient-machupicchu {
+  background:
+    linear-gradient(135deg, #0a1a0a 0%, #0d2e0d 30%, #39ff14 65%, #a8ff78 100%);
+}
+
 /* Grain overlay on card photos */
 .card-photo::before {
   content: '';
@@ -574,6 +603,14 @@ body {
     0 0 30px rgba(180, 77, 255, 0.25);
 }
 
+.neon-glow-green {
+  color: var(--neon-green);
+  text-shadow:
+    0 0 5px var(--neon-green-glow),
+    0 0 15px var(--neon-green-glow),
+    0 0 30px rgba(57, 255, 20, 0.25);
+}
+
 /* --- Tags (neighborhood style) --- */
 .card-tags {
   display: flex;
@@ -615,6 +652,12 @@ body {
   color: var(--neon-purple);
   border-color: rgba(180, 77, 255, 0.4);
   background: rgba(180, 77, 255, 0.08);
+}
+
+.tag-green {
+  color: var(--neon-green);
+  border-color: rgba(57, 255, 20, 0.4);
+  background: rgba(57, 255, 20, 0.08);
 }
 
 /* --- Card Description --- */
@@ -660,6 +703,11 @@ body {
 .metro-purple {
   background: var(--neon-purple);
   box-shadow: 0 0 6px var(--neon-purple-glow);
+}
+
+.metro-green {
+  background: var(--neon-green);
+  box-shadow: 0 0 6px var(--neon-green-glow);
 }
 
 .metro-label {

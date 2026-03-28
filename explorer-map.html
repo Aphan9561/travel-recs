@@ -36,7 +36,7 @@
           <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
           </div>
-          <span class="progress-label" id="progress-label">0 / 6 stamps</span>
+          <span class="progress-label" id="progress-label">0 / 8 stamps</span>
         </div>
       </div>
     </div>
@@ -133,6 +133,14 @@
           <path class="route-line" d="M440,72 C380,130 310,260 240,380" fill="none" stroke="#55efc4" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.4"/>
           <!-- Patagonia to Kyoto (complete the loop) -->
           <path class="route-line" d="M240,380 C350,400 600,320 877,152" fill="none" stroke="#ff9f43" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.3"/>
+          <!-- Prague to Amalfi -->
+          <path class="route-line" d="M539,110 C539,118 539,128 539,136" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.4"/>
+          <!-- Prague to Reykjavik -->
+          <path class="route-line" d="M539,110 C500,95 470,80 440,72" fill="none" stroke="#a29bfe" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.4"/>
+          <!-- Machu Picchu to Patagonia -->
+          <path class="route-line" d="M210,285 C220,320 230,350 240,380" fill="none" stroke="#55efc4" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.4"/>
+          <!-- Marrakech to Machu Picchu -->
+          <path class="route-line" d="M488,186 C400,220 300,250 210,285" fill="none" stroke="#059669" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.4"/>
         </g>
 
         <!-- Destination pins -->
@@ -190,6 +198,24 @@
             <circle class="pin-dot" cx="0" cy="0" r="8" fill="#ff9f43" stroke="#1e2a3a" stroke-width="2"/>
             <text class="pin-letter" x="0" y="3.5" text-anchor="middle" font-family="'Poppins', sans-serif" font-size="8" font-weight="700" fill="#fff">A</text>
             <text class="pin-label" x="16" y="4" font-family="'Poppins', sans-serif" font-size="9" font-weight="600" fill="#c8d6e5">Amalfi</text>
+          </g>
+
+          <!-- Prague: amber -->
+          <g class="pin" data-dest="prague" transform="translate(539, 110)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="12" fill="#f59e0b" opacity="0.15"/>
+            <circle class="pin-dot" cx="0" cy="0" r="8" fill="#f59e0b" stroke="#1e2a3a" stroke-width="2"/>
+            <text class="pin-letter" x="0" y="3.5" text-anchor="middle" font-family="'Poppins', sans-serif" font-size="8" font-weight="700" fill="#1e2a3a">P</text>
+            <text class="pin-label" x="16" y="4" font-family="'Poppins', sans-serif" font-size="9" font-weight="600" fill="#c8d6e5">Prague</text>
+          </g>
+
+          <!-- Machu Picchu: green -->
+          <g class="pin" data-dest="machupicchu" transform="translate(210, 285)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#059669" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="12" fill="#059669" opacity="0.15"/>
+            <circle class="pin-dot" cx="0" cy="0" r="8" fill="#059669" stroke="#1e2a3a" stroke-width="2"/>
+            <text class="pin-letter" x="0" y="3.5" text-anchor="middle" font-family="'Poppins', sans-serif" font-size="8" font-weight="700" fill="#fff">M</text>
+            <text class="pin-label" x="16" y="4" font-family="'Poppins', sans-serif" font-size="9" font-weight="600" fill="#c8d6e5">Machu Picchu</text>
           </g>
 
         </g>
@@ -278,9 +304,9 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z" stroke="currentColor" stroke-width="1"/><line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1"/></svg>
         <span>Explorer Map</span>
       </div>
-      <p class="footer-text">A premium travel exploration experience &bull; 6 curated destinations &bull; 2026</p>
+      <p class="footer-text">A premium travel exploration experience &bull; 8 curated destinations &bull; 2026</p>
       <div class="footer-keys">
-        <span class="key-hint"><kbd>1</kbd>-<kbd>6</kbd> Select</span>
+        <span class="key-hint"><kbd>1</kbd>-<kbd>8</kbd> Select</span>
         <span class="key-hint"><kbd>&larr;</kbd><kbd>&rarr;</kbd> Navigate</span>
         <span class="key-hint"><kbd>Enter</kbd> Collect</span>
         <span class="key-hint"><kbd>Esc</kbd> Close</span>

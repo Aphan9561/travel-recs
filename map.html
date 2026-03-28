@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best Places to Travel — Interactive Explorer's Atlas</title>
-  <link rel="stylesheet" href="map.css">
+  <link rel="stylesheet" href="css/map.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -118,6 +118,14 @@
           <path class="route-line" d="M539,136 C500,110 460,80 440,72" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
           <!-- Reykjavik to Patagonia -->
           <path class="route-line" d="M440,72 C380,120 300,250 240,380" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Prague to Amalfi -->
+          <path class="route-line" d="M539,110 C539,118 539,128 539,136" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Prague to Reykjavik -->
+          <path class="route-line" d="M539,110 C500,95 470,80 440,72" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Machu Picchu to Patagonia -->
+          <path class="route-line" d="M210,285 C220,320 230,350 240,380" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+          <!-- Marrakech to Machu Picchu -->
+          <path class="route-line" d="M488,186 C400,220 300,250 210,285" fill="none" stroke="#9e4a3a" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
         </g>
 
         <!-- Destination pins -->
@@ -163,6 +171,20 @@
             <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
             <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
             <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Amalfi</text>
+          </g>
+
+          <!-- Prague: 50.08°N, 14.44°E => x=539, y=110 -->
+          <g class="pin" data-dest="prague" transform="translate(539, 110)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Prague</text>
+          </g>
+
+          <!-- Machu Picchu: 13.16°S, 72.55°W => x=210, y=285 -->
+          <g class="pin" data-dest="machupicchu" transform="translate(210, 285)">
+            <circle class="pin-pulse" cx="0" cy="0" r="6" fill="none" stroke="#9e4a3a" stroke-width="1"/>
+            <circle class="pin-dot" cx="0" cy="0" r="5" fill="#9e4a3a" stroke="#f5edd6" stroke-width="1.5"/>
+            <text class="pin-label" x="10" y="4" font-family="'IM Fell English SC', serif" font-size="9" fill="#5a4630">Machu Picchu</text>
           </g>
 
         </g>
@@ -215,6 +237,16 @@
         <span class="dest-list-num">VI</span>
         <span class="dest-list-name">Amalfi Coast</span>
         <span class="dest-list-region">Italy</span>
+      </button>
+      <button class="dest-list-item" data-dest="prague">
+        <span class="dest-list-num">VII</span>
+        <span class="dest-list-name">Prague</span>
+        <span class="dest-list-region">Czech Republic</span>
+      </button>
+      <button class="dest-list-item" data-dest="machupicchu">
+        <span class="dest-list-num">VIII</span>
+        <span class="dest-list-name">Machu Picchu</span>
+        <span class="dest-list-region">Peru</span>
       </button>
     </div>
   </section>

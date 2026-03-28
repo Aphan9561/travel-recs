@@ -78,7 +78,7 @@
                     <span class="stat-icon">&#9733;</span>
                     <div class="stat-info">
                         <span class="stat-label">MISSIONS</span>
-                        <span class="stat-value" id="missions-count">0/6</span>
+                        <span class="stat-value" id="missions-count">0/8</span>
                     </div>
                 </div>
                 <div class="hud-stat">
@@ -115,7 +115,7 @@
             <circle class="progress-ring-bg" cx="40" cy="40" r="34" fill="none" stroke="rgba(0,255,204,0.1)" stroke-width="4"/>
             <circle class="progress-ring-fill" id="progress-ring-fill" cx="40" cy="40" r="34" fill="none" stroke="rgba(0,255,204,0.8)" stroke-width="4" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" transform="rotate(-90 40 40)"/>
         </svg>
-        <div class="progress-ring-text" id="progress-ring-text">0/6</div>
+        <div class="progress-ring-text" id="progress-ring-text">0/8</div>
         <div class="progress-ring-label">EXPEDITIONS</div>
     </div>
 
@@ -186,6 +186,14 @@
                     <path class="route-beam" d="M488,186 C495,170 515,155 539,136" fill="none" stroke="url(#beam-gradient-3)" stroke-width="2" stroke-dasharray="8,6"/>
                     <path class="route-beam" d="M539,136 C500,110 460,80 425,58" fill="none" stroke="url(#beam-gradient-4)" stroke-width="2" stroke-dasharray="8,6"/>
                     <path class="route-beam" d="M425,58 C380,120 300,250 245,390" fill="none" stroke="url(#beam-gradient-5)" stroke-width="2" stroke-dasharray="8,6"/>
+                    <!-- Prague to Amalfi -->
+                    <path class="route-beam" d="M539,110 C539,118 539,128 539,136" fill="none" stroke="url(#beam-gradient-6)" stroke-width="2" stroke-dasharray="8,6"/>
+                    <!-- Prague to Reykjavik -->
+                    <path class="route-beam" d="M539,110 C500,90 460,70 425,58" fill="none" stroke="url(#beam-gradient-7)" stroke-width="2" stroke-dasharray="8,6"/>
+                    <!-- Machu Picchu to Patagonia -->
+                    <path class="route-beam" d="M210,285 C220,320 235,360 245,390" fill="none" stroke="url(#beam-gradient-8)" stroke-width="2" stroke-dasharray="8,6"/>
+                    <!-- Marrakech to Machu Picchu -->
+                    <path class="route-beam" d="M488,186 C400,220 300,250 210,285" fill="none" stroke="url(#beam-gradient-9)" stroke-width="2" stroke-dasharray="8,6"/>
                     <defs>
                         <linearGradient id="beam-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#ff6b6b"/>
@@ -206,6 +214,22 @@
                         <linearGradient id="beam-gradient-5" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#cc5de8"/>
                             <stop offset="100%" stop-color="#51cf66"/>
+                        </linearGradient>
+                        <linearGradient id="beam-gradient-6" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ffe66d"/>
+                            <stop offset="100%" stop-color="#ff922b"/>
+                        </linearGradient>
+                        <linearGradient id="beam-gradient-7" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ffe66d"/>
+                            <stop offset="100%" stop-color="#cc5de8"/>
+                        </linearGradient>
+                        <linearGradient id="beam-gradient-8" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#55efc4"/>
+                            <stop offset="100%" stop-color="#51cf66"/>
+                        </linearGradient>
+                        <linearGradient id="beam-gradient-9" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ffd43b"/>
+                            <stop offset="100%" stop-color="#55efc4"/>
                         </linearGradient>
                     </defs>
                 </g>
@@ -270,6 +294,26 @@
                         <circle class="pin-core" cx="0" cy="0" r="5" fill="#ff922b"/>
                         <circle class="pin-center" cx="0" cy="0" r="2" fill="#fff"/>
                         <text class="pin-label" x="0" y="-22" text-anchor="middle" font-family="'Rajdhani', sans-serif" font-size="9" font-weight="600" fill="#ff922b" opacity="0">AMALFI</text>
+                    </g>
+
+                    <!-- Prague -->
+                    <g class="pin" data-dest="prague" transform="translate(539, 110)">
+                        <circle class="pin-aura" cx="0" cy="0" r="16" fill="none" stroke="#ffe66d" stroke-width="0.5" opacity="0.3"/>
+                        <circle class="pin-ring" cx="0" cy="0" r="12" fill="none" stroke="#ffe66d" stroke-width="1" opacity="0.5"/>
+                        <circle class="pin-pulse-ring" cx="0" cy="0" r="8" fill="none" stroke="#ffe66d" stroke-width="1"/>
+                        <circle class="pin-core" cx="0" cy="0" r="5" fill="#ffe66d"/>
+                        <circle class="pin-center" cx="0" cy="0" r="2" fill="#fff"/>
+                        <text class="pin-label" x="0" y="-22" text-anchor="middle" font-family="'Rajdhani', sans-serif" font-size="9" font-weight="600" fill="#ffe66d" opacity="0">PRAGUE</text>
+                    </g>
+
+                    <!-- Machu Picchu -->
+                    <g class="pin" data-dest="machupicchu" transform="translate(210, 285)">
+                        <circle class="pin-aura" cx="0" cy="0" r="16" fill="none" stroke="#55efc4" stroke-width="0.5" opacity="0.3"/>
+                        <circle class="pin-ring" cx="0" cy="0" r="12" fill="none" stroke="#55efc4" stroke-width="1" opacity="0.5"/>
+                        <circle class="pin-pulse-ring" cx="0" cy="0" r="8" fill="none" stroke="#55efc4" stroke-width="1"/>
+                        <circle class="pin-core" cx="0" cy="0" r="5" fill="#55efc4"/>
+                        <circle class="pin-center" cx="0" cy="0" r="2" fill="#fff"/>
+                        <text class="pin-label" x="0" y="-22" text-anchor="middle" font-family="'Rajdhani', sans-serif" font-size="9" font-weight="600" fill="#55efc4" opacity="0">MACHU PICCHU</text>
                     </g>
                 </g>
             </svg>
@@ -347,7 +391,7 @@
 
     <!-- Keyboard hints -->
     <div class="keyboard-hints">
-        <span class="hint"><kbd>1</kbd>-<kbd>6</kbd> Select</span>
+        <span class="hint"><kbd>1</kbd>-<kbd>8</kbd> Select</span>
         <span class="hint"><kbd>Enter</kbd> Launch</span>
         <span class="hint"><kbd>Esc</kbd> Close</span>
         <span class="hint"><kbd>R</kbd> Routes</span>

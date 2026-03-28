@@ -120,10 +120,48 @@
             achievement: 'Unlocks: La Dolce Vita',
             svgX: 539,
             svgY: 136
+        },
+        prague: {
+            id: 'prague',
+            name: 'The Clockwork Spires',
+            location: 'Prague, Czech Republic',
+            rarity: 'epic',
+            color: '#ffe66d',
+            desc: 'Uncover the secrets of the Clockwork City, where Gothic spires pierce the sky and Baroque palaces guard ancient knowledge beneath the astronomical clock.',
+            difficulty: 35,
+            cost: 45,
+            adventure: 65,
+            difficultyNum: '3.5/10',
+            costNum: '4.5/10',
+            adventureNum: '6.5/10',
+            xp: 750,
+            gold: 400,
+            achievement: 'Unlocks: Clockwork Scholar',
+            svgX: 539,
+            svgY: 110
+        },
+        machupicchu: {
+            id: 'machupicchu',
+            name: 'The Cloud Citadel',
+            location: 'Machu Picchu, Peru',
+            rarity: 'legendary',
+            color: '#55efc4',
+            desc: 'Ascend to the lost citadel in the clouds. Trek ancient Inca trails, decode stone terraces, and claim the ultimate high-altitude reward.',
+            difficulty: 80,
+            cost: 55,
+            adventure: 95,
+            difficultyNum: '8/10',
+            costNum: '5.5/10',
+            adventureNum: '9.5/10',
+            xp: 1100,
+            gold: 650,
+            achievement: 'Unlocks: Cloud Walker',
+            svgX: 210,
+            svgY: 285
         }
     };
 
-    const destOrder = ['kyoto', 'santorini', 'patagonia', 'marrakech', 'reykjavik', 'amalfi'];
+    const destOrder = ['kyoto', 'santorini', 'patagonia', 'marrakech', 'reykjavik', 'amalfi', 'prague', 'machupicchu'];
 
     // ========== RANK PROGRESSION ==========
     const ranks = [
@@ -345,7 +383,7 @@
         updateRank();
 
         // 12. Check completion
-        if (state.launched.size === 6 && !state.completionShown) {
+        if (state.launched.size === 8 && !state.completionShown) {
             setTimeout(() => triggerCompletion(), 2800);
         }
     }
@@ -520,7 +558,7 @@
     // ========== UPDATE MISSIONS ==========
     function updateMissionsCounter() {
         const count = state.launched.size;
-        missionsCount.textContent = count + '/6';
+        missionsCount.textContent = count + '/8';
         missionsCount.classList.add('animating');
         setTimeout(() => missionsCount.classList.remove('animating'), 600);
     }
@@ -529,9 +567,9 @@
     function updateProgressRing() {
         const count = state.launched.size;
         const circumference = 2 * Math.PI * 34; // r=34
-        const offset = circumference - (count / 6) * circumference;
+        const offset = circumference - (count / 8) * circumference;
         progressRingFill.style.strokeDashoffset = offset;
-        progressRingText.textContent = count + '/6';
+        progressRingText.textContent = count + '/8';
     }
 
     // ========== UPDATE RANK ==========
@@ -705,8 +743,8 @@
     document.addEventListener('keydown', (e) => {
         const key = e.key;
 
-        // 1-6 to select destinations
-        if (key >= '1' && key <= '6') {
+        // 1-8 to select destinations
+        if (key >= '1' && key <= '8') {
             const idx = parseInt(key) - 1;
             if (destOrder[idx]) {
                 selectDestination(destOrder[idx]);

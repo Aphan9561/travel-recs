@@ -67,7 +67,7 @@
                         <span class="stat-icon">&#9878;</span>
                         <div class="stat-detail">
                             <span class="stat-label">Quests</span>
-                            <span class="stat-value" id="hud-quests">0/6</span>
+                            <span class="stat-value" id="hud-quests">0/8</span>
                         </div>
                     </div>
                 </div>
@@ -122,6 +122,8 @@
             <circle cx="488" cy="186" r="8" fill="#00f0ff" opacity="0.8"/>
             <circle cx="440" cy="72" r="8" fill="#a855f7" opacity="0.8"/>
             <circle cx="539" cy="136" r="8" fill="#00f0ff" opacity="0.8"/>
+            <circle cx="539" cy="110" r="8" fill="#a855f7" opacity="0.8"/>
+            <circle cx="210" cy="285" r="8" fill="#ffd700" opacity="0.8"/>
             <!-- Viewport indicator -->
             <rect class="minimap-viewport" id="minimap-viewport" x="0" y="0" width="1000" height="500" fill="none" stroke="#00f0ff" stroke-width="4" opacity="0.6"/>
         </svg>
@@ -266,6 +268,18 @@
                     <path class="route-line" d="M488,186 C495,175 510,155 539,136" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
                     <path class="route-line" d="M539,136 C500,110 460,80 440,72" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
                     <path class="route-line" d="M440,72 C380,120 300,250 240,380" fill="none" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
+                    <!-- Prague to Amalfi -->
+                    <path class="route-glow" d="M539,110 C539,118 539,128 539,136" fill="none" stroke="#a855f7" stroke-width="4" stroke-dasharray="8,6" opacity="0.15"/>
+                    <path class="route-line" d="M539,110 C539,118 539,128 539,136" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
+                    <!-- Prague to Reykjavik -->
+                    <path class="route-glow" d="M539,110 C500,95 470,80 440,72" fill="none" stroke="#a855f7" stroke-width="4" stroke-dasharray="8,6" opacity="0.15"/>
+                    <path class="route-line" d="M539,110 C500,95 470,80 440,72" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
+                    <!-- Machu Picchu to Patagonia -->
+                    <path class="route-glow" d="M210,285 C220,320 230,350 240,380" fill="none" stroke="#ffd700" stroke-width="4" stroke-dasharray="8,6" opacity="0.15"/>
+                    <path class="route-line" d="M210,285 C220,320 230,350 240,380" fill="none" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
+                    <!-- Marrakech to Machu Picchu -->
+                    <path class="route-glow" d="M488,186 C400,220 300,250 210,285" fill="none" stroke="#00f0ff" stroke-width="4" stroke-dasharray="8,6" opacity="0.15"/>
+                    <path class="route-line" d="M488,186 C400,220 300,250 210,285" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.6"/>
                 </g>
 
                 <!-- Destination Quest Markers -->
@@ -324,6 +338,24 @@
                         <circle class="pin-pulse-ring" cx="0" cy="0" r="8" fill="none" stroke="#00f0ff" stroke-width="1"/>
                         <polygon class="pin-diamond" points="0,-10 7,0 0,10 -7,0" fill="#00f0ff" stroke="#d5ffff" stroke-width="1" filter="url(#glow-cyan)"/>
                         <text class="pin-label" x="12" y="4" font-family="'Orbitron', sans-serif" font-size="7" fill="#00f0ff" font-weight="600">AMALFI</text>
+                        <text class="pin-check" x="-3" y="4" font-size="8" fill="#0a0e17" opacity="0" font-weight="bold">&#10003;</text>
+                    </g>
+
+                    <!-- Prague: Epic (purple) — 50.08N, 14.44E => x=539, y=110 -->
+                    <g class="quest-pin" data-dest="prague" transform="translate(539, 110)">
+                        <circle class="pin-aura" cx="0" cy="0" r="12" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.3"/>
+                        <circle class="pin-pulse-ring" cx="0" cy="0" r="8" fill="none" stroke="#a855f7" stroke-width="1"/>
+                        <polygon class="pin-diamond" points="0,-10 7,0 0,10 -7,0" fill="#a855f7" stroke="#e8d5ff" stroke-width="1" filter="url(#glow-purple)"/>
+                        <text class="pin-label" x="12" y="4" font-family="'Orbitron', sans-serif" font-size="7" fill="#a855f7" font-weight="600">PRAGUE</text>
+                        <text class="pin-check" x="-3" y="4" font-size="8" fill="#0a0e17" opacity="0" font-weight="bold">&#10003;</text>
+                    </g>
+
+                    <!-- Machu Picchu: Legendary (gold) — 13.16S, 72.55W => x=210, y=285 -->
+                    <g class="quest-pin" data-dest="machupicchu" transform="translate(210, 285)">
+                        <circle class="pin-aura" cx="0" cy="0" r="12" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.3"/>
+                        <circle class="pin-pulse-ring" cx="0" cy="0" r="8" fill="none" stroke="#ffd700" stroke-width="1"/>
+                        <polygon class="pin-diamond" points="0,-10 7,0 0,10 -7,0" fill="#ffd700" stroke="#fff8dc" stroke-width="1" filter="url(#glow-gold)"/>
+                        <text class="pin-label" x="12" y="4" font-family="'Orbitron', sans-serif" font-size="7" fill="#ffd700" font-weight="600">MACHU PICCHU</text>
                         <text class="pin-check" x="-3" y="4" font-size="8" fill="#0a0e17" opacity="0" font-weight="bold">&#10003;</text>
                     </g>
 
@@ -450,6 +482,30 @@
                 </div>
                 <div class="quest-log-xp">+680 XP</div>
                 <div class="quest-log-status" id="status-amalfi">PENDING</div>
+            </div>
+
+            <div class="quest-log-item" data-dest="prague">
+                <div class="quest-log-check">
+                    <span class="quest-checkbox" id="check-prague"></span>
+                </div>
+                <div class="quest-log-info">
+                    <span class="quest-log-name">Prague, Czech Republic</span>
+                    <span class="quest-log-rarity epic">Epic</span>
+                </div>
+                <div class="quest-log-xp">+750 XP</div>
+                <div class="quest-log-status" id="status-prague">PENDING</div>
+            </div>
+
+            <div class="quest-log-item" data-dest="machupicchu">
+                <div class="quest-log-check">
+                    <span class="quest-checkbox" id="check-machupicchu"></span>
+                </div>
+                <div class="quest-log-info">
+                    <span class="quest-log-name">Machu Picchu, Peru</span>
+                    <span class="quest-log-rarity legendary">Legendary</span>
+                </div>
+                <div class="quest-log-xp">+1100 XP</div>
+                <div class="quest-log-status" id="status-machupicchu">PENDING</div>
             </div>
 
         </div>

@@ -78,6 +78,30 @@ var destinations = {
         xp: 680,
         gold: 160,
         achievement: 'La Dolce Vita'
+    },
+    prague: {
+        name: 'Prague, Czech Republic',
+        region: 'Europe \u2022 Bohemia',
+        rarity: 'epic',
+        desc: 'Uncover the secrets of the Clockwork City, where Gothic spires pierce the sky and Baroque palaces guard ancient knowledge. The Vltava River holds many mysteries.',
+        difficulty: 2,
+        cost: 3,
+        adventure: 7,
+        xp: 750,
+        gold: 180,
+        achievement: 'Clockwork Scholar'
+    },
+    machupicchu: {
+        name: 'Machu Picchu, Peru',
+        region: 'South America \u2022 Cusco',
+        rarity: 'legendary',
+        desc: 'Ascend to the lost citadel in the clouds. Trek ancient Inca trails, decode stone terraces, and claim the ultimate high-altitude reward. Only the worthy reach the summit.',
+        difficulty: 5,
+        cost: 3,
+        adventure: 9,
+        xp: 1100,
+        gold: 300,
+        achievement: 'Cloud Walker'
     }
 };
 
@@ -187,7 +211,7 @@ function updateHUD() {
     playerLevel = level;
     hudLevel.textContent = level;
     hudGold.textContent = formatNumber(totalGold);
-    hudQuests.textContent = questCount + '/6';
+    hudQuests.textContent = questCount + '/8';
     xpLevelBadge.textContent = 'LVL ' + level;
     xpNextBadge.textContent = 'LVL ' + (level + 1);
     xpBarFill.style.width = xpPercent + '%';
@@ -626,9 +650,9 @@ document.addEventListener('keydown', function(e) {
         showInfoCard(prev);
     }
 
-    // Number keys 1-6 select destinations
+    // Number keys 1-8 select destinations
     var num = parseInt(e.key);
-    if (num >= 1 && num <= 6) {
+    if (num >= 1 && num <= 8) {
         showInfoCard(destKeys[num - 1]);
     }
 

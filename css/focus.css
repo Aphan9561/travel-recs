@@ -196,6 +196,14 @@ body {
   background: linear-gradient(180deg, #f7f6f2 0%, #f4f2ed 40%, #f1efe8 100%);
 }
 
+.section--prague {
+  background: linear-gradient(180deg, #f6f5f3 0%, #f2f0ec 40%, #eeece6 100%);
+}
+
+.section--machupicchu {
+  background: linear-gradient(180deg, #f5f7f4 0%, #f1f4ef 40%, #edf1e9 100%);
+}
+
 /* --- Destination Content --- */
 .destination {
   max-width: 640px;

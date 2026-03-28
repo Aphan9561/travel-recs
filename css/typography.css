@@ -472,6 +472,32 @@ body {
   color: rgba(240, 240, 240, 0.35);
 }
 
+/* Prague — mixed-weight contrast, heavy top / light bottom */
+.dest--prague .dest-name {
+  letter-spacing: 0.04em;
+}
+
+.dest--prague .dest-name-break {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  font-size: 0.65em;
+  color: rgba(240, 240, 240, 0.4);
+}
+
+/* Machu Picchu — double-deck monumental, stacked tight */
+.dest--machupicchu .dest-name {
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  font-size: clamp(4rem, 16vw, 16rem);
+}
+
+.dest--machupicchu .dest-name-break {
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+}
+
 
 /* ——————————————————————————————————————————————
    FOOTER — one final shout

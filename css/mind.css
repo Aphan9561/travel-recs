@@ -264,6 +264,30 @@ body {
     animation-delay: 3s;
 }
 
+.thread-prague {
+    top: 45vh;
+    left: 50%;
+    width: 300px;
+    height: 0;
+    border-top: 1.5px dashed rgba(255, 180, 160, 0.18);
+    transform-origin: 0 0;
+    transform: rotate(-5deg);
+    animation: thread-fade 7s ease-in-out infinite alternate;
+    animation-delay: 3.5s;
+}
+
+.thread-machupicchu {
+    top: 45vh;
+    left: 50%;
+    width: 380px;
+    height: 0;
+    border-top: 1px dotted rgba(140, 200, 120, 0.18);
+    transform-origin: 0 0;
+    transform: rotate(160deg);
+    animation: thread-fade 8.5s ease-in-out infinite alternate;
+    animation-delay: 4s;
+}
+
 @keyframes thread-fade {
     0% { opacity: 0.3; }
     50% { opacity: 1; }
@@ -622,6 +646,80 @@ body {
     left: 2px;
 }
 
+/* --- Prague: upper-center-right --- */
+.thought-prague {
+    top: 28%;
+    left: 42%;
+    width: 240px;
+    animation: float-thought-7 11s ease-in-out infinite;
+}
+
+.thought-prague .thought-cloud {
+    border-radius: 53% 47% 48% 52% / 55% 50% 50% 45%;
+    border-color: rgba(255, 180, 160, 0.18);
+    background: rgba(40, 20, 35, 0.65);
+}
+
+.thought-prague .thought-cloud::before {
+    background: rgba(40, 20, 35, 0.5);
+}
+
+.thought-prague .thought-cloud::after {
+    background: rgba(40, 20, 35, 0.5);
+}
+
+.thought-prague .thought-name {
+    color: #ffc8b0;
+    text-shadow: 0 0 15px rgba(255, 180, 140, 0.35);
+}
+
+.thought-prague .thought-tail {
+    bottom: -24px;
+    left: 40%;
+}
+
+.thought-prague .thought-tail::before {
+    bottom: -13px;
+    left: 5px;
+}
+
+/* --- Machu Picchu: lower-center --- */
+.thought-machupicchu {
+    top: 82%;
+    left: 40%;
+    width: 260px;
+    animation: float-thought-8 12s ease-in-out infinite;
+}
+
+.thought-machupicchu .thought-cloud {
+    border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+    border-color: rgba(140, 200, 120, 0.18);
+    background: rgba(15, 30, 20, 0.65);
+}
+
+.thought-machupicchu .thought-cloud::before {
+    background: rgba(15, 30, 20, 0.5);
+}
+
+.thought-machupicchu .thought-cloud::after {
+    background: rgba(15, 30, 20, 0.5);
+}
+
+.thought-machupicchu .thought-name {
+    color: #b8e8a0;
+    text-shadow: 0 0 15px rgba(140, 220, 120, 0.35);
+}
+
+.thought-machupicchu .thought-tail {
+    top: -22px;
+    right: 35%;
+}
+
+.thought-machupicchu .thought-tail::before {
+    top: -13px;
+    right: 2px;
+}
+
 /* --- Floating Animations --- */
 @keyframes float-thought-1 {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -658,6 +756,18 @@ body {
     0%, 100% { transform: translate(0, 0); }
     40% { transform: translate(-10px, -7px); }
     70% { transform: translate(5px, 8px); }
+}
+
+@keyframes float-thought-7 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    30% { transform: translate(-7px, 10px) rotate(-0.4deg); }
+    60% { transform: translate(9px, -6px) rotate(0.3deg); }
+}
+
+@keyframes float-thought-8 {
+    0%, 100% { transform: translate(0, 0); }
+    35% { transform: translate(10px, -8px); }
+    65% { transform: translate(-6px, 6px); }
 }
 
 /* ============================================================
@@ -964,6 +1074,16 @@ body {
         right: 5%;
     }
 
+    .thought-prague {
+        top: 28%;
+        left: 30%;
+    }
+
+    .thought-machupicchu {
+        top: 80%;
+        left: 30%;
+    }
+
     .thread {
         display: none;
     }
@@ -1034,6 +1154,18 @@ body {
         top: 75%;
         left: 10%;
         right: auto;
+    }
+
+    .thought-prague {
+        top: 30%;
+        right: 5%;
+        left: auto;
+    }
+
+    .thought-machupicchu {
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .ambient-word {

@@ -165,7 +165,9 @@ body {
 
 .tl-ancient { background: #8B7355; }
 .tl-medieval { background: #c9362c; }
+.tl-precolumbian { background: #b8860b; }
 .tl-victorian { background: #8B6914; }
+.tl-artnouveau { background: #c4956a; }
 .tl-telegram { background: #c0a830; }
 .tl-earlyweb { background: #00cc00; }
 .tl-modern { background: #e8e8e8; }
@@ -252,9 +254,27 @@ body {
     color: #9a7a3a;
 }
 
+/* Pre-Columbian transition */
+.era-transition-precolumbian {
+    background: linear-gradient(180deg, #1a0a0a 0%, #2a1e10 100%);
+}
+.era-transition-precolumbian .era-marker-line {
+    background: #b8860b;
+}
+.era-transition-precolumbian .era-marker-text {
+    font-family: Georgia, serif;
+    color: #d4a050;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+}
+.era-transition-precolumbian .era-marker-sub {
+    font-family: Georgia, serif;
+    color: #8a6a2a;
+}
+
 /* Victorian transition */
 .era-transition-victorian {
-    background: linear-gradient(180deg, #1a0a0a 0%, #2c2218 100%);
+    background: linear-gradient(180deg, #2a1e10 0%, #2c2218 100%);
 }
 .era-transition-victorian .era-marker-line {
     background: #8B6914;
@@ -268,9 +288,28 @@ body {
     color: #8B6914;
 }
 
+/* Art Nouveau transition */
+.era-transition-artnouveau {
+    background: linear-gradient(180deg, #2c2218 0%, #2a2018 100%);
+}
+.era-transition-artnouveau .era-marker-line {
+    background: #c4956a;
+}
+.era-transition-artnouveau .era-marker-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #d4a870;
+    font-weight: 600;
+    font-style: italic;
+}
+.era-transition-artnouveau .era-marker-sub {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #a08050;
+    font-style: italic;
+}
+
 /* Telegram transition */
 .era-transition-telegram {
-    background: linear-gradient(180deg, #2c2218 0%, #3a3520 100%);
+    background: linear-gradient(180deg, #2a2018 0%, #3a3520 100%);
 }
 .era-transition-telegram .era-marker-line {
     background: #888;
@@ -641,6 +680,192 @@ body {
 
 
 /* ============================================
+   ERA: PRE-COLUMBIAN — Machu Picchu
+   Geometric Inca patterns, earth tones, stepped motifs
+   ============================================ */
+.era-precolumbian {
+    background: #2a1e10;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 40px,
+            rgba(184, 134, 11, 0.04) 40px,
+            rgba(184, 134, 11, 0.04) 42px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 40px,
+            rgba(184, 134, 11, 0.04) 40px,
+            rgba(184, 134, 11, 0.04) 42px
+        );
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.precolumbian-container {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.inca-border {
+    background: linear-gradient(
+        180deg,
+        #3a2a10 0%,
+        #2e2010 50%,
+        #3a2a10 100%
+    );
+    border: 3px solid #b8860b;
+    position: relative;
+    box-shadow:
+        0 0 0 6px #2a1e10,
+        0 0 0 8px rgba(184, 134, 11, 0.3),
+        0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.inca-step-top,
+.inca-step-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: #b8860b;
+    padding: 0;
+    overflow: hidden;
+}
+
+.inca-step {
+    display: block;
+    width: 20%;
+    height: 8px;
+    background: repeating-linear-gradient(
+        90deg,
+        #b8860b 0px,
+        #b8860b 8px,
+        #8a6a0b 8px,
+        #8a6a0b 16px,
+        #d4a030 16px,
+        #d4a030 24px
+    );
+    border-top: 2px solid #d4a030;
+    border-bottom: 2px solid #8a6a0b;
+}
+
+.inca-inner {
+    padding: 2.5rem 2rem;
+}
+
+.inca-symbols {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #b8860b;
+    letter-spacing: 0.8rem;
+    padding: 0.8rem 0;
+    opacity: 0.7;
+}
+
+.precolumbian-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-align: center;
+    color: #d4a030;
+    letter-spacing: 0.3em;
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.6),
+        0 0 15px rgba(184, 134, 11, 0.2);
+    margin-bottom: 0.5rem;
+}
+
+.precolumbian-region {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: #a08040;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+}
+
+.inca-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.inca-glyph {
+    color: #b8860b;
+    font-size: 0.8rem;
+}
+
+.inca-line {
+    width: 60px;
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        #b8860b 0px,
+        #b8860b 4px,
+        transparent 4px,
+        transparent 8px
+    );
+}
+
+.precolumbian-text {
+    font-family: Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #c0a060;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.inca-features {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+    padding: 1.2rem 0;
+    border-top: 2px solid rgba(184, 134, 11, 0.2);
+    border-bottom: 2px solid rgba(184, 134, 11, 0.2);
+}
+
+.inca-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inca-feature-icon {
+    font-size: 1.5rem;
+    color: #d4a030;
+    text-shadow: 0 0 6px rgba(184, 134, 11, 0.3);
+}
+
+.inca-feature-label {
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    color: #a08040;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.precolumbian-inscription {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #7a6a40;
+    margin-top: 1rem;
+    letter-spacing: 0.1em;
+}
+
+
+/* ============================================
    ERA 3: VICTORIAN — Patagonia
    Elegant, ornate vintage advertisement
    ============================================ */
@@ -802,6 +1027,224 @@ body {
     font-size: 0.8rem;
     color: #7a6a48;
     letter-spacing: 0.1em;
+}
+
+
+/* ============================================
+   ERA: ART NOUVEAU — Prague
+   Mucha-inspired, ornate flowing lines, elegant flourishes
+   ============================================ */
+.era-artnouveau {
+    background: #2a2018;
+    background-image:
+        radial-gradient(circle at 30% 20%, rgba(196, 149, 106, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(196, 149, 106, 0.06) 0%, transparent 50%);
+    padding: 4rem 2rem;
+}
+
+.artnouveau-container {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.artnouveau-frame {
+    background: linear-gradient(
+        180deg,
+        #33281c 0%,
+        #2a2018 50%,
+        #33281c 100%
+    );
+    border: 2px solid #c4956a;
+    border-radius: 20px 20px 4px 4px;
+    position: relative;
+    box-shadow:
+        0 0 0 4px #2a2018,
+        0 0 0 6px rgba(196, 149, 106, 0.25),
+        0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.artnouveau-arch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 100px;
+    pointer-events: none;
+}
+
+.arch-flourish {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 80px;
+    border-bottom: 2px solid rgba(196, 149, 106, 0.15);
+    border-radius: 0 0 50% 50%;
+}
+
+.arch-flourish-l {
+    left: 20px;
+    border-left: 2px solid rgba(196, 149, 106, 0.15);
+}
+
+.arch-flourish-r {
+    right: 20px;
+    border-right: 2px solid rgba(196, 149, 106, 0.15);
+}
+
+.artnouveau-inner {
+    padding: 3rem 2.5rem;
+}
+
+.artnouveau-ornament-top,
+.artnouveau-ornament-bottom {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #c4956a;
+    letter-spacing: 0.8rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.artnouveau-ornament-bottom {
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+}
+
+.artnouveau-overline {
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #a08060;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+}
+
+.artnouveau-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #d4b080;
+    letter-spacing: 0.15em;
+    text-shadow:
+        0 0 20px rgba(196, 149, 106, 0.15),
+        2px 2px 0 rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.3rem;
+}
+
+.artnouveau-region {
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    color: #9a7a58;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+}
+
+.artnouveau-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+}
+
+.an-vine {
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c4956a, transparent);
+    position: relative;
+}
+
+.an-vine::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 100%;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 149, 106, 0.2);
+}
+
+.an-vine-l::before {
+    border-right: none;
+    border-radius: 50% 0 0 50%;
+}
+
+.an-vine-r::before {
+    border-left: none;
+    border-radius: 0 50% 50% 0;
+}
+
+.an-flower {
+    color: #c4956a;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.artnouveau-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #c8b090;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.artnouveau-features {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.artnouveau-feature {
+    flex: 1;
+    min-width: 170px;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    border: 1px solid rgba(196, 149, 106, 0.2);
+    border-radius: 8px;
+    background: rgba(196, 149, 106, 0.03);
+}
+
+.an-feature-icon {
+    font-size: 1.4rem;
+    color: #c4956a;
+    margin-bottom: 0.5rem;
+}
+
+.an-feature-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #d4b080;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.artnouveau-feature p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #9a8060;
+    line-height: 1.5;
+}
+
+.artnouveau-colophon {
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #7a6a48;
+    letter-spacing: 0.05em;
 }
 
 
@@ -1463,6 +1906,31 @@ body {
         font-size: 3rem;
     }
 
+    .precolumbian-title {
+        font-size: 2rem;
+        letter-spacing: 0.15em;
+    }
+
+    .inca-inner {
+        padding: 2rem 1.5rem;
+    }
+
+    .inca-features {
+        gap: 1.5rem;
+    }
+
+    .artnouveau-inner {
+        padding: 2rem 1.5rem;
+    }
+
+    .artnouveau-title {
+        font-size: 2.6rem;
+    }
+
+    .artnouveau-features {
+        flex-direction: column;
+    }
+
     .victorian-border-inner {
         padding: 2rem 1.5rem;
     }
@@ -1573,6 +2041,11 @@ body {
     }
 
     .medieval-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inca-features {
         flex-direction: column;
         align-items: center;
     }

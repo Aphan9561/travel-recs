@@ -818,6 +818,177 @@ body::-webkit-scrollbar-thumb:hover {
   color: #ffff00;
 }
 
+/* --- PRAGUE: Spiral text layout --- */
+
+.card-prague {
+  background: linear-gradient(135deg, #1a001a, #330066);
+  border-color: #ff9900;
+  border-style: groove;
+  border-width: 6px;
+  color: #ff9900;
+  cursor: alias;
+  font-family: 'Papyrus', fantasy;
+  transform: rotate(-6deg) skewY(3deg);
+  margin-left: 15%;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+}
+
+.card-prague .dest-name {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  font-size: 3rem;
+  font-family: 'Comic Sans MS', cursive;
+  color: #00ffcc;
+  letter-spacing: 0;
+}
+
+.card-prague .spiral-letter {
+  display: inline-block;
+  animation: spiral-spin 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+  transform-origin: center 80px;
+}
+
+@keyframes spiral-spin {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(calc(var(--i, 0) * 15deg)) translateY(-10px); }
+  50% { transform: rotate(calc(var(--i, 0) * -10deg)) translateY(5px) scale(1.3); }
+  75% { transform: rotate(calc(var(--i, 0) * 8deg)) translateY(-5px); }
+}
+
+.card-prague .dest-desc {
+  color: #cc99ff;
+  writing-mode: sideways-lr;
+  max-height: 180px;
+  font-size: 0.75rem;
+  margin: 0 auto;
+}
+
+.card-prague .dest-region {
+  font-size: 1.2rem;
+  color: #ff66cc;
+  letter-spacing: 0.5em;
+  font-weight: 900;
+}
+
+.card-prague .dest-coords {
+  color: #00ff66;
+  font-size: 1.1rem;
+  transform: rotate(8deg);
+  display: inline-block;
+}
+
+.card-prague .tag {
+  border-color: #ff9900;
+  color: #ff9900;
+  font-size: 0.8rem;
+  transform: rotate(-5deg);
+  background: rgba(255, 153, 0, 0.1);
+}
+
+.card-prague .card-sticker {
+  top: -20px;
+  right: -15px;
+  font-size: 4rem;
+  transform: rotate(25deg);
+}
+
+.card-prague .card-number {
+  color: #ff9900;
+  font-size: 6rem;
+}
+
+.card-prague:hover {
+  transform: rotate(6deg) skewY(-3deg) scale(1.05);
+  border-color: #00ffcc;
+  box-shadow: 0 0 50px rgba(0, 255, 204, 0.4), 0 0 100px rgba(255, 153, 0, 0.2);
+}
+
+.card-prague:hover .spiral-letter {
+  animation-duration: 0.5s;
+}
+
+/* --- MACHU PICCHU: Every word a different size --- */
+
+.card-machupicchu {
+  background: linear-gradient(180deg, #001a00, #003300, #004d00);
+  border-color: #ffcc00;
+  border-width: 5px;
+  border-style: ridge;
+  color: #ffcc00;
+  cursor: col-resize;
+  font-family: 'Courier New', monospace;
+  transform: rotate(4deg) skewX(3deg);
+  margin-right: 10%;
+  margin-left: auto;
+}
+
+.card-machupicchu .dest-name {
+  font-family: Impact, sans-serif;
+  font-size: 1.8rem;
+  color: #ff3366;
+  text-shadow: 2px 2px 0 #003300, 4px 4px 0 rgba(255, 204, 0, 0.3);
+  letter-spacing: 0.15em;
+}
+
+.card-machupicchu .dest-desc.size-chaos {
+  line-height: 2.2;
+  color: #99ff66;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.card-machupicchu .dest-desc.size-chaos span {
+  display: inline;
+  vertical-align: middle;
+  font-weight: bold;
+  color: inherit;
+  transition: font-size 0.3s ease;
+}
+
+.card-machupicchu .dest-region {
+  font-size: 0.5rem;
+  letter-spacing: 0.4em;
+  color: #66ff66;
+}
+
+.card-machupicchu .dest-coords {
+  color: #ff9933;
+  font-size: 0.6rem;
+  text-decoration: overline wavy #ffcc00;
+}
+
+.card-machupicchu .tag {
+  border-color: #ffcc00;
+  color: #ffcc00;
+  background: rgba(255, 204, 0, 0.1);
+  font-size: 0.7rem;
+}
+
+.card-machupicchu .card-sticker {
+  bottom: -15px;
+  left: 10px;
+  font-size: 4.5rem;
+  transform: rotate(-15deg);
+}
+
+.card-machupicchu .card-number {
+  color: #ffcc00;
+  font-size: 7rem;
+}
+
+.card-machupicchu:hover {
+  transform: rotate(-4deg) skewX(-3deg);
+  filter: saturate(2);
+  box-shadow: 0 0 40px rgba(255, 204, 0, 0.3), 0 0 80px rgba(0, 255, 0, 0.15);
+}
+
+.card-machupicchu:hover .dest-desc.size-chaos span {
+  font-size: 1rem !important;
+}
+
 /* --- FLOATING ANNOYANCES --- */
 
 .floating-annoyance {

@@ -62,6 +62,26 @@ var destinations = {
     bestSeason: 'Late Spring to Early Fall (May-October) for warm coastal bliss',
     tags: ['Coastal Views', 'Limoncello', 'Pasta', 'Villages'],
     color: '#fb923c'
+  },
+  prague: {
+    name: 'Prague',
+    country: 'Czech Republic',
+    icon: '\uD83C\uDFF0',
+    desc: 'A fairy-tale city of Gothic spires and Baroque palaces, where cobblestone lanes wind past astronomical clocks and ancient bridges!',
+    funFact: 'Prague\'s Astronomical Clock has been ticking since 1410 -- it is one of the oldest working clocks in the world!',
+    bestSeason: 'Spring (April-June) or Fall (Sept-Oct) for golden light and fewer crowds',
+    tags: ['Architecture', 'History', 'Beer', 'Castles'],
+    color: '#f59e0b'
+  },
+  machupicchu: {
+    name: 'Machu Picchu',
+    country: 'Peru',
+    icon: '\u26F0',
+    desc: 'The lost citadel of the Inca, perched among the clouds on a razor-thin ridge -- an ancient wonder that takes your breath away!',
+    funFact: 'Machu Picchu was built without mortar -- the stones fit together so perfectly that you cannot slide a knife between them!',
+    bestSeason: 'Dry season (May-September) for clear skies and epic mountain views',
+    tags: ['Ruins', 'Trekking', 'History', 'Mountains'],
+    color: '#059669'
   }
 };
 
@@ -385,9 +405,9 @@ document.addEventListener('keydown', function(e) {
     return;
   }
 
-  // Number keys 1-6 select destinations directly
+  // Number keys 1-8 select destinations directly
   var num = parseInt(e.key);
-  if (num >= 1 && num <= 6) {
+  if (num >= 1 && num <= 8) {
     showDestination(destKeys[num - 1]);
     return;
   }

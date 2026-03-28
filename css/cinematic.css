@@ -349,6 +349,22 @@ body {
     linear-gradient(160deg, #12100a 0%, #0e0c06 40%, #0a0c12 100%);
 }
 
+/* Prague: Dark purples and golds evoking Gothic architecture */
+.dest-prague {
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(120, 60, 160, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 70%, rgba(200, 164, 78, 0.2) 0%, transparent 50%),
+    linear-gradient(160deg, #100a14 0%, #0c0810 40%, #0e0c08 100%);
+}
+
+/* Machu Picchu: Misty greens and grays evoking cloud-wrapped mountains */
+.dest-machupicchu {
+  background:
+    radial-gradient(ellipse at 45% 30%, rgba(60, 140, 80, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 70%, rgba(120, 130, 140, 0.2) 0%, transparent 50%),
+    linear-gradient(160deg, #0a100c 0%, #0c0e0c 40%, #0e0e10 100%);
+}
+
 /* --- Card Typography --- */
 .dest-number {
   font-family: var(--sans);

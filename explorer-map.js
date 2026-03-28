@@ -75,6 +75,30 @@ const destinations = {
     adventure: 55,
     relaxation: 85,
     statColors: { culture: '#ff9f43', adventure: '#ff9f43', relaxation: '#ff9f43' }
+  },
+  prague: {
+    name: 'Prague',
+    region: 'Bohemia, Czech Republic',
+    letter: 'P',
+    color: '#f59e0b',
+    gradient: 'linear-gradient(135deg, #f59e0b, #d97706)',
+    desc: 'A fairy-tale city of Gothic spires and Baroque palaces, where cobblestone lanes wind past astronomical clocks, and the Vltava River reflects centuries of art, music, and revolution.',
+    culture: 85,
+    adventure: 55,
+    relaxation: 70,
+    statColors: { culture: '#f59e0b', adventure: '#f59e0b', relaxation: '#f59e0b' }
+  },
+  machupicchu: {
+    name: 'Machu Picchu',
+    region: 'Cusco, Peru',
+    letter: 'M',
+    color: '#059669',
+    gradient: 'linear-gradient(135deg, #059669, #047857)',
+    desc: 'The lost citadel of the Inca, perched among the clouds on a razor-thin ridge, where ancient stone terraces cascade into mist and the silence holds the memory of an empire.',
+    culture: 80,
+    adventure: 95,
+    relaxation: 40,
+    statColors: { culture: '#059669', adventure: '#059669', relaxation: '#059669' }
   }
 };
 
@@ -83,7 +107,8 @@ const ranks = [
   { min: 0, name: 'Novice Explorer', color: '#a0b4c8' },
   { min: 2, name: 'Seasoned Traveler', color: '#4ecdc4' },
   { min: 4, name: 'Expert Voyager', color: '#a29bfe' },
-  { min: 6, name: 'Explorer Master', color: '#ffe66d' }
+  { min: 6, name: 'Master Voyager', color: '#f59e0b' },
+  { min: 8, name: 'Explorer Master', color: '#ffe66d' }
 ];
 
 // --- DOM Elements ---
@@ -162,10 +187,10 @@ function buildPassport() {
 // ============================================================
 function updateProgress() {
   var count = Object.keys(collectedStamps).length;
-  var pct = (count / 6) * 100;
+  var pct = (count / 8) * 100;
 
   progressFill.style.width = pct + '%';
-  progressLabel.textContent = count + ' / 6 stamps';
+  progressLabel.textContent = count + ' / 8 stamps';
 
   // Update rank
   var currentRank = ranks[0];
@@ -219,7 +244,7 @@ function updateProgress() {
   });
 
   // Explorer Master achievement
-  if (count >= 6) {
+  if (count >= 8) {
     passportAchievement.classList.add('unlocked');
   }
 }
@@ -335,11 +360,11 @@ function collectStamp(destKey) {
     dest.color,
     dest.letter,
     'Stamp Collected!',
-    dest.name + ' — ' + count + '/6 stamps'
+    dest.name + ' — ' + count + '/8 stamps'
   );
 
   // 5. Achievement toast if all collected
-  if (count === 6) {
+  if (count === 8) {
     setTimeout(function() {
       showToast(
         '#ffe66d',
@@ -538,9 +563,9 @@ document.addEventListener('keydown', function(e) {
     showDestination(destKeys[(idx - 1 + destKeys.length) % destKeys.length]);
   }
 
-  // Number keys 1-6
+  // Number keys 1-8
   var num = parseInt(e.key);
-  if (num >= 1 && num <= 6) {
+  if (num >= 1 && num <= 8) {
     showDestination(destKeys[num - 1]);
   }
 

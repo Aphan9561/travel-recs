@@ -587,6 +587,26 @@ body::before {
         linear-gradient(180deg, transparent 60%, rgba(26, 60, 64, 0.8) 100%);
 }
 
+.card-image-prague {
+    background: linear-gradient(135deg, #1a1a2e 0%, #4a3728 30%, #d4a76a 60%, #e8c170 80%, #f5deb3 100%);
+}
+
+.card-image-prague .card-image-overlay {
+    background:
+        radial-gradient(circle at 45% 40%, rgba(212, 167, 106, 0.35) 0%, transparent 50%),
+        linear-gradient(180deg, transparent 55%, rgba(26, 26, 46, 0.85) 100%);
+}
+
+.card-image-machupicchu {
+    background: linear-gradient(135deg, #1a3c1a 0%, #2d5016 25%, #6b8f3c 50%, #c9c9c9 75%, #e8e8e8 100%);
+}
+
+.card-image-machupicchu .card-image-overlay {
+    background:
+        radial-gradient(circle at 50% 45%, rgba(107, 143, 60, 0.3) 0%, transparent 50%),
+        linear-gradient(180deg, transparent 50%, rgba(26, 60, 26, 0.9) 100%);
+}
+
 /* Card Badge */
 .card-badge {
     position: absolute;

@@ -48,7 +48,7 @@
             <span class="err-line">WARNING: FILE HEADER CORRUPTED</span>
             <span class="err-line">SECTORS 0x0A-0x3F UNREADABLE</span>
             <span class="err-line">ATTEMPTING DATA RECOVERY...</span>
-            <span class="err-line blink-err">&#x2588; PARTIAL RECOVERY: 6/6 ENTRIES &#x2588;</span>
+            <span class="err-line blink-err">&#x2588; PARTIAL RECOVERY: 8/8 ENTRIES &#x2588;</span>
         </div>
 
         <div class="hex-scatter" aria-hidden="true">
@@ -189,11 +189,49 @@
             <div class="card-error" aria-hidden="true">&#x2588; EOF reached prematurely &#x2588;</div>
         </article>
 
+        <!-- PRAGUE -->
+        <article class="dest-card glitch-card">
+            <div class="card-tear" aria-hidden="true"></div>
+            <div class="card-status"><span class="status-tag corrupted">PARTIALLY CORRUPTED</span> <span class="sector-id">SECTOR 0x6A</span></div>
+            <div class="card-garble" aria-hidden="true">&#x2588;&#x2591;&#x2593; 50 52 41 47 55 45 &#x2593;&#x2591;&#x2588;&#x2580;&#x2584;</div>
+            <div class="card-number">007</div>
+            <h2 class="card-name glitch-text" data-text="PRAGUE">
+                <span>PRAGUE</span>
+            </h2>
+            <p class="card-country">&gt; CZE // CZECH REPUBLIC</p>
+            <p class="card-desc">A fairy-tale city of Gothic spires and Baroque palaces, where cobblestone lanes wind past astronomical clocks, and the Vltava River reflects centuries of art, music, and revolution.</p>
+            <div class="card-tags">
+                <span class="tag">Architecture</span>
+                <span class="tag">History</span>
+                <span class="tag">Beer</span>
+            </div>
+            <div class="card-error" aria-hidden="true">&#x2588; stack smash detected at 0x6A3B &#x2588;</div>
+        </article>
+
+        <!-- MACHU PICCHU -->
+        <article class="dest-card glitch-card">
+            <div class="card-tear" aria-hidden="true"></div>
+            <div class="card-status"><span class="status-tag lost">DATA LOSS DETECTED</span> <span class="sector-id">SECTOR 0x7B</span></div>
+            <div class="card-garble" aria-hidden="true">&#x2584;&#x2580;&#x2592; 4D 41 43 48 55 20 50 49 43 43 48 55 &#x2592;&#x2580;&#x2584;</div>
+            <div class="card-number">008</div>
+            <h2 class="card-name glitch-text" data-text="MACHU PICCHU">
+                <span>MACHU PICCHU</span>
+            </h2>
+            <p class="card-country">&gt; PER // PERU</p>
+            <p class="card-desc">The lost citadel of the Inca, perched among the clouds on a razor-thin ridge, where ancient stone terraces cascade into mist and the silence holds the memory of an empire.</p>
+            <div class="card-tags">
+                <span class="tag">Ruins</span>
+                <span class="tag">Trekking</span>
+                <span class="tag">History</span>
+            </div>
+            <div class="card-error" aria-hidden="true">&#x2588; kernel panic: unrecoverable fault &#x2588;</div>
+        </article>
+
     </main>
 
     <!-- BOTTOM CORRUPTION BAR -->
     <div class="corruption-bar corruption-bar-bottom" aria-hidden="true">
-        <span>&#x2588;&#x2593;&#x2592;&#x2591; DUMP COMPLETE &#x2591;&#x2592;&#x2593;&#x2588; 6/6 RECORDS EXTRACTED &#x2588;&#x2591; INTEGRITY: 73.2% &#x2591;&#x2588;&#x2593;&#x2592; END_OF_STREAM &#x2592;&#x2593;&#x2588;&#x2591;</span>
+        <span>&#x2588;&#x2593;&#x2592;&#x2591; DUMP COMPLETE &#x2591;&#x2592;&#x2593;&#x2588; 8/8 RECORDS EXTRACTED &#x2588;&#x2591; INTEGRITY: 71.6% &#x2591;&#x2588;&#x2593;&#x2592; END_OF_STREAM &#x2592;&#x2593;&#x2588;&#x2591;</span>
     </div>
 
     <!-- ========= FOOTER ========= -->

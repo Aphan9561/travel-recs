@@ -147,6 +147,14 @@
           <path class="route-line" d="M440,72 C380,140 300,260 240,380" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
           <!-- Patagonia to Kyoto - warm yellow -->
           <path class="route-line" d="M240,380 C400,420 700,300 877,152" fill="none" stroke="#eab308" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Prague to Amalfi - amber -->
+          <path class="route-line" d="M539,110 C539,118 539,128 539,136" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Prague to Reykjavik - violet -->
+          <path class="route-line" d="M539,110 C500,95 470,80 440,72" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Machu Picchu to Patagonia - green -->
+          <path class="route-line" d="M210,285 C220,320 230,350 240,380" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
+          <!-- Marrakech to Machu Picchu - coral -->
+          <path class="route-line" d="M488,186 C400,220 300,250 210,285" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="8,5" opacity="0.6"/>
         </g>
 
         <!-- Destination Pins -->
@@ -200,6 +208,22 @@
             <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#127819;</text>
           </g>
 
+          <!-- Prague: 50.08N, 14.44E => x=539, y=110 -->
+          <g class="pin" data-dest="prague" transform="translate(539, 110)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#f59e0b" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#127984;</text>
+          </g>
+
+          <!-- Machu Picchu: 13.16S, 72.55W => x=210, y=285 -->
+          <g class="pin" data-dest="machupicchu" transform="translate(210, 285)" tabindex="0">
+            <circle class="pin-glow" cx="0" cy="0" r="14" fill="#059669" opacity="0.2"/>
+            <circle class="pin-ring" cx="0" cy="0" r="10" fill="none" stroke="#059669" stroke-width="2" opacity="0.4"/>
+            <circle class="pin-body" cx="0" cy="0" r="7" fill="#059669" stroke="#fff" stroke-width="2"/>
+            <text class="pin-emoji" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="8">&#9968;</text>
+          </g>
+
         </g>
       </svg>
     </div>
@@ -247,6 +271,12 @@
       <button class="pill" data-dest="amalfi" style="--pill-color: #fb923c;">
         <span class="pill-emoji">&#127819;</span> Amalfi Coast
       </button>
+      <button class="pill" data-dest="prague" style="--pill-color: #f59e0b;">
+        <span class="pill-emoji">&#127984;</span> Prague
+      </button>
+      <button class="pill" data-dest="machupicchu" style="--pill-color: #059669;">
+        <span class="pill-emoji">&#9968;</span> Machu Picchu
+      </button>
     </div>
   </section>
 
@@ -257,7 +287,7 @@
         Made with <span class="footer-heart">&#10084;</span> for adventurers everywhere
       </p>
       <p class="footer-sub">
-        &#127758; 6 dream destinations &bull; &#9992; infinite possibilities &bull; &#127775; one amazing world
+        &#127758; 8 dream destinations &bull; &#9992; infinite possibilities &bull; &#127775; one amazing world
       </p>
       <p class="footer-copy">&copy; 2026 &mdash; Happy Travels!</p>
     </div>

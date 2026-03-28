@@ -571,6 +571,123 @@ body {
 }
 
 
+/* 07 PRAGUE — right-aligned, Gothic vertical feel */
+.dest-prague {
+    margin-left: 52%;
+    width: 40%;
+    transform: rotate(1.5deg);
+    margin-top: 4rem;
+    padding-left: 2rem;
+    border-left: 1px solid rgba(232, 228, 222, 0.1);
+}
+
+.dest-prague .dest-number {
+    top: -2rem;
+    left: -3rem;
+    -webkit-text-stroke: 1px rgba(200, 180, 120, 0.2);
+}
+
+.dest-prague .dest-name {
+    font-size: clamp(4.5rem, 9vw, 10rem);
+    background: linear-gradient(180deg, #e8e4de 40%, #d4a76a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dest-prague .dest-description {
+    max-width: 300px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    line-height: 2;
+}
+
+.dest-prague::after {
+    content: '50.07N  14.43E';
+    position: absolute;
+    top: 15%;
+    right: -5%;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    opacity: 0.15;
+    transform: rotate(90deg);
+    transform-origin: right center;
+}
+
+.dest-prague::before {
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: -60px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(200, 180, 120, 0.12);
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+
+/* 08 MACHU PICCHU — wide, low, dramatic bottom-left placement */
+.dest-machupicchu {
+    margin-left: 6%;
+    width: 65%;
+    margin-top: 10rem;
+    transform: rotate(-0.8deg);
+    padding-top: 4rem;
+    border-top: 1px solid rgba(232, 228, 222, 0.06);
+}
+
+.dest-machupicchu .dest-number {
+    top: -3rem;
+    right: 5%;
+    left: auto;
+    font-size: clamp(7rem, 14vw, 16rem);
+    -webkit-text-stroke: 1px rgba(100, 180, 100, 0.1);
+}
+
+.dest-machupicchu .dest-name {
+    font-size: clamp(5rem, 12vw, 13rem);
+    letter-spacing: -0.04em;
+}
+
+.dest-machupicchu .dest-description {
+    max-width: 340px;
+    margin-left: 15%;
+}
+
+.dest-machupicchu .dest-tag {
+    margin-left: 15%;
+}
+
+.dest-machupicchu::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: -5%;
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(100, 180, 100, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.dest-machupicchu::before {
+    content: '';
+    position: absolute;
+    bottom: -2rem;
+    left: 20%;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(100, 180, 100, 0.15),
+        transparent
+    );
+}
+
+
 /* --- INTERSTITIAL / STICKY QUOTE --- */
 
 .interstitial {
@@ -827,7 +944,9 @@ body {
     .dest-kyoto,
     .dest-santorini,
     .dest-marrakech,
-    .dest-reykjavik {
+    .dest-reykjavik,
+    .dest-prague,
+    .dest-machupicchu {
         transform: none;
     }
 
@@ -866,6 +985,23 @@ body {
     .dest-amalfi {
         margin-left: 5%;
         width: 90%;
+    }
+
+    .dest-prague {
+        margin-left: 5%;
+        width: 85%;
+        padding-left: 1rem;
+    }
+
+    .dest-machupicchu {
+        margin-left: 5%;
+        width: 90%;
+        margin-top: 4rem;
+    }
+
+    .dest-machupicchu .dest-description,
+    .dest-machupicchu .dest-tag {
+        margin-left: 0;
     }
 
     .colophon {
