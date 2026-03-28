@@ -7,46 +7,87 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #fafaf7;
+  --surface: #fff;
+  --text: #2d2d2d;
+  --text-secondary: #717171;
+  --text-muted: #a3a3a3;
+  --accent: #6366f1;
+  --accent-light: #e0e7ff;
+  --border: #e8e8e4;
+  --border-hover: #c7c7c0;
+  --shadow: rgba(0, 0, 0, 0.04);
+  --shadow-hover: rgba(99, 102, 241, 0.08);
+  --radius: 16px;
+  --font: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  background: #f5f5f0;
-  color: #333;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* === Header === */
 .gallery-header {
   text-align: center;
-  padding: 3rem 1.5rem 2rem;
+  padding: 4rem 2rem 1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .gallery-header h1 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #1a1a1a;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.2;
 }
 
 .gallery-header p {
-  margin-top: 0.5rem;
-  font-size: 1.05rem;
-  color: #777;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .gallery-header strong {
-  color: #8b6914;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Subtle pill count badge */
+.gallery-header::after {
+  content: '25 designs';
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 100px;
 }
 
 /* === Gallery Grid === */
 .gallery-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-  padding: 1rem 3rem 4rem;
-  max-width: 1400px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  padding: 2rem 2.5rem 4rem;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
@@ -55,28 +96,36 @@ body {
 .design-card {
   text-decoration: none;
   color: inherit;
-  border: 1px solid #ddd;
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   overflow: hidden;
-  background: #fff;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: var(--surface);
+  box-shadow: 0 1px 3px var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
 }
 
 .design-card:hover {
-  transform: translateY(-4px);
-  border-color: #8b6914;
-  box-shadow: 0 8px 30px rgba(139, 105, 20, 0.1);
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 40px var(--shadow-hover), 0 2px 8px var(--shadow);
 }
 
-/* Card preview area — acts as a thumbnail / screenshot zone */
+/* Card number label */
+.design-card:hover .card-info h2 {
+  color: var(--accent);
+}
+
+/* Card preview area */
 .card-preview {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  background: #eee;
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--border);
 }
 
 .card-preview img {
@@ -85,56 +134,54 @@ body {
   object-fit: cover;
 }
 
-.coming-soon {
-  font-size: 0.95rem;
-  color: #aaa;
-  font-style: italic;
-}
-
 /* Card info */
 .card-info {
-  padding: 1.2rem 1.4rem;
+  padding: 1rem 1.25rem 1.15rem;
 }
 
 .card-info h2 {
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text);
+  transition: color 0.2s ease;
+  letter-spacing: -0.01em;
 }
 
 .card-info p {
-  margin-top: 0.35rem;
-  font-size: 0.88rem;
-  color: #888;
-}
-
-/* Placeholder style for cards without a design yet */
-.design-card.placeholder {
-  border-style: dashed;
-  opacity: 0.6;
-}
-
-.design-card.placeholder:hover {
-  opacity: 1;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
 
 /* === Footer === */
 .gallery-footer {
   text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.85rem;
-  color: #999;
-  border-top: 1px solid #ddd;
+  padding: 2.5rem 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 /* === Responsive === */
 @media (max-width: 700px) {
-  .gallery-grid {
-    padding: 1rem 1.2rem 3rem;
-    grid-template-columns: 1fr;
+  .gallery-header {
+    padding: 3rem 1.5rem 0.5rem;
   }
 
   .gallery-header h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+  }
+
+  .gallery-grid {
+    padding: 1.5rem 1rem 3rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-preview {
+    aspect-ratio: 16 / 8;
   }
 }
