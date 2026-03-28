@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Places to Travel | Adventure Map!</title>
+  <link rel="stylesheet" href="css/adventure-map.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Back to Gallery -->
+  <a href="gallery.html" class="back-link">&larr; Back to Gallery</a>
+
+  <!-- Sparkle Decorations -->
+  <div class="sparkle sparkle-1" aria-hidden="true">&#10022;</div>
+  <div class="sparkle sparkle-2" aria-hidden="true">&#10022;</div>
+  <div class="sparkle sparkle-3" aria-hidden="true">&#10022;</div>
+  <div class="sparkle sparkle-4" aria-hidden="true">&#10022;</div>
+  <div class="sparkle sparkle-5" aria-hidden="true">&#10022;</div>
+  <div class="sparkle sparkle-6" aria-hidden="true">&#10022;</div>
+
+  <!-- HUD Header -->
+  <header class="hud-header">
+    <div class="hud-inner">
+      <div class="hud-left">
+        <div class="player-avatar">
+          <div class="avatar-frame">&#127757;</div>
+          <div class="player-info">
+            <span class="player-name">Explorer</span>
+            <span class="player-title">World Traveler</span>
+          </div>
+        </div>
+      </div>
+      <div class="hud-center">
+        <h1 class="site-title">Adventure Map!</h1>
+        <p class="site-subtitle">Best Places to Travel</p>
+      </div>
+      <div class="hud-right">
+        <div class="hud-stat">
+          <span class="stat-icon coin-icon">&#129689;</span>
+          <span class="stat-value" id="coin-count">500</span>
+        </div>
+        <div class="hud-stat level-badge">
+          <span class="stat-icon">&#11088;</span>
+          <span class="stat-value" id="level-display">LVL 1</span>
+        </div>
+      </div>
+    </div>
+    <!-- XP Bar -->
+    <div class="xp-bar-container">
+      <div class="xp-label" id="xp-label">0 / 1000 XP</div>
+      <div class="xp-bar-track">
+        <div class="xp-bar-fill" id="xp-bar-fill"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Achievement Banner (hidden by default) -->
+  <div class="achievement-banner" id="achievement-banner">
+    <div class="achievement-content">
+      <span class="achievement-icon">&#127881;</span>
+      <div class="achievement-text">
+        <span class="achievement-title" id="achievement-title">Adventure Started!</span>
+        <span class="achievement-detail" id="achievement-detail">Explore Kyoto! +500 XP</span>
+      </div>
+      <span class="achievement-confetti">&#127882;&#10024;&#127881;</span>
+    </div>
+  </div>
+
+  <!-- Map Controls -->
+  <div class="map-controls">
+    <button class="map-btn" id="zoom-in" title="Zoom In">+</button>
+    <button class="map-btn" id="zoom-out" title="Zoom Out">&minus;</button>
+    <button class="map-btn" id="zoom-reset" title="Reset View">&#8634;</button>
+    <button class="map-btn" id="toggle-routes" title="Toggle Routes">&#10547;</button>
+  </div>
+
+  <!-- Map Container -->
+  <section class="map-container" id="map-container">
+    <div class="map-viewport" id="map-viewport">
+      <svg class="world-map" id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Ocean background -->
+        <rect x="0" y="0" width="1000" height="500" fill="#d4eef9" rx="0"/>
+
+        <!-- Subtle grid lines -->
+        <g class="map-grid" opacity="0.1">
+          <line x1="0" y1="250" x2="1000" y2="250" stroke="#7eb8d8" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="0" y1="125" x2="1000" y2="125" stroke="#7eb8d8" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <line x1="0" y1="375" x2="1000" y2="375" stroke="#7eb8d8" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <line x1="500" y1="0" x2="500" y2="500" stroke="#7eb8d8" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <line x1="250" y1="0" x2="250" y2="500" stroke="#7eb8d8" stroke-width="0.5" stroke-dasharray="2,6"/>
+          <line x1="750" y1="0" x2="750" y2="500" stroke="#7eb8d8" stroke-width="0.5" stroke-dasharray="2,6"/>
+        </g>
+
+        <!-- Colorful continents -->
+        <g class="continents">
+          <!-- North America - soft green -->
+          <path d="M120,80 L145,75 L170,80 L195,90 L210,85 L230,95 L240,110 L250,130 L245,145 L250,160 L255,175 L250,190 L240,200 L230,205 L225,215 L215,230 L200,235 L185,225 L175,215 L160,225 L150,240 L145,250 L140,245 L135,235 L128,225 L120,220 L110,210 L105,195 L95,185 L85,170 L90,155 L100,140 L105,125 L100,110 L105,95 L115,85 Z" fill="#a8e6a3" stroke="#7bc876" stroke-width="1"/>
+          <!-- South America - warm pink -->
+          <path d="M215,270 L225,265 L240,270 L255,280 L265,295 L270,315 L275,335 L270,355 L265,375 L255,390 L245,400 L235,410 L225,405 L220,390 L215,375 L210,355 L215,335 L220,315 L215,295 L210,280 Z" fill="#f8b4c8" stroke="#e8899e" stroke-width="1"/>
+          <!-- Europe - soft lavender -->
+          <path d="M450,90 L460,85 L475,80 L490,85 L505,80 L520,85 L530,95 L525,110 L520,120 L510,130 L500,135 L490,140 L480,145 L470,140 L460,135 L455,125 L450,115 L445,100 Z" fill="#d4b8e8" stroke="#b898d0" stroke-width="1"/>
+          <!-- Africa - sunny yellow -->
+          <path d="M460,175 L475,170 L495,175 L510,180 L525,190 L535,205 L540,225 L535,245 L530,265 L520,285 L510,300 L500,310 L490,315 L480,310 L470,300 L462,285 L458,265 L455,245 L452,225 L455,205 L458,190 Z" fill="#fde68a" stroke="#f0c84a" stroke-width="1"/>
+          <!-- Asia - soft teal -->
+          <path d="M540,65 L570,60 L600,55 L640,60 L680,65 L720,70 L755,80 L770,95 L780,110 L785,130 L780,150 L770,165 L755,175 L740,180 L720,185 L700,180 L680,175 L660,180 L640,190 L620,195 L600,190 L580,180 L560,170 L545,155 L535,140 L530,120 L535,100 L540,80 Z" fill="#99e5d9" stroke="#6ccfbe" stroke-width="1"/>
+          <!-- India -->
+          <path d="M640,190 L655,195 L665,210 L670,230 L665,250 L655,260 L645,255 L635,245 L630,230 L632,215 L635,200 Z" fill="#fdc5a0" stroke="#e8a070" stroke-width="1"/>
+          <!-- Southeast Asia / Indonesia -->
+          <path d="M700,210 L720,205 L740,210 L755,220 L740,225 L720,230 L705,225 Z" fill="#a8e6a3" stroke="#7bc876" stroke-width="1"/>
+          <path d="M730,235 L750,230 L770,235 L760,245 L745,248 L730,242 Z" fill="#a8e6a3" stroke="#7bc876" stroke-width="1"/>
+          <!-- Australia - coral -->
+          <path d="M760,310 L790,300 L820,305 L845,315 L855,335 L850,355 L835,370 L815,375 L795,370 L775,360 L762,345 L755,330 Z" fill="#ffb3a7" stroke="#e88a7a" stroke-width="1"/>
+          <!-- Japan -->
+          <path d="M790,110 L795,100 L800,105 L798,115 L793,120 Z" fill="#f8b4c8" stroke="#e8899e" stroke-width="1"/>
+          <!-- Greenland - cool mint -->
+          <path d="M310,40 L340,35 L355,45 L350,60 L335,65 L315,60 Z" fill="#b8f0e0" stroke="#80d8c0" stroke-width="1"/>
+          <!-- Iceland -->
+          <path d="M410,55 L425,50 L435,55 L430,63 L418,65 Z" fill="#c8e0f8" stroke="#90c0e8" stroke-width="1"/>
+        </g>
+
+        <!-- Fun little wave lines on ocean -->
+        <g class="ocean-decor" opacity="0.12">
+          <path d="M50,280 Q70,275 90,280 Q110,285 130,280" fill="none" stroke="#5ba8d0" stroke-width="1"/>
+          <path d="M350,320 Q370,315 390,320 Q410,325 430,320" fill="none" stroke="#5ba8d0" stroke-width="1"/>
+          <path d="M600,400 Q620,395 640,400 Q660,405 680,400" fill="none" stroke="#5ba8d0" stroke-width="1"/>
+          <path d="M820,250 Q840,245 860,250 Q880,255 900,250" fill="none" stroke="#5ba8d0" stroke-width="1"/>
+          <path d="M150,430 Q170,425 190,430 Q210,435 230,430" fill="none" stroke="#5ba8d0" stroke-width="1"/>
+        </g>
+
+        <!-- Colorful route paths -->
+        <g class="route-paths" id="route-paths">
+          <!-- Kyoto to Santorini - pink -->
+          <path class="route-line route-pink" d="M877,152 C800,140 650,120 570,143" fill="none" stroke="#f472b6" stroke-width="2" stroke-dasharray="8,6" opacity="0.6"/>
+          <!-- Santorini to Marrakech - teal -->
+          <path class="route-line route-teal" d="M570,143 C540,155 500,170 488,186" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-dasharray="8,6" opacity="0.6"/>
+          <!-- Marrakech to Amalfi - orange -->
+          <path class="route-line route-orange" d="M488,186 C495,175 510,155 539,136" fill="none" stroke="#fb923c" stroke-width="2" stroke-dasharray="8,6" opacity="0.6"/>
+          <!-- Amalfi to Reykjavik - pink -->
+          <path class="route-line route-pink" d="M539,136 C500,110 460,80 440,72" fill="none" stroke="#f472b6" stroke-width="2" stroke-dasharray="8,6" opacity="0.6"/>
+          <!-- Reykjavik to Patagonia - teal -->
+          <path class="route-line route-teal" d="M440,72 C380,120 300,250 240,380" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-dasharray="8,6" opacity="0.6"/>
+        </g>
+
+        <!-- Destination pins with emoji markers -->
+        <g class="destination-pins" id="destination-pins">
+
+          <!-- Kyoto: cherry blossom -->
+          <g class="pin" data-dest="kyoto" transform="translate(877, 152)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#f472b6" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="14" fill="white" stroke="#f472b6" stroke-width="2" opacity="0.95"/>
+            <text class="pin-emoji" x="0" y="5" text-anchor="middle" font-size="14">&#127800;</text>
+            <text class="pin-label" x="18" y="4" font-family="'Fredoka', sans-serif" font-size="9" font-weight="600" fill="#e8558a">Kyoto</text>
+            <!-- Rarity badge -->
+            <rect class="rarity-badge" x="-18" y="-26" width="36" height="14" rx="7" fill="#fbbf24" stroke="#f59e0b" stroke-width="0.8"/>
+            <text class="rarity-text" x="0" y="-16" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="7" font-weight="600" fill="#92400e">Legendary</text>
+          </g>
+
+          <!-- Santorini: beach umbrella -->
+          <g class="pin" data-dest="santorini" transform="translate(570, 143)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="14" fill="white" stroke="#a78bfa" stroke-width="2" opacity="0.95"/>
+            <text class="pin-emoji" x="0" y="5" text-anchor="middle" font-size="14">&#127958;</text>
+            <text class="pin-label" x="18" y="4" font-family="'Fredoka', sans-serif" font-size="9" font-weight="600" fill="#7c3aed">Santorini</text>
+            <rect class="rarity-badge" x="-12" y="-26" width="24" height="14" rx="7" fill="#c4b5fd" stroke="#a78bfa" stroke-width="0.8"/>
+            <text class="rarity-text" x="0" y="-16" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="7" font-weight="600" fill="#5b21b6">Epic</text>
+          </g>
+
+          <!-- Patagonia: mountain -->
+          <g class="pin" data-dest="patagonia" transform="translate(240, 380)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="14" fill="white" stroke="#fbbf24" stroke-width="2" opacity="0.95"/>
+            <text class="pin-emoji" x="0" y="5" text-anchor="middle" font-size="14">&#9968;</text>
+            <text class="pin-label" x="18" y="4" font-family="'Fredoka', sans-serif" font-size="9" font-weight="600" fill="#d97706">Patagonia</text>
+            <rect class="rarity-badge" x="-18" y="-26" width="36" height="14" rx="7" fill="#fbbf24" stroke="#f59e0b" stroke-width="0.8"/>
+            <text class="rarity-text" x="0" y="-16" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="7" font-weight="600" fill="#92400e">Legendary</text>
+          </g>
+
+          <!-- Marrakech: star -->
+          <g class="pin" data-dest="marrakech" transform="translate(488, 186)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="14" fill="white" stroke="#2dd4bf" stroke-width="2" opacity="0.95"/>
+            <text class="pin-emoji" x="0" y="5" text-anchor="middle" font-size="14">&#11088;</text>
+            <text class="pin-label" x="18" y="4" font-family="'Fredoka', sans-serif" font-size="9" font-weight="600" fill="#0d9488">Marrakech</text>
+            <rect class="rarity-badge" x="-12" y="-26" width="24" height="14" rx="7" fill="#99f6e4" stroke="#2dd4bf" stroke-width="0.8"/>
+            <text class="rarity-text" x="0" y="-16" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="7" font-weight="600" fill="#115e59">Rare</text>
+          </g>
+
+          <!-- Reykjavik: snowflake -->
+          <g class="pin" data-dest="reykjavik" transform="translate(440, 72)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="14" fill="white" stroke="#a78bfa" stroke-width="2" opacity="0.95"/>
+            <text class="pin-emoji" x="0" y="5" text-anchor="middle" font-size="14">&#10052;</text>
+            <text class="pin-label" x="18" y="4" font-family="'Fredoka', sans-serif" font-size="9" font-weight="600" fill="#7c3aed">Reykjavik</text>
+            <rect class="rarity-badge" x="-12" y="-26" width="24" height="14" rx="7" fill="#c4b5fd" stroke="#a78bfa" stroke-width="0.8"/>
+            <text class="rarity-text" x="0" y="-16" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="7" font-weight="600" fill="#5b21b6">Epic</text>
+          </g>
+
+          <!-- Amalfi Coast: lemon -->
+          <g class="pin" data-dest="amalfi" transform="translate(539, 136)">
+            <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+            <circle class="pin-bg" cx="0" cy="0" r="14" fill="white" stroke="#2dd4bf" stroke-width="2" opacity="0.95"/>
+            <text class="pin-emoji" x="0" y="5" text-anchor="middle" font-size="14">&#127819;</text>
+            <text class="pin-label" x="18" y="4" font-family="'Fredoka', sans-serif" font-size="9" font-weight="600" fill="#0d9488">Amalfi</text>
+            <rect class="rarity-badge" x="-12" y="-26" width="24" height="14" rx="7" fill="#99f6e4" stroke="#2dd4bf" stroke-width="0.8"/>
+            <text class="rarity-text" x="0" y="-16" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="7" font-weight="600" fill="#115e59">Rare</text>
+          </g>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- Info Card (appears on pin click) -->
+    <div class="info-card" id="info-card">
+      <button class="info-close" id="info-close">&times;</button>
+      <div class="info-rarity" id="info-rarity">Legendary</div>
+      <div class="info-header">
+        <span class="info-emoji" id="info-emoji">&#127800;</span>
+        <div>
+          <h2 class="info-name" id="info-name">Kyoto, Japan</h2>
+          <p class="info-region" id="info-region">Asia</p>
+        </div>
+      </div>
+      <p class="info-desc" id="info-desc">Walk through ancient torii gates and discover a thousand temples in a city where every season is a masterpiece.</p>
+      <div class="info-stats">
+        <div class="stat-row">
+          <span class="stat-label">Fun Level</span>
+          <div class="stat-stars" id="stat-fun">
+            <span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span class="star-empty">&#11088;</span>
+          </div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Budget</span>
+          <div class="stat-coins" id="stat-budget">
+            <span>&#129689;</span><span>&#129689;</span><span>&#129689;</span><span class="coin-empty">&#129689;</span><span class="coin-empty">&#129689;</span>
+          </div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Adventure</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" id="stat-adventure" style="width: 70%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-xp-reward">
+        <span class="xp-badge">+<span id="info-xp">500</span> XP</span>
+        <span class="xp-coins">+<span id="info-coins">100</span> &#129689;</span>
+      </div>
+      <button class="start-adventure-btn" id="start-adventure-btn">
+        <span class="btn-text">Start Adventure!</span>
+        <span class="btn-sparkle">&#10024;</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Adventure Log -->
+  <section class="adventure-log">
+    <h2 class="log-title">&#127968; Adventure Log</h2>
+    <p class="log-subtitle">Track your adventures across the globe!</p>
+    <div class="log-grid" id="log-grid">
+
+      <button class="log-card" data-dest="kyoto">
+        <span class="log-emoji">&#127800;</span>
+        <div class="log-info">
+          <span class="log-name">Kyoto</span>
+          <span class="log-region">Japan</span>
+        </div>
+        <span class="log-status" data-status="pending">Pending</span>
+      </button>
+
+      <button class="log-card" data-dest="santorini">
+        <span class="log-emoji">&#127958;</span>
+        <div class="log-info">
+          <span class="log-name">Santorini</span>
+          <span class="log-region">Greece</span>
+        </div>
+        <span class="log-status" data-status="pending">Pending</span>
+      </button>
+
+      <button class="log-card" data-dest="patagonia">
+        <span class="log-emoji">&#9968;</span>
+        <div class="log-info">
+          <span class="log-name">Patagonia</span>
+          <span class="log-region">Argentina & Chile</span>
+        </div>
+        <span class="log-status" data-status="pending">Pending</span>
+      </button>
+
+      <button class="log-card" data-dest="marrakech">
+        <span class="log-emoji">&#11088;</span>
+        <div class="log-info">
+          <span class="log-name">Marrakech</span>
+          <span class="log-region">Morocco</span>
+        </div>
+        <span class="log-status" data-status="pending">Pending</span>
+      </button>
+
+      <button class="log-card" data-dest="reykjavik">
+        <span class="log-emoji">&#10052;</span>
+        <div class="log-info">
+          <span class="log-name">Reykjavik</span>
+          <span class="log-region">Iceland</span>
+        </div>
+        <span class="log-status" data-status="pending">Pending</span>
+      </button>
+
+      <button class="log-card" data-dest="amalfi">
+        <span class="log-emoji">&#127819;</span>
+        <div class="log-info">
+          <span class="log-name">Amalfi Coast</span>
+          <span class="log-region">Italy</span>
+        </div>
+        <span class="log-status" data-status="pending">Pending</span>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="adventure-footer">
+    <p>&copy; 2026 Adventure Map! &mdash; Best Places to Travel</p>
+    <p class="footer-note">Click a pin or press 1-6 to explore destinations. Use arrows to navigate. Press Enter to start an adventure!</p>
+  </footer>
+
+  <script src="adventure-map.js"></script>
+</body>
+</html>

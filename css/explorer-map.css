@@ -1,0 +1,1014 @@
+/* ============================================================
+   EXPLORER MAP — Hybrid Adventure/RPG Travel Map
+   A stylish adventure app for young adults
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Core palette */
+  --bg-deep:        #1e2a3a;
+  --bg-surface:     #243447;
+  --bg-card:        #2a3c50;
+  --bg-elevated:    #304a62;
+
+  /* Text */
+  --text-primary:   #e8f0f8;
+  --text-secondary: #a0b4c8;
+  --text-muted:     #6b8299;
+
+  /* Accent palette */
+  --coral:          #ff6b6b;
+  --coral-dark:     #e05555;
+  --teal:           #4ecdc4;
+  --teal-dark:      #3ab5ad;
+  --amber:          #ffe66d;
+  --amber-dark:     #e6cc4f;
+  --purple:         #a29bfe;
+  --purple-dark:    #8b83e6;
+  --green:          #55efc4;
+  --green-dark:     #3dd6a8;
+  --orange:         #ff9f43;
+  --orange-dark:    #e6882e;
+
+  /* Map colors */
+  --continent:      #3d4f5f;
+  --continent-hover:#4a6070;
+  --ocean:          #1a2a3a;
+  --grid-line:      #4ecdc4;
+
+  /* Borders & shadows */
+  --border-subtle:  rgba(78, 205, 196, 0.12);
+  --border-medium:  rgba(78, 205, 196, 0.2);
+  --shadow-sm:      0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md:      0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg:      0 8px 40px rgba(0, 0, 0, 0.4);
+  --shadow-glow:    0 0 20px rgba(78, 205, 196, 0.15);
+
+  /* Radius */
+  --radius-sm:      8px;
+  --radius-md:      12px;
+  --radius-lg:      16px;
+
+  /* Fonts */
+  --font-heading:   'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-deep);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(78, 205, 196, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(162, 155, 254, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 107, 107, 0.02) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+
+/* ============================================================
+   BACK NAVIGATION
+   ============================================================ */
+.back-nav {
+  padding: 1.25rem 2rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.back-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.25s ease;
+}
+
+.back-link:hover {
+  color: var(--teal);
+  background: rgba(78, 205, 196, 0.08);
+}
+
+.back-link svg {
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.explorer-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.title-icon {
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.site-subtitle {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  padding-left: 2.1rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.explorer-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.profile-rank {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--amber);
+  letter-spacing: 0.02em;
+}
+
+.profile-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 140px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--bg-deep);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--teal), var(--green));
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.progress-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+
+/* ============================================================
+   MAP CONTROLS
+   ============================================================ */
+.map-controls {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 60;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 6px;
+}
+
+.ctrl-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.ctrl-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.ctrl-btn.active {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+
+.ctrl-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 2px 4px;
+}
+
+
+/* ============================================================
+   MAP SECTION
+   ============================================================ */
+.map-section {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.map-viewport {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: grab;
+  position: relative;
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  background: var(--ocean);
+}
+
+.map-viewport:active {
+  cursor: grabbing;
+}
+
+.world-map {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+
+/* Continent hover */
+.continents path {
+  transition: fill 0.3s ease;
+}
+
+.continents path:hover {
+  fill: var(--continent-hover);
+}
+
+/* Pin styling */
+.pin {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pin-dot {
+  transition: opacity 0.2s ease;
+}
+
+.pin:hover .pin-dot {
+  opacity: 0.8;
+}
+
+.pin.active .pin-dot {
+  opacity: 0.8;
+}
+
+.pin.collected .pin-dot {
+  stroke: var(--green);
+  stroke-width: 2.5;
+}
+
+/* Collected checkmark overlay */
+.pin-check {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  fill: #fff;
+  pointer-events: none;
+}
+
+.pin-label {
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+
+.pin:hover .pin-label {
+  opacity: 1;
+}
+
+/* Pin pulse */
+.pin-pulse {
+  opacity: 0;
+  animation: pinPulse 3s ease-in-out infinite;
+}
+
+.pin:nth-child(1) .pin-pulse { animation-delay: 0s; }
+.pin:nth-child(2) .pin-pulse { animation-delay: 0.5s; }
+.pin:nth-child(3) .pin-pulse { animation-delay: 1s; }
+.pin:nth-child(4) .pin-pulse { animation-delay: 1.5s; }
+.pin:nth-child(5) .pin-pulse { animation-delay: 2s; }
+.pin:nth-child(6) .pin-pulse { animation-delay: 2.5s; }
+
+@keyframes pinPulse {
+  0%   { r: 8;  opacity: 0.6; }
+  100% { r: 24; opacity: 0; }
+}
+
+/* Collected pins stop pulsing */
+.pin.collected .pin-pulse {
+  animation: none;
+  opacity: 0;
+}
+
+/* Route animation */
+.route-line {
+  stroke-dashoffset: 200;
+  animation: drawRoute 5s linear infinite;
+}
+
+@keyframes drawRoute {
+  to { stroke-dashoffset: 0; }
+}
+
+.route-paths {
+  transition: opacity 0.4s ease;
+}
+
+.route-paths.hidden {
+  opacity: 0;
+}
+
+
+/* ============================================================
+   INFO CARD
+   ============================================================ */
+.info-card {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  z-index: 10;
+  transform: translateX(calc(100% + 40px));
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: var(--shadow-lg);
+}
+
+.info-card.visible {
+  transform: translateX(0);
+}
+
+.info-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.info-close:hover {
+  background: rgba(255, 107, 107, 0.6);
+}
+
+.info-photo {
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 16px;
+}
+
+.info-region-badge {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+.info-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+
+.info-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.info-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.1rem;
+}
+
+/* Stat bars */
+.info-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-deep);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Collect button */
+.collect-btn {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: #fff;
+}
+
+.collect-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.collect-btn:active {
+  transform: translateY(0);
+}
+
+.collect-btn.collected {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.collect-btn.collected:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ============================================================
+   STAMP ANIMATION OVERLAY
+   ============================================================ */
+.stamp-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.stamp-overlay.active {
+  opacity: 1;
+}
+
+.stamp-animation {
+  transform: scale(3) rotate(-15deg);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stamp-overlay.active .stamp-animation {
+  transform: scale(1) rotate(-8deg);
+  opacity: 1;
+}
+
+.stamp-overlay.fade-out .stamp-animation {
+  transform: scale(0.8) rotate(-5deg);
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  z-index: 150;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.2rem;
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  max-width: 340px;
+}
+
+.toast.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast.removing {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.toast-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.toast-title {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.toast-message {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   PASSPORT SECTION
+   ============================================================ */
+.passport-section {
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+  padding: 0 2rem;
+}
+
+.passport-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.passport-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.passport-title svg {
+  color: var(--amber);
+}
+
+.passport-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.passport-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.8rem;
+}
+
+.passport-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.passport-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.passport-card.active {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal), var(--shadow-sm);
+}
+
+.passport-card.collected {
+  border-color: transparent;
+}
+
+.passport-card.collected::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  border-radius: var(--radius-md);
+}
+
+.passport-card.uncollected {
+  opacity: 0.45;
+}
+
+.passport-card.uncollected:hover {
+  opacity: 0.7;
+}
+
+.passport-stamp-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+}
+
+.passport-card.uncollected .passport-stamp-icon {
+  background: var(--bg-elevated) !important;
+  color: var(--text-muted);
+}
+
+.passport-stamp-check {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 16px;
+  height: 16px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.passport-card.collected .passport-stamp-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.passport-stamp-check svg {
+  width: 10px;
+  height: 10px;
+}
+
+.passport-dest-name {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.passport-card.uncollected .passport-dest-name {
+  color: var(--text-muted);
+}
+
+.passport-dest-region {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* Achievement banner */
+.passport-achievement {
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.passport-achievement.unlocked {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.achievement-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(255, 230, 109, 0.1), rgba(255, 159, 67, 0.1));
+  border: 1px solid rgba(255, 230, 109, 0.25);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 2rem;
+}
+
+.achievement-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.achievement-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.achievement-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.explorer-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem 2rem 2.5rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.footer-brand svg {
+  color: var(--teal);
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.footer-keys {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.key-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.key-hint kbd {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .passport-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .explorer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem 1rem;
+  }
+
+  .explorer-profile {
+    width: 100%;
+  }
+
+  .map-controls {
+    left: auto;
+    right: 16px;
+    top: auto;
+    bottom: 16px;
+    transform: none;
+    flex-direction: row;
+  }
+
+  .map-section {
+    padding: 0 1rem;
+  }
+
+  .info-card {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    transform: translateY(100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .info-card.visible {
+    transform: translateY(0);
+  }
+
+  .passport-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-keys {
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-nav {
+    padding: 1rem 1rem 0;
+  }
+
+  .explorer-header {
+    padding: 0.75rem 1rem 1rem;
+  }
+
+  .site-title {
+    font-size: 1.3rem;
+  }
+
+  .map-section {
+    padding: 0 0.75rem;
+  }
+
+  .passport-section {
+    padding: 0 1rem;
+  }
+
+  .passport-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .explorer-footer {
+    padding: 1.5rem 1rem 2rem;
+  }
+}
